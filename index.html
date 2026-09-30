@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lizzy | Web3 Community Manager</title>
+  <title>Lizzy | Web3 Community Lead & Operations Specialist</title>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
@@ -11,7 +12,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -23,7 +24,7 @@
               purple: '#8B5CF6',
               violet: '#A855F7',
               pink: '#EC4899',
-              dark: '#0B0A10',
+              dark: '#0A0A10',
               card: '#13111C',
               border: '#262235'
             }
@@ -41,66 +42,76 @@
     /* Smooth Scroll */
     html { scroll-behavior: smooth; }
 
-    /* Custom Glassmorphism */
+    /* Custom Refined Glassmorphism */
     .glass-card {
-      background: rgba(19, 17, 28, 0.7);
+      background: rgba(19, 17, 28, 0.65);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
+
     .light .glass-card {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.45);
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(0, 0, 0, 0.08);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.1);
     }
 
-    /* Hero Avatar Glow */
+    /* Hero Glow & Effects */
     .avatar-glow {
-      box-shadow: 0 0 50px -10px rgba(168, 85, 247, 0.5);
+      box-shadow: 0 0 50px -10px rgba(168, 85, 247, 0.4);
     }
 
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #0B0A10; }
-    ::-webkit-scrollbar-thumb { background: #262235; border-radius: 4px; }
+    /* Automatic Carousel Animation */
+    @keyframes infinite-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .animate-carousel {
+      display: flex;
+      width: 200%;
+      animation: infinite-scroll 25s linear infinite;
+    }
+
+    .animate-carousel:hover {
+      animation-play-state: paused;
+    }
+
+    /* Refined Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0A10; }
+    ::-webkit-scrollbar-thumb { background: #262235; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #8B5CF6; }
-
-    /* Blur Background transition effect */
-    .footer-bg-blur {
-      backdrop-filter: blur(20px);
-      transition: backdrop-filter 0.8s ease;
-    }
-    .footer-bg-blur.revealed {
-      backdrop-filter: blur(0px);
-    }
   </style>
 </head>
-<body class="bg-[#0B0A10] text-gray-200 font-sans transition-colors duration-300 antialiased selection:bg-purple-500 selection:text-white">
+
+<body class="bg-[#0A0A10] text-gray-200 font-sans tracking-normal selection:bg-purple-500 selection:text-white transition-colors duration-300">
 
   <!-- Header / Navigation -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/5">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0A0A10]/80 backdrop-blur-md border-b border-white/5">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="#" class="font-heading text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 inline-block animate-pulse"></span>
+      <a href="#" class="font-heading text-xl font-bold tracking-tight flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></span>
         Lizzy<span class="text-purple-400">.</span>
       </a>
 
       <!-- Compact Theme Toggle & Nav Links -->
-      <div class="flex items-center gap-4">
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
+      <div class="flex items-center gap-6">
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
           <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
-          <a href="#services" class="hover:text-purple-400 transition-colors">Services</a>
-          <a href="#experience" class="hover:text-purple-400 transition-colors">Experience</a>
-          <a href="#proof" class="hover:text-purple-400 transition-colors">Proof of Work</a>
-          <a href="#testimonials" class="hover:text-purple-400 transition-colors">Testimonials</a>
+          <a href="#services" class="hover:text-purple-400 transition-colors">Capabilities</a>
+          <a href="#experience" class="hover:text-purple-400 transition-colors">Proof</a>
+          <a href="#contact" class="hover:text-purple-400 transition-colors">Contact</a>
         </nav>
 
-        <!-- Compact Animated Theme Toggle -->
-        <button id="themeToggle" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95" aria-label="Toggle Theme">
-          <i class="fa-solid fa-moon text-purple-300 text-sm dark-icon"></i>
-          <i class="fa-solid fa-sun text-amber-400 text-sm light-icon hidden"></i>
+        <button id="themeToggle" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white transition-all">
+          <i class="fa-solid fa-moon text-sm"></i>
         </button>
 
-        <a href="#contact" class="hidden sm:inline-flex px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-full hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">
+        <a href="#contact" class="hidden sm:inline-flex px-4 py-2 text-xs font-semibold rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:opacity-90 transition-opacity">
           Get In Touch
         </a>
       </div>
@@ -111,706 +122,233 @@
 
     <!-- HERO SECTION -->
     <section class="relative min-h-[85vh] flex items-center justify-center py-16 px-4 overflow-hidden">
-      <!-- Background Decorative Blur Elements -->
-      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"></div>
-      <div class="absolute bottom-10 right-10 w-80 h-80 bg-pink-600/15 rounded-full blur-[100px] pointer-events-none"></div>
+      <!-- Background Glowing Flares -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+      <div class="absolute bottom-10 right-10 w-80 h-80 bg-pink-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div class="max-w-4xl mx-auto text-center relative z-10">
-        
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-purple-500/30 mb-8 animate-bounce">
-          <span class="w-2 h-2 rounded-full bg-green-400"></span>
-          <span class="text-xs font-semibold text-purple-300 tracking-wide uppercase">Available for New Projects</span>
+        <!-- Status Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card text-xs font-medium text-purple-300 mb-8 border border-purple-500/20">
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+          <span>AVAILABLE FOR NEW PROJECTS</span>
         </div>
 
         <!-- Avatar Container -->
         <div class="relative w-32 h-32 mx-auto mb-8">
-          <div class="w-full h-full rounded-full p-1 bg-gradient-to-tr from-purple-500 via-pink-500 to-indigo-500 avatar-glow">
+          <div class="w-full h-full rounded-full bg-gradient-to-tr from-purple-500 via-pink-500 to-indigo-500 p-1 avatar-glow">
             <div class="w-full h-full rounded-full bg-[#13111C] flex items-center justify-center overflow-hidden">
-              <span class="font-heading text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">L</span>
+              <!-- Replaced letter avatar with image avatar placeholder or image -->
+              <img src="IMG-20260929-WA0046.jpg" alt="Lizzy" class="w-full h-full object-cover" onError="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <span class="hidden font-heading text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">L</span>
             </div>
           </div>
         </div>
 
         <!-- Headline & Subtitle -->
         <h1 class="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-          Web3 Community <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400">Manager</span>
+          Web3 Community <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400">Lead & Manager</span>
         </h1>
 
-        <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-          I build and manage Web3 communities where people connect, participate, and have a real reason to stay involved.
+        <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+          I build, grow, and structure high-retention Web3 communities where members active contribute, connect, and stay engaged long-term.
         </p>
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#experience" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-sm tracking-wide shadow-lg shadow-purple-600/30 hover:scale-105 transition-all duration-300 text-center">
-            View My Work <i class="fa-solid fa-arrow-down ml-2"></i>
+          <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold text-sm hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+            Let's Work Together <i class="fa-solid fa-paper-plane ml-2"></i>
           </a>
-          <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card text-white font-bold text-sm tracking-wide hover:bg-white/10 hover:scale-105 transition-all duration-300 border border-white/10 text-center">
-            Let’s Work Together <i class="fa-solid fa-paper-plane ml-2"></i>
+          <a href="#experience" class="w-full sm:w-auto px-8 py-3.5 rounded-full glass-card text-white font-semibold text-sm hover:bg-white/10 transition-all">
+            View My Work <i class="fa-solid fa-arrow-down ml-2"></i>
           </a>
         </div>
 
         <!-- Quick Stats Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-12 border-t border-white/10">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-8 border-t border-white/5">
           <div class="p-4 glass-card rounded-2xl">
-            <div class="font-heading text-2xl sm:text-3xl font-bold text-purple-400">300+</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Web3 Collabs</div>
+            <p class="font-heading text-2xl sm:text-3xl font-bold text-purple-400">300+</p>
+            <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Web3 Collabs</p>
           </div>
           <div class="p-4 glass-card rounded-2xl">
-            <div class="font-heading text-2xl sm:text-3xl font-bold text-pink-400">7+</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Core Services</div>
+            <p class="font-heading text-2xl sm:text-3xl font-bold text-purple-400">7+</p>
+            <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Core Services</p>
           </div>
           <div class="p-4 glass-card rounded-2xl">
-            <div class="font-heading text-2xl sm:text-3xl font-bold text-indigo-400">GMT+1</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Time Zone</div>
+            <p class="font-heading text-2xl sm:text-3xl font-bold text-purple-400">WAT</p>
+            <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">UTC +1 Zone</p>
           </div>
           <div class="p-4 glass-card rounded-2xl">
-            <div class="font-heading text-2xl sm:text-3xl font-bold text-green-400">EN / JA</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Languages</div>
+            <p class="font-heading text-2xl sm:text-3xl font-bold text-purple-400">EN / JA</p>
+            <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Languages</p>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- ABOUT ME SECTION -->
+    <!-- ABOUT SECTION -->
     <section id="about" class="py-20 px-4 max-w-5xl mx-auto">
-      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-white/10 relative overflow-hidden">
-        <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="inline-block px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-widest mb-4">
-          About Me
-        </div>
-
-        <h2 class="font-heading text-2xl sm:text-4xl font-bold text-white mb-6">
-          I’m Lizzy, a Web3 Community Manager focused on creating communities where people don’t just join, <span class="text-purple-400">they participate.</span>
-        </h2>
-
-        <div class="space-y-4 text-gray-300 leading-relaxed text-base sm:text-lg">
-          <p>
-            I manage community conversations, create engaging activities, coordinate events, develop community content, and help projects maintain a strong connection with their members.
-          </p>
-          <p>
-            I’ve worked across meme coin and NFT communities, gaining hands-on experience with different community environments and engagement styles.
-          </p>
-          <p>
-            Alongside community management, I’ve also worked as a Collab Manager, coordinating <strong class="text-purple-300 font-semibold">300+ collaborations</strong> across Web3 projects and communities.
-          </p>
-          <p class="text-purple-200 font-medium">
-            Working across both roles has strengthened my communication, coordination, relationship-building, and community engagement skills.
-          </p>
-        </div>
-
-        <!-- Language & Specs Info -->
-        <div class="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-6 text-sm text-gray-400">
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-earth-americas text-purple-400"></i>
-            <span><strong>Time Zone:</strong> GMT+1</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-language text-pink-400"></i>
-            <span><strong>Languages:</strong> English (Fluent), Japanese (Basic)</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-layer-group text-indigo-400"></i>
-            <span><strong>Platforms:</strong> X, Telegram, Discord</span>
+      <div class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold text-purple-400 uppercase tracking-widest mb-3">About Me</p>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-6">
+            Building ecosystems where people don't just join — they participate.
+          </h2>
+          <div class="space-y-4 text-gray-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              I specialize in managing Web3 conversations, running high-conversion collab campaigns, organizing interactive community events, and developing tailored content strategies that maintain project momentum.
+            </p>
+            <p>
+              Having worked across leading ecosystems including Monad, Solana, Ethereum, and Base, I bridge the gap between founding teams and their organic community base.
+            </p>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- WHAT I DO SECTION -->
+    <!-- WHAT I DO / CAPABILITIES SECTION -->
     <section id="services" class="py-20 px-4 max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <span class="px-3 py-1 rounded-md bg-pink-500/20 text-pink-300 text-xs font-bold uppercase tracking-widest">Capabilities</span>
-        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">What I Do</h2>
-        <p class="text-gray-400 mt-2 max-w-xl mx-auto text-sm sm:text-base">Comprehensive community operations tailored for Web3 growth.</p>
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="text-xs font-semibold text-purple-400 uppercase tracking-widest mb-2">Capabilities</p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">What I Bring To The Table</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
         <!-- Card 1 -->
         <div class="glass-card rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-users-gear"></i>
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-users"></i>
           </div>
-          <h3 class="font-heading text-xl font-bold text-white mb-2">Community Management</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            I manage the day-to-day community experience, keeping communication organized while staying actively involved with members.
-          </p>
+          <h3 class="font-heading text-xl font-bold text-white mb-2">Community Operations</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Day-to-day Discord and Telegram channel management, active moderation, structure optimization, and support workflows.</p>
         </div>
 
         <!-- Card 2 -->
-        <div class="glass-card rounded-2xl p-6 hover:border-pink-500/50 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-comments"></i>
+        <div class="glass-card rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-handshake"></i>
           </div>
-          <h3 class="font-heading text-xl font-bold text-white mb-2">Community Engagement</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            I create conversations, activities, and interactive experiences that encourage members to participate and connect.
-          </p>
+          <h3 class="font-heading text-xl font-bold text-white mb-2">Collab Management</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">End-to-end partnership outreach, cross-project giveaways, WL distribution management, and strategic network growth.</p>
         </div>
 
         <!-- Card 3 -->
-        <div class="glass-card rounded-2xl p-6 hover:border-indigo-500/50 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-chess"></i>
-          </div>
-          <h3 class="font-heading text-xl font-bold text-white mb-2">Community Strategy</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            I develop practical community initiatives based on the project’s goals, community culture, and current growth stage.
-          </p>
-        </div>
-
-        <!-- Card 4 -->
         <div class="glass-card rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-pen-nib"></i>
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-xl mb-6 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-trophy"></i>
           </div>
-          <h3 class="font-heading text-xl font-bold text-white mb-2">Content Creation</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            I create community-focused posts, announcements, discussions, contests, and interactive content.
-          </p>
+          <h3 class="font-heading text-xl font-bold text-white mb-2">Ambassador Programs</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Designing reward pathways, recruitment funnels, and tracking metrics for organic brand advocates.</p>
         </div>
-
-        <!-- Card 5 -->
-        <div class="glass-card rounded-2xl p-6 hover:border-pink-500/50 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-calendar-check"></i>
-          </div>
-          <h3 class="font-heading text-xl font-bold text-white mb-2">Events & Activities</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            I plan and coordinate community events, games, contests, discussions, and other interactive experiences.
-          </p>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="glass-card rounded-2xl p-6 hover:border-indigo-500/50 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-shield-halved"></i>
-          </div>
-          <h3 class="font-heading text-xl font-bold text-white mb-2">Moderation</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">
-            I help maintain an organized community environment by managing conversations, responding to members, and addressing issues quickly.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- Platform Management Banner -->
-      <div class="mt-8 glass-card rounded-2xl p-6 border border-purple-500/30 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-white text-xl">
-            <i class="fa-solid fa-[#]"></i>
-          </div>
-          <div>
-            <h4 class="font-heading text-lg font-bold text-white">Platform Management</h4>
-            <p class="text-gray-400 text-xs sm:text-sm">I work natively across X, Telegram, Discord, and other community platforms.</p>
-          </div>
-        </div>
-        <div class="flex gap-3 text-xl text-purple-300">
-          <i class="fa-brands fa-x-twitter hover:text-white transition-colors"></i>
-          <i class="fa-brands fa-telegram hover:text-white transition-colors"></i>
-          <i class="fa-brands fa-discord hover:text-white transition-colors"></i>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- MY APPROACH SECTION -->
-    <section class="py-20 px-4 max-w-5xl mx-auto">
-      <div class="text-center mb-16">
-        <span class="px-3 py-1 rounded-md bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-widest">Framework</span>
-        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">My Approach</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-        
-        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-purple-500 hover:-translate-y-1 transition-transform">
-          <span class="text-3xl font-extrabold font-heading text-purple-400">01</span>
-          <h3 class="font-heading text-base font-bold text-white my-2">Understand</h3>
-          <p class="text-xs text-gray-400">Learn project goals, culture, and member profiles.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-pink-500 hover:-translate-y-1 transition-transform">
-          <span class="text-3xl font-extrabold font-heading text-pink-400">02</span>
-          <h3 class="font-heading text-base font-bold text-white my-2">Listen</h3>
-          <p class="text-xs text-gray-400">Track feedback, conversations, and engagement triggers.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-indigo-500 hover:-translate-y-1 transition-transform">
-          <span class="text-3xl font-extrabold font-heading text-indigo-400">03</span>
-          <h3 class="font-heading text-base font-bold text-white my-2">Create</h3>
-          <p class="text-xs text-gray-400">Turn insights into tailored content and interactive events.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-purple-500 hover:-translate-y-1 transition-transform">
-          <span class="text-3xl font-extrabold font-heading text-purple-400">04</span>
-          <h3 class="font-heading text-base font-bold text-white my-2">Engage</h3>
-          <p class="text-xs text-gray-400">Actively participate and spur member interaction daily.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-pink-500 hover:-translate-y-1 transition-transform">
-          <span class="text-3xl font-extrabold font-heading text-pink-400">05</span>
-          <h3 class="font-heading text-base font-bold text-white my-2">Build</h3>
-          <p class="text-xs text-gray-400">Deliver consistent experiences that drive long-term retention.</p>
-        </div>
-
       </div>
     </section>
 
-    <!-- INTERACTIVE EXPERIENCE CAROUSEL -->
-    <section id="experience" class="py-20 px-4 max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-widest">Track Record</span>
-        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">Projects & Work</h2>
-        <p class="text-gray-400 mt-2 text-sm">Interactive project showcase — click or swipe through her journey.</p>
+    <!-- AUTOMATIC CAROUSEL PROOF OF WORK SECTION -->
+    <section id="experience" class="py-20 overflow-hidden relative">
+      <div class="text-center max-w-2xl mx-auto mb-12 px-4">
+        <p class="text-xs font-semibold text-purple-400 uppercase tracking-widest mb-2">Proof of Work</p>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white">Projects & Track Record</h2>
       </div>
 
-      <!-- Carousel Container -->
-      <div class="relative glass-card rounded-3xl p-6 sm:p-10 border border-white/10 overflow-hidden min-h-[480px]">
-        
-        <!-- Controls -->
-        <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
-          <div class="flex items-center gap-3">
-            <span id="carouselCounter" class="text-xs font-mono font-bold text-purple-400 px-3 py-1 bg-purple-500/10 rounded-full border border-purple-500/20">01 / 04</span>
-            <h3 id="carouselTitle" class="font-heading text-xl font-bold text-white">CAOPAN KINGDOM</h3>
+      <!-- Infinite Sliding Track -->
+      <div class="w-full overflow-hidden">
+        <div class="animate-carousel gap-6 px-4">
+          <!-- Slide 1 -->
+          <div class="w-[320px] sm:w-[380px] shrink-0 glass-card rounded-2xl p-6 border border-white/10">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="font-heading text-xl font-bold text-white">WhenTheMint</h3>
+              <span class="px-2.5 py-1 rounded-full text-xs bg-purple-500/20 text-purple-300 font-medium">NFT Hub</span>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">Core team member leading community growth across primary and secondary projects (HeadflyMonad & Waninjas).</p>
+            <div class="text-xs text-purple-400 font-semibold uppercase tracking-wider">Role: Community Lead</div>
           </div>
-          <div class="flex gap-2">
-            <button id="prevBtn" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-white transition-all">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button id="nextBtn" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-white transition-all">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
+
+          <!-- Slide 2 -->
+          <div class="w-[320px] sm:w-[380px] shrink-0 glass-card rounded-2xl p-6 border border-white/10">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="font-heading text-xl font-bold text-white">Mad Bears Club</h3>
+              <span class="px-2.5 py-1 rounded-full text-xs bg-pink-500/20 text-pink-300 font-medium">Community</span>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">Managed cross-chain collaboration outreach, community moderation, and interactive event coordination.</p>
+            <div class="text-xs text-purple-400 font-semibold uppercase tracking-wider">Role: Collab Manager & Mod</div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="w-[320px] sm:w-[380px] shrink-0 glass-card rounded-2xl p-6 border border-white/10">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="font-heading text-xl font-bold text-white">Velin</h3>
+              <span class="px-2.5 py-1 rounded-full text-xs bg-indigo-500/20 text-indigo-300 font-medium">Ethereum</span>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">Handled community moderation workflows, user onboarding, and partnership engagement on Ethereum ecosystem.</p>
+            <div class="text-xs text-purple-400 font-semibold uppercase tracking-wider">Role: Community Manager</div>
+          </div>
+
+          <!-- Slide 4 Duplicate for Loop -->
+          <div class="w-[320px] sm:w-[380px] shrink-0 glass-card rounded-2xl p-6 border border-white/10">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="font-heading text-xl font-bold text-white">Pixel Kingdom War</h3>
+              <span class="px-2.5 py-1 rounded-full text-xs bg-purple-500/20 text-purple-300 font-medium">GameFi</span>
+            </div>
+            <p class="text-gray-300 text-sm mb-4">Designed player engagement strategies, team structure forms, and in-game community reward pathways.</p>
+            <div class="text-xs text-purple-400 font-semibold uppercase tracking-wider">Role: Community Operations</div>
           </div>
         </div>
-
-        <!-- Carousel Slides -->
-        <div id="carouselSlides" class="relative">
-          
-          <!-- Slide 1: CAOPAN KINGDOM -->
-          <div class="carousel-slide space-y-6">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-purple-300 bg-purple-500/20 px-3 py-1 rounded-md">Community Manager</span>
-              <span class="text-xs text-gray-400"><i class="fa-brands fa-telegram text-sky-400"></i> Telegram & <i class="fa-brands fa-x-twitter text-white"></i> X</span>
-            </div>
-            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Managed the community across Telegram and X, focusing on engagement, events, activities, communication, and overall community experience.
-            </p>
-            <div class="space-y-3">
-              <h4 class="font-heading text-sm font-bold text-purple-400 uppercase tracking-wide">Key Contributions:</h4>
-              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-gray-300">
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Managed day-to-day engagement</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Planned events & activities</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Coordinated Story Night discussions</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Managed Meme Battles & Contests</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Slide 2: TIDEWALKERZ -->
-          <div class="carousel-slide hidden space-y-6">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-pink-300 bg-pink-500/20 px-3 py-1 rounded-md">Community & Collab Manager</span>
-              <span class="text-xs text-gray-400"><i class="fa-brands fa-discord text-indigo-400"></i> Web3 NFT Community</span>
-            </div>
-            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Worked across community management, moderation, engagement, and collaboration management while supporting communication between the project and other Web3 projects.
-            </p>
-            <div class="space-y-3">
-              <h4 class="font-heading text-sm font-bold text-pink-400 uppercase tracking-wide">Key Contributions:</h4>
-              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-gray-300">
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Handled collab outreach & comms</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Managed community moderation</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Supported promotional activities</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Partnership coordination</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Slide 3: BOUNDLESS8DESIGNS -->
-          <div class="carousel-slide hidden space-y-6">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-indigo-300 bg-indigo-500/20 px-3 py-1 rounded-md">Community Manager</span>
-              <span class="text-xs text-gray-400"><i class="fa-solid fa-gamepad text-green-400"></i> Interactive Games & Events</span>
-            </div>
-            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Managed community engagement with a strong focus on interactive activities, games, and creating opportunities for members to actively compete and participate.
-            </p>
-            <div class="space-y-3">
-              <h4 class="font-heading text-sm font-bold text-indigo-400 uppercase tracking-wide">Key Contributions:</h4>
-              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-gray-300">
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Organized interactive games</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Event coordination & setup</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Maintained consistent engagement</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Community building via activities</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Slide 4: 300+ WEB3 COLLABORATIONS -->
-          <div class="carousel-slide hidden space-y-6">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-500/20 px-3 py-1 rounded-md">Collab Manager Specialist</span>
-              <span class="text-xs text-gray-400"><i class="fa-solid fa-handshake text-amber-400"></i> Cross-Project Outreach</span>
-            </div>
-            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Coordinated 300+ collaborations across Web3 projects and communities, handling end-to-end partnership pipelines from initial outreach to execution.
-            </p>
-            <div class="space-y-3">
-              <h4 class="font-heading text-sm font-bold text-amber-400 uppercase tracking-wide">What I Handled:</h4>
-              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-gray-300">
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Outreach & partner matching</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Negotiating collab terms</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Coordinating promo tasks</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Maintaining project relationships</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Carousel Dots Nav -->
-        <div class="flex items-center justify-center gap-2 mt-8 pt-4 border-t border-white/10">
-          <button class="dot w-3 h-3 rounded-full bg-purple-500 transition-all"></button>
-          <button class="dot w-3 h-3 rounded-full bg-white/20 transition-all"></button>
-          <button class="dot w-3 h-3 rounded-full bg-white/20 transition-all"></button>
-          <button class="dot w-3 h-3 rounded-full bg-white/20 transition-all"></button>
-        </div>
-
       </div>
     </section>
 
-    <!-- PROOF OF WORK SECTION -->
-    <section id="proof" class="py-20 px-4 max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="px-3 py-1 rounded-md bg-pink-500/20 text-pink-300 text-xs font-bold uppercase tracking-widest">Evidence</span>
-        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">Proof of Work</h2>
-        <p class="text-gray-400 mt-2 text-sm sm:text-base max-w-xl mx-auto">Real work speaks louder than a list of responsibilities. Highlights from real community conversations, moderation, and events.</p>
-      </div>
-
-      <!-- Proof Category Filter Buttons -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
-        <button class="proof-tab px-4 py-2 rounded-full text-xs font-bold bg-purple-600 text-white transition-all" data-filter="all">All Proofs</button>
-        <button class="proof-tab px-4 py-2 rounded-full text-xs font-bold glass-card text-gray-300 hover:text-white transition-all" data-filter="community">Community Management</button>
-        <button class="proof-tab px-4 py-2 rounded-full text-xs font-bold glass-card text-gray-300 hover:text-white transition-all" data-filter="events">Events & Games</button>
-        <button class="proof-tab px-4 py-2 rounded-full text-xs font-bold glass-card text-gray-300 hover:text-white transition-all" data-filter="collabs">Collab Management</button>
-      </div>
-
-      <!-- Proof Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Proof Item 1 -->
-        <div class="proof-card glass-card rounded-2xl p-6 border border-white/10 hover:border-purple-500/50 transition-all" data-category="community">
-          <div class="w-full h-40 rounded-xl bg-purple-950/40 border border-purple-500/20 flex flex-col items-center justify-center p-4 mb-4 text-center">
-            <i class="fa-solid fa-comments text-3xl text-purple-400 mb-2"></i>
-            <span class="text-xs text-purple-300 font-semibold">Community Chat & Moderation</span>
-            <span class="text-[10px] text-gray-400 mt-1">Real member interactions & active support</span>
-          </div>
-          <h3 class="font-heading text-lg font-bold text-white mb-1">Daily Engagement</h3>
-          <p class="text-xs text-gray-400">Screenshots of active chat facilitation, answering inquiries, and managing chat culture.</p>
+    <!-- CONTACT / FOOTER SECTION WITH BLURRED BANNER VISIBILITY -->
+    <section id="contact" class="py-20 px-4 relative overflow-hidden">
+      <!-- Background Banner Container with Reflective Glass Overlays -->
+      <div class="max-w-4xl mx-auto rounded-3xl relative overflow-hidden p-8 sm:p-12 border border-white/10 shadow-2xl">
+        <!-- Banner Image Background -->
+        <div class="absolute inset-0 z-0">
+          <img src="IMG-20260929-WA0045.jpg" alt="Lizzy Banner" class="w-full h-full object-cover object-center opacity-40 blur-sm scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A10] via-[#0A0A10]/70 to-transparent"></div>
         </div>
 
-        <!-- Proof Item 2 -->
-        <div class="proof-card glass-card rounded-2xl p-6 border border-white/10 hover:border-pink-500/50 transition-all" data-category="events">
-          <div class="w-full h-40 rounded-xl bg-pink-950/40 border border-pink-500/20 flex flex-col items-center justify-center p-4 mb-4 text-center">
-            <i class="fa-solid fa-book-open text-3xl text-pink-400 mb-2"></i>
-            <span class="text-xs text-pink-300 font-semibold">Story Night & Meme Battles</span>
-            <span class="text-[10px] text-gray-400 mt-1">Multi-round games & lore discussions</span>
+        <div class="relative z-10 text-center max-w-xl mx-auto">
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">Ready To Build Together?</h2>
+          <p class="text-gray-300 text-sm sm:text-base mb-8">Whether launching a new project or scaling an existing community, let's create a tailored growth strategy.</p>
+
+          <!-- Glassmorphic Social Button Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <a href="https://x.com/Lizzy_onchain" target="_blank" class="p-4 glass-card rounded-2xl hover:bg-white/20 transition-all flex flex-col items-center gap-2 group">
+              <i class="fa-brands fa-x-twitter text-xl text-purple-300 group-hover:scale-110 transition-transform"></i>
+              <span class="text-xs font-semibold text-white">X / Twitter</span>
+            </a>
+            <a href="https://t.me/Lizzy_onchain" target="_blank" class="p-4 glass-card rounded-2xl hover:bg-white/20 transition-all flex flex-col items-center gap-2 group">
+              <i class="fa-brands fa-telegram text-xl text-purple-300 group-hover:scale-110 transition-transform"></i>
+              <span class="text-xs font-semibold text-white">Telegram</span>
+            </a>
+            <a href="mailto:contact@example.com" class="p-4 glass-card rounded-2xl hover:bg-white/20 transition-all flex flex-col items-center gap-2 group">
+              <i class="fa-solid fa-envelope text-xl text-purple-300 group-hover:scale-110 transition-transform"></i>
+              <span class="text-xs font-semibold text-white">Email</span>
+            </a>
+            <a href="#" class="p-4 glass-card rounded-2xl hover:bg-white/20 transition-all flex flex-col items-center gap-2 group">
+              <i class="fa-brands fa-discord text-xl text-purple-300 group-hover:scale-110 transition-transform"></i>
+              <span class="text-xs font-semibold text-white">Discord</span>
+            </a>
           </div>
-          <h3 class="font-heading text-lg font-bold text-white mb-1">Story Night & Contests</h3>
-          <p class="text-xs text-gray-400">Event announcements, rule breakdowns, game rounds, and winner announcements.</p>
+
+          <p class="text-xs text-gray-400">© 2026 Lizzy • Web3 Community Lead & Operations Specialist</p>
         </div>
-
-        <!-- Proof Item 3 -->
-        <div class="proof-card glass-card rounded-2xl p-6 border border-white/10 hover:border-indigo-500/50 transition-all" data-category="collabs">
-          <div class="w-full h-40 rounded-xl bg-indigo-950/40 border border-indigo-500/20 flex flex-col items-center justify-center p-4 mb-4 text-center">
-            <i class="fa-solid fa-handshake-simple text-3xl text-indigo-400 mb-2"></i>
-            <span class="text-xs text-indigo-300 font-semibold">Partner Outreach & Comms</span>
-            <span class="text-[10px] text-gray-400 mt-1">300+ Web3 project collaborations</span>
-          </div>
-          <h3 class="font-heading text-lg font-bold text-white mb-1">Collaboration Outreach</h3>
-          <p class="text-xs text-gray-400">Proof of terms negotiation, partner coordination, and completed giveaway cross-promotions.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS / SOCIAL PROOF SECTION -->
-    <section id="testimonials" class="py-20 px-4 max-w-5xl mx-auto">
-      <div class="text-center mb-16">
-        <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-widest">Social Proof</span>
-        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">What People Say About Lizzy</h2>
-        <p class="text-gray-400 mt-2 text-sm">Feedback from project founders, team leads, and core teams.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Testimonial 1 -->
-        <div class="glass-card rounded-2xl p-6 border border-purple-500/30 relative flex flex-col justify-between">
-          <div>
-            <i class="fa-solid fa-quote-left text-2xl text-purple-400 mb-4 block"></i>
-            <p class="text-gray-200 text-sm leading-relaxed italic mb-6">
-              “Lizzy, you are doing great for our project.”
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/10 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-purple-600/30 flex items-center justify-center text-purple-300 font-bold text-sm">
-              TL
-            </div>
-            <div>
-              <h4 class="font-heading text-sm font-bold text-white">Team Lead</h4>
-              <p class="text-[10px] text-purple-400 uppercase tracking-wider font-semibold">Web3 Project</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Testimonial 2 -->
-        <div class="glass-card rounded-2xl p-6 border border-pink-500/30 relative flex flex-col justify-between">
-          <div>
-            <i class="fa-solid fa-quote-left text-2xl text-pink-400 mb-4 block"></i>
-            <p class="text-gray-200 text-sm leading-relaxed italic mb-6">
-              “As for the community management, I think you’ve been handling it well. I haven’t had any particular issues with the way you’ve been managing things, so from my side, I’m happy with how it’s being run.”
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/10 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-pink-600/30 flex items-center justify-center text-pink-300 font-bold text-sm">
-              CK
-            </div>
-            <div>
-              <h4 class="font-heading text-sm font-bold text-white">CAOPAN Kingdom Team</h4>
-              <p class="text-[10px] text-pink-400 uppercase tracking-wider font-semibold">Core Team</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Testimonial 3 -->
-        <div class="glass-card rounded-2xl p-6 border border-indigo-500/30 relative flex flex-col justify-between">
-          <div>
-            <i class="fa-solid fa-quote-left text-2xl text-indigo-400 mb-4 block"></i>
-            <p class="text-gray-200 text-sm leading-relaxed italic mb-6">
-              “I’m satisfied with your services. You’ve done well in Collab management and in moderation. TideWalkerz is pleased to have you with us.”
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/10 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-indigo-600/30 flex items-center justify-center text-indigo-300 font-bold text-sm">
-              TF
-            </div>
-            <div>
-              <h4 class="font-heading text-sm font-bold text-white">TideWalkerz Founder</h4>
-              <p class="text-[10px] text-indigo-400 uppercase tracking-wider font-semibold">Founder</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- WHAT I BRING SUMMARY -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="glass-card rounded-3xl p-8 border border-white/10 text-center">
-        <h3 class="font-heading text-2xl font-bold text-white mb-4">What I Bring</h3>
-        <p class="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-          I bring structure, communication, creativity, and consistency to community management.
-          Good community management is more than keeping a chat active. It’s about creating an environment where members can connect, participate, stay informed, and feel involved in what the project is building.
-        </p>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER & CONTACT SECTION WITH BLUR BACKGROUND TRANSITION -->
-  <footer id="contact" class="relative pt-20 pb-16 px-4 overflow-hidden mt-20">
-    
-    <!-- Background Image Banner Overlay for Footer -->
-    <div class="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
-    <div id="footerBlurOverlay" class="absolute inset-0 z-0 bg-[#0B0A10]/80 footer-bg-blur"></div>
-
-    <div class="max-w-4xl mx-auto relative z-10">
-      
-      <!-- Contact Heading -->
-      <div class="text-center mb-12">
-        <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-widest">Let's Connect</span>
-        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">Ready to Work Together?</h2>
-        <p class="text-gray-300 mt-2 text-sm sm:text-base max-w-xl mx-auto">
-          Building a Web3 project and need someone to manage your community, create engaging experiences, and keep things moving? Let's talk.
-        </p>
-      </div>
-
-      <!-- DIRECT EMAIL CONTACT FORM -->
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 mb-12">
-        <form action="mailto:lizzyfrank022@gmail.com" method="post" enctype="text/plain" class="space-y-6">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Your Name</label>
-              <input type="text" name="name" required placeholder="What should I call you?" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors text-sm" />
-            </div>
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Your Email</label>
-              <input type="email" name="email" required placeholder="your@email.com" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors text-sm" />
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Project / Platform</label>
-            <input type="text" name="project" placeholder="Tell me about your project" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors text-sm" />
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Message</label>
-            <textarea name="message" rows="4" required placeholder="What do you need help with?" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors text-sm resize-none"></textarea>
-          </div>
-
-          <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-purple-600/30 hover:scale-[1.01] active:scale-[0.99] transition-all">
-            Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
-          </button>
-        </form>
-      </div>
-
-      <!-- SOCIAL MEDIA CARDS GRID WITH DIRECT LINKS -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
-        
-        <!-- X / Twitter -->
-        <a href="https://x.com/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="glass-card p-4 rounded-2xl border border-white/10 hover:border-purple-500 flex flex-col items-center justify-center text-center group transition-all">
-          <i class="fa-brands fa-x-twitter text-2xl text-white group-hover:scale-110 transition-transform mb-2"></i>
-          <span class="text-xs font-bold text-white">X / Twitter</span>
-          <span class="text-[10px] text-purple-400 mt-0.5">@Lizzy_onchain</span>
-        </a>
-
-        <!-- Telegram -->
-        <a href="https://t.me/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="glass-card p-4 rounded-2xl border border-white/10 hover:border-sky-500 flex flex-col items-center justify-center text-center group transition-all">
-          <i class="fa-brands fa-telegram text-2xl text-sky-400 group-hover:scale-110 transition-transform mb-2"></i>
-          <span class="text-xs font-bold text-white">Telegram</span>
-          <span class="text-[10px] text-sky-400 mt-0.5">@Lizzy_onchain</span>
-        </a>
-
-        <!-- Email -->
-        <a href="mailto:lizzyfrank022@gmail.com" class="glass-card p-4 rounded-2xl border border-white/10 hover:border-pink-500 flex flex-col items-center justify-center text-center group transition-all">
-          <i class="fa-solid fa-envelope text-2xl text-pink-400 group-hover:scale-110 transition-transform mb-2"></i>
-          <span class="text-xs font-bold text-white">Email</span>
-          <span class="text-[10px] text-pink-400 mt-0.5 truncate max-w-full">lizzyfrank022@...</span>
-        </a>
-
-        <!-- Discord -->
-        <a href="https://discord.com/users/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="glass-card p-4 rounded-2xl border border-white/10 hover:border-indigo-500 flex flex-col items-center justify-center text-center group transition-all">
-          <i class="fa-brands fa-discord text-2xl text-indigo-400 group-hover:scale-110 transition-transform mb-2"></i>
-          <span class="text-xs font-bold text-white">Discord</span>
-          <span class="text-[10px] text-indigo-400 mt-0.5">@Lizzy_onchain</span>
-        </a>
-
-      </div>
-
-      <!-- FOOTER BOTTOM -->
-      <div class="text-center pt-8 border-t border-white/10 text-xs text-gray-500">
-        <p>© 2026 Lizzy • Web3 Community Lead & Operations Specialist</p>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- JAVASCRIPT LOGIC -->
   <script>
-    // 1. Theme Toggle Logic
+    // Simple Light / Dark Theme Switcher Logic
     const themeToggleBtn = document.getElementById('themeToggle');
-    const darkIcon = themeToggleBtn.querySelector('.dark-icon');
-    const lightIcon = themeToggleBtn.querySelector('.light-icon');
+    const themeIcon = themeToggleBtn.querySelector('i');
 
     themeToggleBtn.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
-      darkIcon.classList.toggle('hidden');
-      lightIcon.classList.toggle('hidden');
-    });
-
-    // 2. Interactive Experience Carousel Logic
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const carouselTitle = document.getElementById('carouselTitle');
-    const carouselCounter = document.getElementById('carouselCounter');
-
-    const projectTitles = [
-      "CAOPAN KINGDOM",
-      "TIDEWALKERZ",
-      "BOUNDLESS8DESIGNS",
-      "300+ WEB3 COLLABORATIONS"
-    ];
-
-    let currentSlide = 0;
-
-    function updateCarousel(index) {
-      slides.forEach((slide, i) => {
-        if (i === index) {
-          slide.classList.remove('hidden');
-        } else {
-          slide.classList.add('hidden');
-        }
-      });
-
-      dots.forEach((dot, i) => {
-        if (i === index) {
-          dot.className = 'dot w-3 h-3 rounded-full bg-purple-500 transition-all';
-        } else {
-          dot.className = 'dot w-3 h-3 rounded-full bg-white/20 transition-all';
-        }
-      });
-
-      carouselTitle.textContent = projectTitles[index];
-      carouselCounter.textContent = `0${index + 1} / 04`;
-      currentSlide = index;
-    }
-
-    prevBtn.addEventListener('click', () => {
-      const newIndex = (currentSlide - 1 + slides.length) % slides.length;
-      updateCarousel(newIndex);
-    });
-
-    nextBtn.addEventListener('click', () => {
-      const newIndex = (currentSlide + 1) % slides.length;
-      updateCarousel(newIndex);
-    });
-
-    dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => updateCarousel(idx));
-    });
-
-    // 3. Proof of Work Filter Logic
-    const proofTabs = document.querySelectorAll('.proof-tab');
-    const proofCards = document.querySelectorAll('.proof-card');
-
-    proofTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        proofTabs.forEach(t => {
-          t.className = 'proof-tab px-4 py-2 rounded-full text-xs font-bold glass-card text-gray-300 hover:text-white transition-all';
-        });
-        tab.className = 'proof-tab px-4 py-2 rounded-full text-xs font-bold bg-purple-600 text-white transition-all';
-
-        const filter = tab.getAttribute('data-filter');
-
-        proofCards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // 4. Footer Blur Background Transition on Scroll to End
-    const footerBlurOverlay = document.getElementById('footerBlurOverlay');
-
-    window.addEventListener('scroll', () => {
-      const scrollPosition = window.innerHeight + window.scrollY;
-      const threshold = document.body.offsetHeight - 150;
-
-      if (scrollPosition >= threshold) {
-        footerBlurOverlay.classList.add('revealed');
+      document.documentElement.classList.toggle('light');
+      
+      if (document.documentElement.classList.contains('dark')) {
+        themeIcon.className = 'fa-solid fa-moon text-sm';
       } else {
-        footerBlurOverlay.classList.remove('revealed');
+        themeIcon.className = 'fa-solid fa-sun text-sm text-amber-400';
       }
     });
   </script>
