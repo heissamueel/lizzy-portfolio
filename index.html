@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lizzy | Web3 Community Manager & Collab Lead</title>
   <style>
-    /* Base Variables */
+    /* Base Color Variables */
     :root {
       --bg-color: #0d0a14;
       --text-color: #ffffff;
@@ -40,7 +40,7 @@
       overflow-x: hidden;
     }
 
-    /* Top Navbar Header */
+    /* Top Navigation Header */
     .navbar {
       position: fixed;
       top: 0;
@@ -64,7 +64,7 @@
       font-style: italic;
     }
 
-    /* Animated Sun/Moon Toggle Button (Top Left) */
+    /* Sun/Moon Toggle Button (Top Left) */
     #theme-toggle {
       background: transparent;
       border: none;
@@ -183,7 +183,7 @@
       box-shadow: 0 4px 15px rgba(224, 82, 160, 0.4);
     }
 
-    /* Main Container & Sections */
+    /* Main Container & Grid */
     .container {
       max-width: 1000px;
       margin: 100px auto 40px;
@@ -204,7 +204,7 @@
       font-size: 1rem;
     }
 
-    /* Proof & Reviews Section Grid */
+    /* Proof & Reviews Section */
     .proof-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -246,8 +246,7 @@
       text-align: center;
       overflow: hidden;
       color: #ffffff;
-      /* Replace with your Lizzy Banner image name */
-      background-image: url('1000250506_3.jpg');
+      background-image: url('IMG-20260929-WA0045.jpg');
       background-size: cover;
       background-position: center;
     }
@@ -314,9 +313,9 @@
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
+  <!-- Top Navigation Header -->
   <header class="navbar">
-    <!-- Theme Toggle (Top Left) -->
+    <!-- Animated Theme Toggle (Top Left) -->
     <button id="theme-toggle" aria-label="Toggle Light/Dark Theme">
       <div class="sun-moon-icon">
         <span class="sun">☀</span>
@@ -334,7 +333,7 @@
     </button>
   </header>
 
-  <!-- Fullscreen Navigation Overlay -->
+  <!-- Fullscreen Mobile Navigation Overlay -->
   <div id="mobile-menu" class="overlay-menu">
     <nav class="menu-links">
       <a href="#services" class="menu-item">Services</a>
@@ -345,7 +344,7 @@
     </nav>
   </div>
 
-  <!-- Main Content Body -->
+  <!-- Proof & Reviews Section -->
   <main class="container" id="proof">
     <h2 class="section-title">Proof & Reviews</h2>
     <p class="section-subtitle">Verified Discord Roles & Real Project Client Feedback</p>
@@ -353,25 +352,25 @@
     <div class="proof-grid">
       <!-- Image 1: Discord Tag Proof 1 -->
       <div class="proof-card">
-        <img src="1000250504_2.jpg" alt="Lizzy Frank Discord Verification Profile 1">
+        <img src="IMG-20260929-WA0048.jpg" alt="Lizzy Frank Discord Verification Profile 1">
         <div class="card-caption">Verified Profile &amp; Role Proof (Collab Manager)</div>
       </div>
 
       <!-- Image 2: Discord Tag Proof 2 -->
       <div class="proof-card">
-        <img src="1000250707_2.jpg" alt="Lizzy Discord Verification Profile 2">
+        <img src="IMG-20260929-WA0047.jpg" alt="Lizzy Discord Verification Profile 2">
         <div class="card-caption">Verified Profile &amp; Role Proof (Realm Guardian)</div>
       </div>
 
       <!-- Image 3: Client Feedback Review 1 -->
       <div class="proof-card">
-        <img src="1000250567_2.jpg" alt="Client Review Chat Feedback 1">
+        <img src="IMG-20260930-WA0000.jpg" alt="Client Review Chat Feedback 1">
         <div class="card-caption">Client Review: "Doing great for our project 🙏"</div>
       </div>
 
       <!-- Image 4: Client Feedback Review 2 -->
       <div class="proof-card">
-        <img src="1000250568_2.jpg" alt="Client Review Chat Feedback 2">
+        <img src="IMG-20260930-WA0001.jpg" alt="Client Review Chat Feedback 2">
         <div class="card-caption">Client Review: "Good work today. Glad everything went well."</div>
       </div>
     </div>
@@ -382,8 +381,7 @@
     <div class="footer-overlay"></div>
     <div class="footer-content">
       <div class="footer-avatar">
-        <!-- Avatar circular preview -->
-        <img src="1000250504_2.jpg" alt="Lizzy Avatar">
+        <img src="IMG-20260929-WA0046.jpg" alt="Lizzy Avatar">
       </div>
       
       <p class="footer-quote">
@@ -396,6 +394,45 @@
       </div>
       
       <div class="footer-credit">
+        BUILT BY HEISSAMUEEL
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactivity Script -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const themeToggle = document.getElementById('theme-toggle');
+    const menuItems = document.querySelectorAll('.menu-item, .btn-work');
+
+    // Menu Toggle Logic
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('is-active');
+      mobileMenu.classList.toggle('is-active');
+    });
+
+    // Close Menu on Link Click
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        menuToggle.classList.remove('is-active');
+        mobileMenu.classList.remove('is-active');
+      });
+    });
+
+    // Light/Dark Theme Switcher Logic
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    });
+  </script>
+</body>
+</html>
+ter-credit">
         BUILT BY HEISSAMUEEL
       </div>
     </div>
