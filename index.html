@@ -1,192 +1,440 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lizzy | Web3 Community Manager</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Custom Glassmorphism Styles -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            glass: {
-              card: 'rgba(255, 255, 255, 0.03)',
-              border: 'rgba(236, 72, 153, 0.2)',
-              glow: 'rgba(168, 85, 247, 0.15)',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <title>Lizzy | Web3 Community Manager & Collab Lead</title>
   <style>
+    /* Base Variables */
+    :root {
+      --bg-color: #0d0a14;
+      --text-color: #ffffff;
+      --card-bg: #181224;
+      --card-border: rgba(224, 82, 160, 0.2);
+      --accent-color: #e052a0;
+      --subtext-color: #a090b8;
+      --nav-bg: rgba(13, 10, 20, 0.85);
+    }
+
+    [data-theme="light"] {
+      --bg-color: #f8f6fc;
+      --text-color: #120b1f;
+      --card-bg: #ffffff;
+      --card-border: rgba(209, 46, 132, 0.15);
+      --accent-color: #d12e84;
+      --subtext-color: #635775;
+      --nav-bg: rgba(248, 246, 252, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      background-color: #0c0712;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
     }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+
+    /* Top Navbar Header */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 100;
     }
-    .glass-card:hover {
-      border-color: rgba(236, 72, 153, 0.3);
-      box-shadow: 0 0 25px rgba(236, 72, 153, 0.15);
+
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-color);
+      text-decoration: none;
+      font-style: italic;
     }
-    .glass-pill {
-      background: rgba(236, 72, 153, 0.1);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(236, 72, 153, 0.25);
+
+    /* Animated Sun/Moon Toggle Button (Top Left) */
+    #theme-toggle {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sun-moon-icon {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+
+    .sun-moon-icon .sun, 
+    .sun-moon-icon .moon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .sun-moon-icon .sun { opacity: 1; }
+    .sun-moon-icon .moon { opacity: 0; }
+
+    [data-theme="light"] .sun-moon-icon {
+      transform: rotate(360deg);
+    }
+
+    [data-theme="light"] .sun-moon-icon .sun { opacity: 0; }
+    [data-theme="light"] .sun-moon-icon .moon { opacity: 1; }
+
+    /* Hamburger Menu Button (Top Right) */
+    #menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 101;
+    }
+
+    .bar {
+      width: 26px;
+      height: 2px;
+      background-color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+
+    #menu-toggle.is-active .bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    #menu-toggle.is-active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    #menu-toggle.is-active .bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Fullscreen Overlay Menu */
+    .overlay-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+      z-index: 99;
+    }
+
+    .overlay-menu.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .menu-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .menu-item {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 1.8rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .menu-item:hover {
+      color: var(--accent-color);
+    }
+
+    .btn-work {
+      margin-top: 15px;
+      background-color: var(--accent-color);
+      color: #ffffff;
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(224, 82, 160, 0.4);
+    }
+
+    /* Main Container & Sections */
+    .container {
+      max-width: 1000px;
+      margin: 100px auto 40px;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--subtext-color);
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+
+    /* Proof & Reviews Section Grid */
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 60px;
+    }
+
+    .proof-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .proof-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .proof-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-caption {
+      padding: 15px;
+      font-size: 0.9rem;
+      color: var(--subtext-color);
+      text-align: center;
+    }
+
+    /* Blurred Banner Footer */
+    .footer-banner {
+      position: relative;
+      width: 100%;
+      padding: 90px 20px 40px;
+      text-align: center;
+      overflow: hidden;
+      color: #ffffff;
+      /* Replace with your Lizzy Banner image name */
+      background-image: url('1000250506_3.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .footer-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(13, 10, 20, 0.8);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 1;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-avatar img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-color);
+      box-shadow: 0 0 20px rgba(224, 82, 160, 0.4);
+      margin-bottom: 20px;
+    }
+
+    .footer-quote {
+      font-size: 1.25rem;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      color: #f0e6ff;
+    }
+
+    .footer-quote span {
+      color: var(--accent-color);
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    .footer-meta {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: var(--subtext-color);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .footer-credit {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--accent-color);
+      font-weight: bold;
+      text-transform: uppercase;
     }
   </style>
 </head>
-<body class="text-slate-100 font-sans relative overflow-x-hidden selection:bg-pink-500 selection:text-white">
+<body>
 
-  <!-- Liquid Glass Background Ambient Glows -->
-  <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-700/25 rounded-full blur-[140px] pointer-events-none"></div>
-  <div class="fixed top-[35%] right-[-10%] w-[600px] h-[600px] bg-pink-600/20 rounded-full blur-[160px] pointer-events-none"></div>
-  <div class="fixed bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-indigo-700/20 rounded-full blur-[150px] pointer-events-none"></div>
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <!-- Theme Toggle (Top Left) -->
+    <button id="theme-toggle" aria-label="Toggle Light/Dark Theme">
+      <div class="sun-moon-icon">
+        <span class="sun">☀</span>
+        <span class="moon">🌙</span>
+      </div>
+    </button>
 
-  <!-- Navigation Bar -->
-  <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0c0712]/70 border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="text-2xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-300">
-        LIZZY<span class="text-pink-500">.</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#about" class="hover:text-pink-400 transition-colors">About</a>
-        <a href="#services" class="hover:text-pink-400 transition-colors">What I Do</a>
-        <a href="#experience" class="hover:text-pink-400 transition-colors">Experience</a>
-        <a href="#proof" class="hover:text-pink-400 transition-colors">Proof of Work</a>
-        <a href="#testimonials" class="hover:text-pink-400 transition-colors">Testimonials</a>
-      </nav>
-      <a href="#contact" class="px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white shadow-lg shadow-pink-500/25 transition-all transform hover:-translate-y-0.5">
-        Let’s Work Together
-      </a>
-    </div>
+    <a href="#" class="nav-logo">Lizzy.</a>
+
+    <!-- Hamburger Menu (Top Right) -->
+    <button id="menu-toggle" aria-label="Toggle Navigation Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </header>
 
-  <!-- Hero Section -->
-  <section class="relative pt-12 pb-20 px-6 max-w-6xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+  <!-- Fullscreen Navigation Overlay -->
+  <div id="mobile-menu" class="overlay-menu">
+    <nav class="menu-links">
+      <a href="#services" class="menu-item">Services</a>
+      <a href="#work" class="menu-item">Work</a>
+      <a href="#why-me" class="menu-item">Why Me</a>
+      <a href="#proof" class="menu-item">Praise</a>
+      <a href="#contact" class="btn-work">Work With Me</a>
+    </nav>
+  </div>
+
+  <!-- Main Content Body -->
+  <main class="container" id="proof">
+    <h2 class="section-title">Proof & Reviews</h2>
+    <p class="section-subtitle">Verified Discord Roles & Real Project Client Feedback</p>
+
+    <div class="proof-grid">
+      <!-- Image 1: Discord Tag Proof 1 -->
+      <div class="proof-card">
+        <img src="1000250504_2.jpg" alt="Lizzy Frank Discord Verification Profile 1">
+        <div class="card-caption">Verified Profile &amp; Role Proof (Collab Manager)</div>
+      </div>
+
+      <!-- Image 2: Discord Tag Proof 2 -->
+      <div class="proof-card">
+        <img src="1000250707_2.jpg" alt="Lizzy Discord Verification Profile 2">
+        <div class="card-caption">Verified Profile &amp; Role Proof (Realm Guardian)</div>
+      </div>
+
+      <!-- Image 3: Client Feedback Review 1 -->
+      <div class="proof-card">
+        <img src="1000250567_2.jpg" alt="Client Review Chat Feedback 1">
+        <div class="card-caption">Client Review: "Doing great for our project 🙏"</div>
+      </div>
+
+      <!-- Image 4: Client Feedback Review 2 -->
+      <div class="proof-card">
+        <img src="1000250568_2.jpg" alt="Client Review Chat Feedback 2">
+        <div class="card-caption">Client Review: "Good work today. Glad everything went well."</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Blurred Background Footer -->
+  <footer class="footer-banner">
+    <div class="footer-overlay"></div>
+    <div class="footer-content">
+      <div class="footer-avatar">
+        <!-- Avatar circular preview -->
+        <img src="1000250504_2.jpg" alt="Lizzy Avatar">
+      </div>
       
-      <!-- Hero Text -->
-      <div class="lg:col-span-7 space-y-6">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill">
-          <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span>
-          <span class="text-xs font-bold tracking-widest uppercase text-pink-300">Web3 Community Manager</span>
-        </div>
+      <p class="footer-quote">
+        "If you need a community that actually drives users, traction, and revenue, <br>
+        <span>I'm the one who builds it.</span>"
+      </p>
 
-        <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white">
-          Building Web3 <br>
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-400">
-            Communities
-          </span> <br>
-          That Stay.
-        </h1>
-
-        <p className="text-lg text-slate-300 max-w-xl leading-relaxed">
-          I build and manage Web3 communities where people connect, participate, and have a reason to stay involved.
-        </p>
-
-        <p class="text-sm text-slate-400 max-w-lg leading-relaxed">
-          I work across community management, engagement, content, moderation, events, and community strategy, helping Web3 projects create organized and engaging community experiences.
-        </p>
-
-        <div class="pt-4 flex flex-wrap items-center gap-4">
-          <a href="#proof" class="px-8 py-3.5 rounded-full font-bold text-sm bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-xl shadow-pink-500/20 hover:shadow-pink-500/35 transition-all transform hover:-translate-y-0.5">
-            View My Work
-          </a>
-          <a href="#contact" class="px-8 py-3.5 rounded-full font-bold text-sm glass-card hover:bg-white/10 text-purple-200 transition-all">
-            Let’s Work Together
-          </a>
-        </div>
+      <div class="footer-meta">
+        © 2026 • LIZZY • COMMUNITY LEAD &amp; MANAGER
       </div>
-
-      <!-- Hero Avatar / Banner Container -->
-      <div class="lg:col-span-5 relative flex justify-center">
-        <div class="relative w-full max-w-md aspect-square rounded-3xl p-1 bg-gradient-to-b from-pink-500/40 via-purple-500/20 to-transparent backdrop-blur-2xl shadow-2xl">
-          <div class="w-full h-full rounded-[22px] overflow-hidden bg-[#150a21]/80 relative group">
-            <!-- Uses avatar picture -->
-            <img src="./public/avatar.jpg" alt="Lizzy Avatar" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0712] via-transparent to-transparent opacity-80"></div>
-            
-            <!-- Floating Badge -->
-            <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-card flex items-center justify-between border border-white/20">
-              <div>
-                <div class="text-2xl font-black text-pink-300">300+</div>
-                <div class="text-xs text-slate-300 font-medium">Web3 Collabs</div>
-              </div>
-              <div class="h-8 w-[1px] bg-white/20"></div>
-              <div>
-                <div class="text-2xl font-black text-purple-300">GMT+1</div>
-                <div class="text-xs text-slate-300 font-medium">Time Zone</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Banner Showcase -->
-  <section class="py-6 px-6 max-w-6xl mx-auto">
-    <div class="rounded-3xl overflow-hidden glass-card p-2 border border-pink-500/20 shadow-2xl">
-      <img src="./public/banner.jpg" alt="Lizzy Web3 Banner" class="w-full h-auto rounded-2xl object-cover">
-    </div>
-  </section>
-
-  <!-- About Me -->
-  <section id="about" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="p-8 sm:p-12 rounded-3xl glass-card relative overflow-hidden">
-      <div class="max-w-3xl space-y-6">
-        <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase">About Me</h2>
-        <h3 class="text-3xl sm:text-4xl font-bold text-white leading-tight">
-          I’m Lizzy, a Web3 Community Manager focused on creating communities where people don’t just join, they participate.
-        </h3>
-        <p class="text-slate-300 leading-relaxed">
-          I manage community conversations, create engaging activities, coordinate events, develop community content, and help projects maintain a strong connection with their members.
-        </p>
-        <p class="text-slate-300 leading-relaxed">
-          I’ve worked across meme coin and NFT communities, gaining experience with different community environments and engagement styles.
-        </p>
-        <p class="text-slate-300 leading-relaxed">
-          Alongside community management, I’ve also worked as a Collab Manager, coordinating 300+ collaborations across Web3 projects and communities. Working across both roles has strengthened my communication, coordination, relationship-building, and community engagement skills.
-        </p>
+      
+      <div class="footer-credit">
+        BUILT BY HEISSAMUEEL
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- What I Do -->
-  <section id="services" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-      <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase">What I Do</h2>
-      <h3 class="text-4xl font-extrabold text-white">Full-Spectrum Community Growth</h3>
-    </div>
+  <!-- Interactivity Script -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const themeToggle = document.getElementById('theme-toggle');
+    const menuItems = document.querySelectorAll('.menu-item, .btn-work');
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
-        <h4 class="text-xl font-bold text-pink-300 mb-3">Community Management</h4>
-        <p class="text-slate-300 text-sm leading-relaxed">I manage the day-to-day community experience, keeping communication organized while staying actively involved with members.</p>
-      </div>
-      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
-        <h4 class="text-xl font-bold text-pink-300 mb-3">Community Engagement</h4>
-        <p class="text-slate-300 text-sm leading-relaxed">I create conversations, activities, and interactive experiences that encourage members to participate and connect.</p>
-      </div>
-      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
-        <h4 class="text-xl font-bold text-pink-300 mb-3">Community Strategy</h4>
-        <p class="text-slate-300 text-sm leading-relaxed">I develop practical community initiatives based on the project’s goals, community culture, and stage.</p>
-      </div>
-      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
-        <h4 class="text-xl font-bold text-pink-300 mb-3">Content</h4>
-        <p class="text-slate-300 text-sm leading-relaxed">I create community-focused posts, announcements, discussions, contests, and interactive content.</p>
-      </div>
-      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
-        <h4 class="text-xl font-bold text-pink-300 mb-3">Events & Activities</h4>
+    // Menu Toggle Action
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('is-active');
+      mobileMenu.classList.toggle('is-active');
+    });
+
+    // Close Menu on Link Click
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        menuToggle.classList.remove('is-active');
+        mobileMenu.classList.remove('is-active');
+      });
+    });
+
+    // Dark/Light Mode Switcher Action
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    });
+  </script>
+</body>
+</html>
+class="text-xl font-bold text-pink-300 mb-3">Events & Activities</h4>
         <p class="text-slate-300 text-sm leading-relaxed">I plan and coordinate community events, games, contests, discussions, and other interactive experiences.</p>
       </div>
       <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
