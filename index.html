@@ -1,183 +1,430 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lizzy | Web3 Community Manager</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-    }
-  </script>
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lizzy | Web3 Community Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .dark {
+            background-color: #0b0712;
+            color: #f3f4f6;
+        }
+
+        .light {
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+
+        .glass-card-dark {
+            background: rgba(18, 12, 28, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        .accent-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #a855f7;
+            border-radius: 3px;
+        }
+    </style>
 </head>
-<body class="bg-[#0B0B0E] text-[#E0E0E6] font-sans transition-colors duration-300">
+<body class="dark min-h-screen relative custom-scrollbar overflow-x-hidden">
 
-  <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-white/10 bg-[#0B0B0E]/80">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold tracking-tight flex items-center gap-2">
-        Lizzy <span class="w-2 h-2 rounded-full bg-purple-500 inline-block"></span>
-      </a>
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 w-full backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <span class="text-xl font-bold tracking-tight">Lizzy</span>
+            <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+        </div>
 
-      <!-- Desktop Links -->
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="#capabilities" class="hover:text-purple-400 transition-colors">Capabilities</a>
-        <a href="#work" class="hover:text-purple-400 transition-colors">Work With Me</a>
-        <a href="#contact" class="hover:text-purple-400 transition-colors">Contact</a>
-
-        <!-- Dark/Light Mode Toggle -->
-        <button id="theme-toggle" class="p-2 rounded-full border border-white/10 bg-white/5 text-yellow-400 hover:bg-white/10">
-          <i data-lucide="sun" class="w-5 h-5"></i>
+        <button id="menu-toggle" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+            <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
-      </div>
+    </header>
 
-      <!-- Mobile Menu Button -->
-      <button id="menu-btn" class="md:hidden p-2 text-current">
-        <i data-lucide="menu" class="w-6 h-6"></i>
-      </button>
-    </div>
+    <!-- Slide-over / Dropdown Menu -->
+    <div id="nav-menu" class="hidden fixed inset-x-0 top-[57px] z-40 p-4 transition-all duration-300">
+        <div id="menu-container" class="glass-card-dark rounded-2xl p-6 space-y-6 max-w-lg mx-auto shadow-2xl">
+            <nav class="flex flex-col space-y-4">
+                <a href="#capabilities" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-purple-400"></i>
+                    <span>Capabilities</span>
+                </a>
+                <a href="#communities" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
+                    <i data-lucide="users" class="w-5 h-5 text-purple-400"></i>
+                    <span>Communities Built & Scaled</span>
+                </a>
+                <a href="#testimonials" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
+                    <i data-lucide="message-square" class="w-5 h-5 text-purple-400"></i>
+                    <span>Testimonials</span>
+                </a>
+                <a href="#contact" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
+                    <i data-lucide="mail" class="w-5 h-5 text-purple-400"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-20 border-b border-white/10 p-6 bg-[#121218] flex-col gap-6 shadow-2xl">
-      <a href="#capabilities" class="mobile-link text-left text-lg font-medium hover:text-purple-400">Capabilities</a>
-      <a href="#work" class="mobile-link text-left text-lg font-medium hover:text-purple-400">Work With Me</a>
-      <a href="#contact" class="mobile-link text-left text-lg font-medium hover:text-purple-400">Contact</a>
-
-      <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-        <span class="text-sm font-medium">Appearance</span>
-        <button id="theme-toggle-mobile" class="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase bg-purple-600/20 text-purple-300 border border-purple-500/30">
-          <i data-lucide="sun" class="w-4 h-4"></i> Mode
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <section class="pt-36 pb-20 px-6 max-w-6xl mx-auto">
-    <div class="relative rounded-3xl overflow-hidden mb-12 border border-white/10 shadow-2xl">
-      <div class="h-48 md:h-64 w-full bg-cover bg-center" style="background-image: url('IMG-20260929-WA0045.jpg');">
-        <div class="w-full h-full bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-      </div>
-      <div class="p-6 md:p-10 -mt-20 relative flex flex-col md:flex-row items-center md:items-end gap-6">
-        <img src="IMG-20260929-WA0046.jpg" alt="Lizzy Avatar" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#0B0B0E] object-cover shadow-xl" />
-        <div class="text-center md:text-left flex-1">
-          <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-purple-500/10 text-purple-400 border border-purple-500/20 mb-2">Available for New Projects</span>
-          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Lizzy</h1>
-          <p class="text-xl text-purple-400 font-medium">Web3 Community Manager</p>
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                <span class="text-sm font-medium opacity-70">Appearance</span>
+                <button id="theme-toggle" class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-purple-600/20 text-purple-300 border border-purple-500/30 hover:bg-purple-600/30 transition-all">
+                    <i data-lucide="sun" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold">MODE</span>
+                </button>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="max-w-3xl">
-      <h2 class="text-2xl md:text-3xl font-semibold leading-relaxed mb-6">
-        I build and manage Web3 communities where people connect, participate, and have a reason to stay involved.
-      </h2>
-      <p class="text-lg text-gray-400 mb-8 leading-relaxed">
-        I work across community management, engagement, content, moderation, events, and community strategy, helping Web3 projects create organized and engaging community experiences.
-      </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="#capabilities" class="px-6 py-3.5 rounded-xl font-semibold bg-purple-600 text-white hover:bg-purple-700 transition-all shadow-lg shadow-purple-600/25">View My Work</a>
-        <a href="#contact" class="px-6 py-3.5 rounded-xl font-semibold border border-white/20 hover:bg-white/5 transition-all">Let’s Work Together</a>
-      </div>
-    </div>
-  </section>
+    <!-- Main Container -->
+    <main class="max-w-xl mx-auto px-4 py-8 space-y-12">
 
-  <!-- CAPABILITIES -->
-  <section id="capabilities" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="mb-12">
-      <h2 class="text-xs uppercase font-bold tracking-widest text-purple-400 mb-2">Capabilities</h2>
-      <h3 class="text-3xl font-bold">What I Bring To The Table</h3>
-    </div>
+        <!-- Hero Section -->
+        <section class="text-center space-y-6">
+            <div class="relative inline-block">
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-purple-500/50 p-1 bg-gradient-to-tr from-purple-500 to-pink-500 shadow-xl">
+                    <img src="IMG-20260929-WA0046.jpg" alt="Lizzy Avatar" class="w-full h-full object-cover rounded-full">
+                </div>
+                <div class="absolute bottom-0 right-2 px-3 py-1 bg-purple-900/90 border border-purple-400/30 text-purple-200 text-xs font-semibold rounded-full shadow-lg">
+                    Available for New Projects
+                </div>
+            </div>
 
-    <div class="grid md:grid-cols-2 gap-6 mb-12">
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/20">
-        <img src="IMG-20260929-WA0048.jpg" alt="Discord Proof 1" class="w-full h-auto object-cover" />
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/20">
-        <img src="IMG-20260929-WA0047.jpg" alt="Discord Proof 2" class="w-full h-auto object-cover" />
-      </div>
-    </div>
-  </section>
+            <div class="space-y-2">
+                <h1 class="text-3xl font-extrabold tracking-tight">Lizzy</h1>
+                <p class="text-lg font-semibold text-gradient">Web3 Community Manager</p>
+            </div>
 
-  <!-- TESTIMONIALS -->
-  <section class="py-20 px-6 border-t border-white/5 bg-[#0E0E13]">
-    <div class="max-w-6xl mx-auto">
-      <div class="mb-12">
-        <h2 class="text-xs uppercase font-bold tracking-widest text-purple-400 mb-2">Testimonials</h2>
-        <h3 class="text-3xl font-bold">What People Say About Lizzy</h3>
-      </div>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/20">
-          <img src="IMG-20260930-WA0000.jpg" alt="Client Review 1" class="w-full h-auto object-cover" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/20">
-          <img src="IMG-20260930-WA0001.jpg" alt="Client Review 2" class="w-full h-auto object-cover" />
-        </div>
-      </div>
-    </div>
-  </section>
+            <p class="text-base text-gray-300 leading-relaxed max-w-md mx-auto">
+                I build and manage Web3 communities where people connect, participate, and have a reason to stay involved.
+            </p>
 
-  <!-- CONTACT FORM -->
-  <section id="work" class="py-20 px-6 max-w-4xl mx-auto">
-    <div id="contact" class="p-8 md:p-12 rounded-3xl border border-white/10 bg-[#121218] shadow-2xl">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-extrabold mb-3">Let’s Work Together</h2>
-        <p class="text-sm text-gray-400">Building a Web3 project? Send a message straight to my email.</p>
-      </div>
+            <p class="text-sm text-gray-400 leading-relaxed max-w-md mx-auto">
+                I work across community management, engagement, content, moderation, events, and community strategy, helping Web3 projects create organized and engaging community experiences.
+            </p>
 
-      <form action="https://formsubmit.co/lizzyfrank022@gmail.com" method="POST" class="space-y-4 mb-8">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="name" required placeholder="Your Name" class="w-full px-4 py-3 rounded-xl bg-[#1A1A22] border border-white/10 text-sm outline-none">
-        <input type="email" name="email" required placeholder="Your Email" class="w-full px-4 py-3 rounded-xl bg-[#1A1A22] border border-white/10 text-sm outline-none">
-        <textarea name="message" rows="4" required placeholder="Your Message" class="w-full px-4 py-3 rounded-xl bg-[#1A1A22] border border-white/10 text-sm outline-none"></textarea>
-        <button type="submit" class="w-full py-4 rounded-xl font-bold bg-purple-600 text-white hover:bg-purple-700 transition-all">Send Message</button>
-      </form>
+            <div class="flex items-center justify-center gap-4 pt-2">
+                <a href="#communities" class="px-6 py-3 rounded-xl accent-gradient font-bold text-white shadow-lg shadow-purple-500/25 hover:opacity-95 transition-all text-sm">
+                    View My Work
+                </a>
+                <a href="#contact" class="px-6 py-3 rounded-xl bg-white/10 border border-white/15 font-bold hover:bg-white/20 transition-all text-sm">
+                    Let's Work Together
+                </a>
+            </div>
+        </section>
 
-      <div class="pt-6 border-t border-white/10 flex flex-wrap justify-center gap-6 text-sm font-medium">
-        <a href="https://x.com/Lizzy_onchain" target="_blank" class="hover:text-purple-400">X: @Lizzy_onchain</a>
-        <a href="https://t.me/Lizzy_onchain" target="_blank" class="hover:text-purple-400">Telegram: @Lizzy_onchain</a>
-        <a href="https://discord.com/users/Lizzy_onchain" target="_blank" class="hover:text-purple-400">Discord: @Lizzy_onchain</a>
-      </div>
-    </div>
-  </section>
+        <!-- Capabilities Section -->
+        <section id="capabilities" class="space-y-6">
+            <div class="space-y-1 text-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">CAPABILITIES</span>
+                <h2 class="text-2xl font-bold">What I Bring To The Table</h2>
+            </div>
 
-  <script>
-    lucide.createIcons();
+            <div class="grid gap-4">
+                <div class="p-5 rounded-2xl glass-card-dark space-y-2">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Community Moderation & Safety</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Active Discord and Telegram moderation, anti-spam structure, permission setup, and custom bot integration to keep channels clean and safe.</p>
+                </div>
 
-    // Toggle Mobile Menu
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('flex');
-    });
+                <div class="p-5 rounded-2xl glass-card-dark space-y-2">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2 rounded-lg bg-pink-500/20 text-pink-400">
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Engagement & Growth Strategies</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Designing player/member engagement pathways, gamified reward systems, events, and interactive campaigns that drive organic retention.</p>
+                </div>
 
-    // Close menu on link click
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('flex');
-      });
-    });
+                <div class="p-5 rounded-2xl glass-card-dark space-y-2">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2 rounded-lg bg-indigo-500/20 text-indigo-400">
+                            <i data-lucide="handshake" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Collab & Strategic Partnerships</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Managing cross-project Web3 collaborations, cross-promotions, giveaway coordination, and ambassador network onboarding.</p>
+                </div>
+            </div>
+        </section>
 
-    // Dark/Light Theme Switcher
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-    
-    function toggleMode() {
-      document.documentElement.classList.toggle('dark');
-      document.body.classList.toggle('bg-[#0B0B0E]');
-      document.body.classList.toggle('bg-[#F4F4F7]');
-      document.body.classList.toggle('text-[#E0E0E6]');
-      document.body.classList.toggle('text-[#1A1A1E]');
-    }
+        <!-- Proof of Work: Communities Built & Scaled -->
+        <section id="communities" class="space-y-6">
+            <div class="space-y-1 text-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">PROOF OF WORK</span>
+                <h2 class="text-2xl font-bold">Communities Built & Scaled</h2>
+            </div>
 
-    themeToggle.addEventListener('click', toggleMode);
-    themeToggleMobile.addEventListener('click', toggleMode);
-  </script>
+            <!-- Project Selector Tabs -->
+            <div class="flex items-center justify-center space-x-2 bg-white/5 p-1.5 rounded-xl border border-white/10">
+                <button onclick="selectProject('dfm')" id="tab-dfm" class="flex-1 py-2 text-xs font-bold rounded-lg transition-all bg-purple-600 text-white">DFM</button>
+                <button onclick="selectProject('qwerti')" id="tab-qwerti" class="flex-1 py-2 text-xs font-bold rounded-lg transition-all text-gray-400 hover:text-white">QwertiAI</button>
+                <button onclick="selectProject('k2')" id="tab-k2" class="flex-1 py-2 text-xs font-bold rounded-lg transition-all text-gray-400 hover:text-white">PowerBlock</button>
+            </div>
+
+            <!-- Card Display -->
+            <div class="p-6 rounded-2xl glass-card-dark space-y-6 border border-purple-500/20">
+                <div id="project-card-content" class="space-y-5">
+                    <!-- Dynamic Content Populated via JavaScript -->
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                    <button onclick="prevProject()" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <div class="flex space-x-1.5" id="project-indicators">
+                        <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                        <span class="w-2 h-2 rounded-full bg-white/20"></span>
+                        <span class="w-2 h-2 rounded-full bg-white/20"></span>
+                    </div>
+                    <button onclick="nextProject()" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="space-y-6">
+            <div class="space-y-1 text-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">TESTIMONIALS</span>
+                <h2 class="text-2xl font-bold">What People Say About Lizzy</h2>
+            </div>
+
+            <div class="space-y-3">
+                <div class="p-4 rounded-xl glass-card-dark space-y-2">
+                    <p class="text-sm text-gray-300">"Looking forward to the announcement next week. 🔥💪"</p>
+                    <span class="text-xs text-purple-400 font-semibold block text-right">— Core Team Lead</span>
+                </div>
+                <div class="p-4 rounded-xl glass-card-dark space-y-2">
+                    <p class="text-sm text-gray-300">"You doing great for our project 🙏"</p>
+                    <span class="text-xs text-purple-400 font-semibold block text-right">— Project Founder</span>
+                </div>
+                <div class="p-4 rounded-xl glass-card-dark space-y-2">
+                    <p class="text-sm text-gray-300">"Good morning. Good work today. Thank you, I appreciate it. Glad everything went well."</p>
+                    <span class="text-xs text-purple-400 font-semibold block text-right">— Collab Manager</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="space-y-6">
+            <div class="space-y-1 text-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">LET'S WORK TOGETHER</span>
+                <h2 class="text-2xl font-bold">Start a Web3 Project</h2>
+                <p class="text-xs text-gray-400">Send a message directly to my email.</p>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('Message sent successfully!');" class="p-6 rounded-2xl glass-card-dark space-y-4 border border-white/10">
+                <div class="space-y-1">
+                    <label class="text-xs font-semibold text-gray-300">Your Name</label>
+                    <input type="text" placeholder="Satoshi Nakamoto" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm focus:outline-none focus:border-purple-500 transition-colors">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs font-semibold text-gray-300">Your Email</label>
+                    <input type="email" placeholder="satoshi@web3.io" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm focus:outline-none focus:border-purple-500 transition-colors">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs font-semibold text-gray-300">Your Message</label>
+                    <textarea rows="4" placeholder="Tell me about your Web3 project..." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm focus:outline-none focus:border-purple-500 transition-colors"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl accent-gradient font-bold text-white shadow-lg shadow-purple-500/25 hover:opacity-95 transition-all text-sm">
+                    Send Message
+                </button>
+            </form>
+
+            <div class="flex justify-center space-x-6 pt-2 text-sm text-gray-400">
+                <a href="#" class="hover:text-purple-400 transition-colors">X: @Lizzy_onchain</a>
+                <a href="#" class="hover:text-purple-400 transition-colors">Telegram: @Lizzy_onchain</a>
+                <a href="#" class="hover:text-purple-400 transition-colors">Discord: @Lizzy_onchain</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+
+        // Theme Toggle (Light / Dark)
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const menuContainer = document.getElementById('menu-container');
+
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                menuContainer.classList.remove('glass-card-dark');
+                menuContainer.classList.add('glass-card-light');
+            } else {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                menuContainer.classList.remove('glass-card-light');
+                menuContainer.classList.add('glass-card-dark');
+            }
+        });
+
+        // Projects Data
+        const projects = [
+            {
+                id: 'dfm',
+                name: 'DFM',
+                role: 'Community Manager',
+                badge: 'DEFI',
+                period: '2025 to Present',
+                challenge: 'Few community members across platforms. No engagement systems, no structure, no strategy for attracting or retaining users. The project lacked a foundational community layer entirely.',
+                action: 'Built the community across Telegram and X simultaneously. Introduced engagement strategies, encouraged active participation, created consistent communication, and turned passive members into active contributors.',
+                metrics: [
+                    { label: 'Members in one month', value: '0 ➔ 500+' },
+                    { label: 'Platforms grown simultaneously', value: '2X' }
+                ]
+            },
+            {
+                id: 'qwerti',
+                name: 'QwertiAI',
+                role: 'Ambassador Community Lead',
+                badge: 'AI & DEFI',
+                period: '2026 to Present',
+                challenge: 'No structured ambassador program existed. No onboarding system, no defined roles, no centralized management. Community growth was inconsistent and largely untapped.',
+                action: 'Designed and led the ambassador program from zero, building clear structure for recruitment, onboarding, and performance tracking. Established accountability and direction across the network.',
+                metrics: [
+                    { label: 'Ambassador apps in 24 hours', value: '1,200+' },
+                    { label: 'Followers grown', value: '2.9K ➔ 5.6K' },
+                    { label: 'Swap volume contributed', value: '$80M+' }
+                ]
+            },
+            {
+                id: 'k2',
+                name: 'PowerBlock',
+                role: 'Head of Community Growth',
+                badge: 'WEB3 GAMING',
+                period: '2025 to Present',
+                challenge: 'No active community. No engaged user base, no communication flow, and zero momentum prior to mint/launch.',
+                action: 'Structured discord channels, designed campaign events, executed joint AMAs with ecosystem partners, and created hype-driven retention loops.',
+                metrics: [
+                    { label: 'Traders & Gamers reached', value: '15,000+' },
+                    { label: 'Active Ambassadors onboarded', value: '150+' }
+                ]
+            }
+        ];
+
+        let currentProjectIndex = 0;
+
+        function renderProject(index) {
+            const proj = projects[index];
+            const content = document.getElementById('project-card-content');
+            
+            content.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="text-xl font-bold">${proj.name}</h3>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">${proj.badge}</span>
+                        </div>
+                        <p class="text-xs text-gray-400 font-medium">${proj.role}</p>
+                    </div>
+                    <span class="text-xs font-mono text-gray-400">${proj.period}</span>
+                </div>
+
+                <div class="space-y-1">
+                    <span class="text-xs font-bold text-pink-400 uppercase tracking-wider block">THE CHALLENGE</span>
+                    <p class="text-xs text-gray-300 leading-relaxed">${proj.challenge}</p>
+                </div>
+
+                <div class="space-y-1">
+                    <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block">WHAT I DID</span>
+                    <p class="text-xs text-gray-300 leading-relaxed">${proj.action}</p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block">KEY RESULTS</span>
+                    <div class="grid grid-cols-2 gap-2">
+                        ${proj.metrics.map(m => `
+                            <div class="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
+                                <span class="text-lg font-extrabold text-gradient block">${m.value}</span>
+                                <span class="text-[10px] text-gray-400 font-medium block">${m.label}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Update Tab styles
+            ['dfm', 'qwerti', 'k2'].forEach((id, i) => {
+                const tab = document.getElementById(`tab-${id}`);
+                if (i === index) {
+                    tab.className = "flex-1 py-2 text-xs font-bold rounded-lg transition-all bg-purple-600 text-white shadow-md";
+                } else {
+                    tab.className = "flex-1 py-2 text-xs font-bold rounded-lg transition-all text-gray-400 hover:text-white";
+                }
+            });
+
+            // Update Indicators
+            const indicators = document.getElementById('project-indicators');
+            indicators.innerHTML = projects.map((_, i) => `
+                <span class="w-2 h-2 rounded-full transition-all ${i === index ? 'bg-purple-500 scale-125' : 'bg-white/20'}"></span>
+            `).join('');
+        }
+
+        function selectProject(id) {
+            currentProjectIndex = projects.findIndex(p => p.id === id);
+            renderProject(currentProjectIndex);
+        }
+
+        function nextProject() {
+            currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+            renderProject(currentProjectIndex);
+        }
+
+        function prevProject() {
+            currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+            renderProject(currentProjectIndex);
+        }
+
+        // Initial Render
+        renderProject(0);
+    </script>
 </body>
 </html>
