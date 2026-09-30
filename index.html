@@ -1,619 +1,816 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lizzy Frank | Web3 Community Manager & Collab Lead</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lizzy | Web3 Community Manager</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8B5CF6',
+              violet: '#A855F7',
+              pink: '#EC4899',
+              dark: '#0B0A10',
+              card: '#13111C',
+              border: '#262235'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Space Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    :root {
-      --bg-color: #0b0914;
-      --text-color: #f3f0f7;
-      --card-bg: #140f24;
-      --card-border: rgba(224, 82, 160, 0.25);
-      --accent-color: #e052a0;
-      --accent-gradient: linear-gradient(135deg, #e052a0, #8a2be2);
-      --subtext-color: #9d92b0;
-      --nav-bg: rgba(11, 9, 20, 0.9);
-      --toggle-color: #ffd700;
+    /* Smooth Scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Custom Glassmorphism */
+    .glass-card {
+      background: rgba(19, 17, 28, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .light .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
     }
 
-    [data-theme="light"] {
-      --bg-color: #f7f5fa;
-      --text-color: #161024;
-      --card-bg: #ffffff;
-      --card-border: rgba(224, 82, 160, 0.18);
-      --accent-color: #d12e84;
-      --accent-gradient: linear-gradient(135deg, #d12e84, #7209b7);
-      --subtext-color: #5c526d;
-      --nav-bg: rgba(247, 245, 250, 0.9);
-      --toggle-color: #ff9800;
+    /* Hero Avatar Glow */
+    .avatar-glow {
+      box-shadow: 0 0 50px -10px rgba(168, 85, 247, 0.5);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0B0A10; }
+    ::-webkit-scrollbar-thumb { background: #262235; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #8B5CF6; }
 
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      line-height: 1.6;
-      overflow-x: hidden;
+    /* Blur Background transition effect */
+    .footer-bg-blur {
+      backdrop-filter: blur(20px);
+      transition: backdrop-filter 0.8s ease;
     }
-
-    /* Navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 24px;
-      background: var(--nav-bg);
-      backdrop-filter: blur(12px);
-      z-index: 1000;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .nav-logo {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--text-color);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-
-    .nav-logo span {
-      color: var(--accent-color);
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    #theme-toggle {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      font-size: 1.4rem;
-      color: var(--toggle-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px;
-      border-radius: 50%;
-      transition: transform 0.2s ease;
-    }
-
-    #theme-toggle:hover {
-      transform: scale(1.15);
-    }
-
-    #menu-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      z-index: 1001;
-      padding: 6px;
-    }
-
-    .bar {
-      width: 24px;
-      height: 2.5px;
-      background-color: var(--text-color);
-      transition: all 0.3s ease;
-      border-radius: 2px;
-    }
-
-    #menu-toggle.is-active .bar:nth-child(1) {
-      transform: translateY(7.5px) rotate(45deg);
-    }
-    #menu-toggle.is-active .bar:nth-child(2) {
-      opacity: 0;
-    }
-    #menu-toggle.is-active .bar:nth-child(3) {
-      transform: translateY(-7.5px) rotate(-45deg);
-    }
-
-    /* Navigation Overlay */
-    .overlay-menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: var(--bg-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 999;
-    }
-
-    .overlay-menu.is-active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .menu-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .menu-item {
-      color: var(--text-color);
-      text-decoration: none;
-      font-size: 1.8rem;
-      font-weight: 700;
-      transition: color 0.2s ease;
-    }
-
-    .menu-item:hover {
-      color: var(--accent-color);
-    }
-
-    .btn-nav-cta {
-      margin-top: 10px;
-      background: var(--accent-gradient);
-      color: #ffffff;
-      padding: 12px 30px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow: 0 4px 15px rgba(224, 82, 160, 0.3);
-    }
-
-    /* Container */
-    .container {
-      max-width: 900px;
-      margin: 100px auto 40px;
-      padding: 0 20px;
-    }
-
-    /* Hero Section */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 30px 0 50px;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .avatar-wrapper {
-      position: relative;
-      margin-bottom: 20px;
-    }
-
-    .hero-avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent-color);
-      box-shadow: 0 0 25px rgba(224, 82, 160, 0.35);
-    }
-
-    .status-badge {
-      position: absolute;
-      bottom: 6px;
-      right: 6px;
-      background: #10b981;
-      color: white;
-      font-size: 0.75rem;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-weight: 600;
-      border: 2px solid var(--bg-color);
-    }
-
-    .hero-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
-
-    .hero-tagline {
-      font-size: 1.15rem;
-      color: var(--accent-color);
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .hero-bio {
-      color: var(--subtext-color);
-      max-width: 600px;
-      font-size: 1rem;
-      margin-bottom: 25px;
-    }
-
-    .pill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .pill {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-color);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    /* Section Styling */
-    .section {
-      padding: 60px 0;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .section-subtitle {
-      color: var(--subtext-color);
-      font-size: 0.95rem;
-    }
-
-    /* Services Cards */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .service-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 24px;
-      transition: transform 0.2s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .service-icon {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-    }
-
-    .service-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .service-desc {
-      color: var(--subtext-color);
-      font-size: 0.9rem;
-    }
-
-    /* Proof Section Grid */
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .proof-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .proof-card img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .card-caption {
-      padding: 14px;
-      font-size: 0.85rem;
-      color: var(--subtext-color);
-      text-align: center;
-      border-top: 1px solid var(--card-border);
-    }
-
-    /* Contact Section */
-    .contact-box {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 35px 20px;
-      text-align: center;
-    }
-
-    .contact-box h3 {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
-    }
-
-    .contact-box p {
-      color: var(--subtext-color);
-      margin-bottom: 25px;
-      font-size: 0.95rem;
-    }
-
-    .cta-btn {
-      display: inline-block;
-      background: var(--accent-gradient);
-      color: #ffffff;
-      padding: 14px 34px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      box-shadow: 0 4px 18px rgba(224, 82, 160, 0.35);
-    }
-
-    /* Footer Banner */
-    .footer-banner {
-      position: relative;
-      width: 100%;
-      padding: 60px 20px 30px;
-      text-align: center;
-      background-image: url('IMG-20260929-WA0045.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-
-    .footer-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(11, 9, 20, 0.88);
-      backdrop-filter: blur(10px);
-      z-index: 1;
-    }
-
-    .footer-content {
-      position: relative;
-      z-index: 2;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #ffffff;
-    }
-
-    .footer-avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--accent-color);
-      margin-bottom: 15px;
-    }
-
-    .footer-quote {
-      font-size: 1.1rem;
-      font-style: italic;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-
-    .footer-quote span {
-      color: var(--accent-color);
-      font-weight: bold;
-    }
-
-    .footer-meta {
-      font-size: 0.75rem;
-      letter-spacing: 1.5px;
-      color: var(--subtext-color);
-      margin-bottom: 8px;
-    }
-
-    .footer-credit {
-      font-size: 0.75rem;
-      letter-spacing: 1.5px;
-      color: var(--accent-color);
-      font-weight: bold;
+    .footer-bg-blur.revealed {
+      backdrop-filter: blur(0px);
     }
   </style>
 </head>
-<body>
+<body class="bg-[#0B0A10] text-gray-200 font-sans transition-colors duration-300 antialiased selection:bg-purple-500 selection:text-white">
 
-  <!-- Top Navigation Header -->
-  <header class="navbar">
-    <a href="#" class="nav-logo">Lizzy<span>.</span></a>
+  <!-- Header / Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#" class="font-heading text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 inline-block animate-pulse"></span>
+        Lizzy<span class="text-purple-400">.</span>
+      </a>
 
-    <div class="nav-right">
-      <button id="theme-toggle" aria-label="Toggle Theme">
-        <span id="theme-icon">🌙</span>
-      </button>
+      <!-- Compact Theme Toggle & Nav Links -->
+      <div class="flex items-center gap-4">
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
+          <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
+          <a href="#services" class="hover:text-purple-400 transition-colors">Services</a>
+          <a href="#experience" class="hover:text-purple-400 transition-colors">Experience</a>
+          <a href="#proof" class="hover:text-purple-400 transition-colors">Proof of Work</a>
+          <a href="#testimonials" class="hover:text-purple-400 transition-colors">Testimonials</a>
+        </nav>
 
-      <button id="menu-toggle" aria-label="Toggle Menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
+        <!-- Compact Animated Theme Toggle -->
+        <button id="themeToggle" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon text-purple-300 text-sm dark-icon"></i>
+          <i class="fa-solid fa-sun text-amber-400 text-sm light-icon hidden"></i>
+        </button>
+
+        <a href="#contact" class="hidden sm:inline-flex px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-full hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">
+          Get In Touch
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- Navigation Overlay -->
-  <div id="mobile-menu" class="overlay-menu">
-    <nav class="menu-links">
-      <a href="#services" class="menu-item">Services</a>
-      <a href="#about" class="menu-item">About</a>
-      <a href="#proof" class="menu-item">Proof & Reviews</a>
-      <a href="#contact" class="btn-nav-cta">Work With Me</a>
-    </nav>
-  </div>
+  <main class="pt-24">
 
-  <!-- Main Content Container -->
-  <main class="container">
-    
-    <!-- Hero / Intro Section -->
-    <section class="hero" id="about">
-      <div class="avatar-wrapper">
-        <img src="IMG-20260929-WA0046.jpg" alt="Lizzy Frank Avatar" class="hero-avatar">
-        <span class="status-badge">Available</span>
-      </div>
-      <h1 class="hero-title">Lizzy Frank</h1>
-      <p class="hero-tagline">Web3 Community Manager &amp; Collab Lead</p>
-      <p class="hero-bio">
-        Specializing in community operations, partnership outreach, and organic user engagement across Discord, Telegram, and Twitter/X ecosystems.
-      </p>
-      
-      <div class="pill-tags">
-        <span class="pill">⚡ Community Strategy</span>
-        <span class="pill">🤝 Cross-Project Collabs</span>
-        <span class="pill">🛡️ Discord Architecture</span>
-        <span class="pill">📈 Organic Growth</span>
-      </div>
-    </section>
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[85vh] flex items-center justify-center py-16 px-4 overflow-hidden">
+      <!-- Background Decorative Blur Elements -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+      <div class="absolute bottom-10 right-10 w-80 h-80 bg-pink-600/15 rounded-full blur-[100px] pointer-events-none"></div>
 
-    <!-- Services Section -->
-    <section class="section" id="services">
-      <div class="section-header">
-        <h2 class="section-title">What I Do</h2>
-        <p class="section-subtitle">Tailored community strategies designed to scale engagement</p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">🌐</div>
-          <h3 class="service-title">Community Operations</h3>
-          <p class="service-desc">
-            Structuring, moderating, and maintaining active Discord and Telegram hubs that turn casual members into core advocates.
-          </p>
+      <div class="max-w-4xl mx-auto text-center relative z-10">
+        
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-purple-500/30 mb-8 animate-bounce">
+          <span class="w-2 h-2 rounded-full bg-green-400"></span>
+          <span class="text-xs font-semibold text-purple-300 tracking-wide uppercase">Available for New Projects</span>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">🤝</div>
-          <h3 class="service-title">Collab Management</h3>
-          <p class="service-desc">
-            Outreach and strategic cross-promotions with targeted Web3 projects to drive high-intent community traction.
-          </p>
+        <!-- Avatar Container -->
+        <div class="relative w-32 h-32 mx-auto mb-8">
+          <div class="w-full h-full rounded-full p-1 bg-gradient-to-tr from-purple-500 via-pink-500 to-indigo-500 avatar-glow">
+            <div class="w-full h-full rounded-full bg-[#13111C] flex items-center justify-center overflow-hidden">
+              <span class="font-heading text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">L</span>
+            </div>
+          </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">🎮</div>
-          <h3 class="service-title">Events & Engagement</h3>
-          <p class="service-desc">
-            Organizing interactive game nights, AMAs, custom reward systems, and regular community activations.
-          </p>
-        </div>
-      </div>
-    </section>
+        <!-- Headline & Subtitle -->
+        <h1 class="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+          Web3 Community <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400">Manager</span>
+        </h1>
 
-    <!-- Proof & Reviews Section -->
-    <section class="section" id="proof">
-      <div class="section-header">
-        <h2 class="section-title">Proof &amp; Reviews</h2>
-        <p class="section-subtitle">Verified Discord roles and actual client chat feedback</p>
-      </div>
+        <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+          I build and manage Web3 communities where people connect, participate, and have a real reason to stay involved.
+        </p>
 
-      <div class="proof-grid">
-        <div class="proof-card">
-          <img src="IMG-20260929-WA0048.jpg" alt="Discord Role Proof 1">
-          <div class="card-caption">Verified Profile &amp; Role (Collab Manager)</div>
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#experience" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-sm tracking-wide shadow-lg shadow-purple-600/30 hover:scale-105 transition-all duration-300 text-center">
+            View My Work <i class="fa-solid fa-arrow-down ml-2"></i>
+          </a>
+          <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card text-white font-bold text-sm tracking-wide hover:bg-white/10 hover:scale-105 transition-all duration-300 border border-white/10 text-center">
+            Let’s Work Together <i class="fa-solid fa-paper-plane ml-2"></i>
+          </a>
         </div>
 
-        <div class="proof-card">
-          <img src="IMG-20260929-WA0047.jpg" alt="Discord Role Proof 2">
-          <div class="card-caption">Verified Profile &amp; Role (Realm Guardian)</div>
+        <!-- Quick Stats Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-12 border-t border-white/10">
+          <div class="p-4 glass-card rounded-2xl">
+            <div class="font-heading text-2xl sm:text-3xl font-bold text-purple-400">300+</div>
+            <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Web3 Collabs</div>
+          </div>
+          <div class="p-4 glass-card rounded-2xl">
+            <div class="font-heading text-2xl sm:text-3xl font-bold text-pink-400">7+</div>
+            <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Core Services</div>
+          </div>
+          <div class="p-4 glass-card rounded-2xl">
+            <div class="font-heading text-2xl sm:text-3xl font-bold text-indigo-400">GMT+1</div>
+            <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Time Zone</div>
+          </div>
+          <div class="p-4 glass-card rounded-2xl">
+            <div class="font-heading text-2xl sm:text-3xl font-bold text-green-400">EN / JA</div>
+            <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Languages</div>
+          </div>
         </div>
 
-        <div class="proof-card">
-          <img src="IMG-20260930-WA0000.jpg" alt="Client Feedback 1">
-          <div class="card-caption">Client Feedback: "You doing great for our project 🙏"</div>
-        </div>
-
-        <div class="proof-card">
-          <img src="IMG-20260930-WA0001.jpg" alt="Client Feedback 2">
-          <div class="card-caption">Client Feedback: "Good work today. Glad everything went well."</div>
-        </div>
       </div>
     </section>
 
-    <!-- Contact CTA Section -->
-    <section class="section" id="contact" style="border-bottom: none;">
-      <div class="contact-box">
-        <h3>Ready to scale your Web3 community?</h3>
-        <p>Let's coordinate partnerships, boost engagement, and build lasting traction together.</p>
-        <a href="https://t.me/" target="_blank" class="cta-btn">Get In Touch</a>
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="py-20 px-4 max-w-5xl mx-auto">
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-white/10 relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="inline-block px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-widest mb-4">
+          About Me
+        </div>
+
+        <h2 class="font-heading text-2xl sm:text-4xl font-bold text-white mb-6">
+          I’m Lizzy, a Web3 Community Manager focused on creating communities where people don’t just join, <span class="text-purple-400">they participate.</span>
+        </h2>
+
+        <div class="space-y-4 text-gray-300 leading-relaxed text-base sm:text-lg">
+          <p>
+            I manage community conversations, create engaging activities, coordinate events, develop community content, and help projects maintain a strong connection with their members.
+          </p>
+          <p>
+            I’ve worked across meme coin and NFT communities, gaining hands-on experience with different community environments and engagement styles.
+          </p>
+          <p>
+            Alongside community management, I’ve also worked as a Collab Manager, coordinating <strong class="text-purple-300 font-semibold">300+ collaborations</strong> across Web3 projects and communities.
+          </p>
+          <p class="text-purple-200 font-medium">
+            Working across both roles has strengthened my communication, coordination, relationship-building, and community engagement skills.
+          </p>
+        </div>
+
+        <!-- Language & Specs Info -->
+        <div class="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-6 text-sm text-gray-400">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-earth-americas text-purple-400"></i>
+            <span><strong>Time Zone:</strong> GMT+1</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-language text-pink-400"></i>
+            <span><strong>Languages:</strong> English (Fluent), Japanese (Basic)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-layer-group text-indigo-400"></i>
+            <span><strong>Platforms:</strong> X, Telegram, Discord</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WHAT I DO SECTION -->
+    <section id="services" class="py-20 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="px-3 py-1 rounded-md bg-pink-500/20 text-pink-300 text-xs font-bold uppercase tracking-widest">Capabilities</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">What I Do</h2>
+        <p class="text-gray-400 mt-2 max-w-xl mx-auto text-sm sm:text-base">Comprehensive community operations tailored for Web3 growth.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="glass-card rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-users-gear"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white mb-2">Community Management</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            I manage the day-to-day community experience, keeping communication organized while staying actively involved with members.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card rounded-2xl p-6 hover:border-pink-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white mb-2">Community Engagement</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            I create conversations, activities, and interactive experiences that encourage members to participate and connect.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card rounded-2xl p-6 hover:border-indigo-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-chess"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white mb-2">Community Strategy</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            I develop practical community initiatives based on the project’s goals, community culture, and current growth stage.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="glass-card rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-pen-nib"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white mb-2">Content Creation</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            I create community-focused posts, announcements, discussions, contests, and interactive content.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="glass-card rounded-2xl p-6 hover:border-pink-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white mb-2">Events & Activities</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            I plan and coordinate community events, games, contests, discussions, and other interactive experiences.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="glass-card rounded-2xl p-6 hover:border-indigo-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white mb-2">Moderation</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            I help maintain an organized community environment by managing conversations, responding to members, and addressing issues quickly.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Platform Management Banner -->
+      <div class="mt-8 glass-card rounded-2xl p-6 border border-purple-500/30 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-white text-xl">
+            <i class="fa-solid fa-[#]"></i>
+          </div>
+          <div>
+            <h4 class="font-heading text-lg font-bold text-white">Platform Management</h4>
+            <p class="text-gray-400 text-xs sm:text-sm">I work natively across X, Telegram, Discord, and other community platforms.</p>
+          </div>
+        </div>
+        <div class="flex gap-3 text-xl text-purple-300">
+          <i class="fa-brands fa-x-twitter hover:text-white transition-colors"></i>
+          <i class="fa-brands fa-telegram hover:text-white transition-colors"></i>
+          <i class="fa-brands fa-discord hover:text-white transition-colors"></i>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- MY APPROACH SECTION -->
+    <section class="py-20 px-4 max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="px-3 py-1 rounded-md bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-widest">Framework</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">My Approach</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        
+        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-purple-500 hover:-translate-y-1 transition-transform">
+          <span class="text-3xl font-extrabold font-heading text-purple-400">01</span>
+          <h3 class="font-heading text-base font-bold text-white my-2">Understand</h3>
+          <p class="text-xs text-gray-400">Learn project goals, culture, and member profiles.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-pink-500 hover:-translate-y-1 transition-transform">
+          <span class="text-3xl font-extrabold font-heading text-pink-400">02</span>
+          <h3 class="font-heading text-base font-bold text-white my-2">Listen</h3>
+          <p class="text-xs text-gray-400">Track feedback, conversations, and engagement triggers.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-indigo-500 hover:-translate-y-1 transition-transform">
+          <span class="text-3xl font-extrabold font-heading text-indigo-400">03</span>
+          <h3 class="font-heading text-base font-bold text-white my-2">Create</h3>
+          <p class="text-xs text-gray-400">Turn insights into tailored content and interactive events.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-purple-500 hover:-translate-y-1 transition-transform">
+          <span class="text-3xl font-extrabold font-heading text-purple-400">04</span>
+          <h3 class="font-heading text-base font-bold text-white my-2">Engage</h3>
+          <p class="text-xs text-gray-400">Actively participate and spur member interaction daily.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center border-t-2 border-pink-500 hover:-translate-y-1 transition-transform">
+          <span class="text-3xl font-extrabold font-heading text-pink-400">05</span>
+          <h3 class="font-heading text-base font-bold text-white my-2">Build</h3>
+          <p class="text-xs text-gray-400">Deliver consistent experiences that drive long-term retention.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE EXPERIENCE CAROUSEL -->
+    <section id="experience" class="py-20 px-4 max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-widest">Track Record</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">Projects & Work</h2>
+        <p class="text-gray-400 mt-2 text-sm">Interactive project showcase — click or swipe through her journey.</p>
+      </div>
+
+      <!-- Carousel Container -->
+      <div class="relative glass-card rounded-3xl p-6 sm:p-10 border border-white/10 overflow-hidden min-h-[480px]">
+        
+        <!-- Controls -->
+        <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <span id="carouselCounter" class="text-xs font-mono font-bold text-purple-400 px-3 py-1 bg-purple-500/10 rounded-full border border-purple-500/20">01 / 04</span>
+            <h3 id="carouselTitle" class="font-heading text-xl font-bold text-white">CAOPAN KINGDOM</h3>
+          </div>
+          <div class="flex gap-2">
+            <button id="prevBtn" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-white transition-all">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button id="nextBtn" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-white transition-all">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Carousel Slides -->
+        <div id="carouselSlides" class="relative">
+          
+          <!-- Slide 1: CAOPAN KINGDOM -->
+          <div class="carousel-slide space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-purple-300 bg-purple-500/20 px-3 py-1 rounded-md">Community Manager</span>
+              <span class="text-xs text-gray-400"><i class="fa-brands fa-telegram text-sky-400"></i> Telegram & <i class="fa-brands fa-x-twitter text-white"></i> X</span>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Managed the community across Telegram and X, focusing on engagement, events, activities, communication, and overall community experience.
+            </p>
+            <div class="space-y-3">
+              <h4 class="font-heading text-sm font-bold text-purple-400 uppercase tracking-wide">Key Contributions:</h4>
+              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-gray-300">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Managed day-to-day engagement</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Planned events & activities</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Coordinated Story Night discussions</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Managed Meme Battles & Contests</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Slide 2: TIDEWALKERZ -->
+          <div class="carousel-slide hidden space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-pink-300 bg-pink-500/20 px-3 py-1 rounded-md">Community & Collab Manager</span>
+              <span class="text-xs text-gray-400"><i class="fa-brands fa-discord text-indigo-400"></i> Web3 NFT Community</span>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Worked across community management, moderation, engagement, and collaboration management while supporting communication between the project and other Web3 projects.
+            </p>
+            <div class="space-y-3">
+              <h4 class="font-heading text-sm font-bold text-pink-400 uppercase tracking-wide">Key Contributions:</h4>
+              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-gray-300">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Handled collab outreach & comms</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Managed community moderation</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Supported promotional activities</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-pink-400"></i> Partnership coordination</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Slide 3: BOUNDLESS8DESIGNS -->
+          <div class="carousel-slide hidden space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-indigo-300 bg-indigo-500/20 px-3 py-1 rounded-md">Community Manager</span>
+              <span class="text-xs text-gray-400"><i class="fa-solid fa-gamepad text-green-400"></i> Interactive Games & Events</span>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Managed community engagement with a strong focus on interactive activities, games, and creating opportunities for members to actively compete and participate.
+            </p>
+            <div class="space-y-3">
+              <h4 class="font-heading text-sm font-bold text-indigo-400 uppercase tracking-wide">Key Contributions:</h4>
+              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-gray-300">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Organized interactive games</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Event coordination & setup</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Maintained consistent engagement</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Community building via activities</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Slide 4: 300+ WEB3 COLLABORATIONS -->
+          <div class="carousel-slide hidden space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-300 bg-amber-500/20 px-3 py-1 rounded-md">Collab Manager Specialist</span>
+              <span class="text-xs text-gray-400"><i class="fa-solid fa-handshake text-amber-400"></i> Cross-Project Outreach</span>
+            </div>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Coordinated 300+ collaborations across Web3 projects and communities, handling end-to-end partnership pipelines from initial outreach to execution.
+            </p>
+            <div class="space-y-3">
+              <h4 class="font-heading text-sm font-bold text-amber-400 uppercase tracking-wide">What I Handled:</h4>
+              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-gray-300">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Outreach & partner matching</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Negotiating collab terms</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Coordinating promo tasks</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Maintaining project relationships</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Carousel Dots Nav -->
+        <div class="flex items-center justify-center gap-2 mt-8 pt-4 border-t border-white/10">
+          <button class="dot w-3 h-3 rounded-full bg-purple-500 transition-all"></button>
+          <button class="dot w-3 h-3 rounded-full bg-white/20 transition-all"></button>
+          <button class="dot w-3 h-3 rounded-full bg-white/20 transition-all"></button>
+          <button class="dot w-3 h-3 rounded-full bg-white/20 transition-all"></button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROOF OF WORK SECTION -->
+    <section id="proof" class="py-20 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="px-3 py-1 rounded-md bg-pink-500/20 text-pink-300 text-xs font-bold uppercase tracking-widest">Evidence</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">Proof of Work</h2>
+        <p class="text-gray-400 mt-2 text-sm sm:text-base max-w-xl mx-auto">Real work speaks louder than a list of responsibilities. Highlights from real community conversations, moderation, and events.</p>
+      </div>
+
+      <!-- Proof Category Filter Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
+        <button class="proof-tab px-4 py-2 rounded-full text-xs font-bold bg-purple-600 text-white transition-all" data-filter="all">All Proofs</button>
+        <button class="proof-tab px-4 py-2 rounded-full text-xs font-bold glass-card text-gray-300 hover:text-white transition-all" data-filter="community">Community Management</button>
+        <button class="proof-tab px-4 py-2 rounded-full text-xs font-bold glass-card text-gray-300 hover:text-white transition-all" data-filter="events">Events & Games</button>
+        <button class="proof-tab px-4 py-2 rounded-full text-xs font-bold glass-card text-gray-300 hover:text-white transition-all" data-filter="collabs">Collab Management</button>
+      </div>
+
+      <!-- Proof Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Proof Item 1 -->
+        <div class="proof-card glass-card rounded-2xl p-6 border border-white/10 hover:border-purple-500/50 transition-all" data-category="community">
+          <div class="w-full h-40 rounded-xl bg-purple-950/40 border border-purple-500/20 flex flex-col items-center justify-center p-4 mb-4 text-center">
+            <i class="fa-solid fa-comments text-3xl text-purple-400 mb-2"></i>
+            <span class="text-xs text-purple-300 font-semibold">Community Chat & Moderation</span>
+            <span class="text-[10px] text-gray-400 mt-1">Real member interactions & active support</span>
+          </div>
+          <h3 class="font-heading text-lg font-bold text-white mb-1">Daily Engagement</h3>
+          <p class="text-xs text-gray-400">Screenshots of active chat facilitation, answering inquiries, and managing chat culture.</p>
+        </div>
+
+        <!-- Proof Item 2 -->
+        <div class="proof-card glass-card rounded-2xl p-6 border border-white/10 hover:border-pink-500/50 transition-all" data-category="events">
+          <div class="w-full h-40 rounded-xl bg-pink-950/40 border border-pink-500/20 flex flex-col items-center justify-center p-4 mb-4 text-center">
+            <i class="fa-solid fa-book-open text-3xl text-pink-400 mb-2"></i>
+            <span class="text-xs text-pink-300 font-semibold">Story Night & Meme Battles</span>
+            <span class="text-[10px] text-gray-400 mt-1">Multi-round games & lore discussions</span>
+          </div>
+          <h3 class="font-heading text-lg font-bold text-white mb-1">Story Night & Contests</h3>
+          <p class="text-xs text-gray-400">Event announcements, rule breakdowns, game rounds, and winner announcements.</p>
+        </div>
+
+        <!-- Proof Item 3 -->
+        <div class="proof-card glass-card rounded-2xl p-6 border border-white/10 hover:border-indigo-500/50 transition-all" data-category="collabs">
+          <div class="w-full h-40 rounded-xl bg-indigo-950/40 border border-indigo-500/20 flex flex-col items-center justify-center p-4 mb-4 text-center">
+            <i class="fa-solid fa-handshake-simple text-3xl text-indigo-400 mb-2"></i>
+            <span class="text-xs text-indigo-300 font-semibold">Partner Outreach & Comms</span>
+            <span class="text-[10px] text-gray-400 mt-1">300+ Web3 project collaborations</span>
+          </div>
+          <h3 class="font-heading text-lg font-bold text-white mb-1">Collaboration Outreach</h3>
+          <p class="text-xs text-gray-400">Proof of terms negotiation, partner coordination, and completed giveaway cross-promotions.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS / SOCIAL PROOF SECTION -->
+    <section id="testimonials" class="py-20 px-4 max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-widest">Social Proof</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">What People Say About Lizzy</h2>
+        <p class="text-gray-400 mt-2 text-sm">Feedback from project founders, team leads, and core teams.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Testimonial 1 -->
+        <div class="glass-card rounded-2xl p-6 border border-purple-500/30 relative flex flex-col justify-between">
+          <div>
+            <i class="fa-solid fa-quote-left text-2xl text-purple-400 mb-4 block"></i>
+            <p class="text-gray-200 text-sm leading-relaxed italic mb-6">
+              “Lizzy, you are doing great for our project.”
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-purple-600/30 flex items-center justify-center text-purple-300 font-bold text-sm">
+              TL
+            </div>
+            <div>
+              <h4 class="font-heading text-sm font-bold text-white">Team Lead</h4>
+              <p class="text-[10px] text-purple-400 uppercase tracking-wider font-semibold">Web3 Project</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="glass-card rounded-2xl p-6 border border-pink-500/30 relative flex flex-col justify-between">
+          <div>
+            <i class="fa-solid fa-quote-left text-2xl text-pink-400 mb-4 block"></i>
+            <p class="text-gray-200 text-sm leading-relaxed italic mb-6">
+              “As for the community management, I think you’ve been handling it well. I haven’t had any particular issues with the way you’ve been managing things, so from my side, I’m happy with how it’s being run.”
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-pink-600/30 flex items-center justify-center text-pink-300 font-bold text-sm">
+              CK
+            </div>
+            <div>
+              <h4 class="font-heading text-sm font-bold text-white">CAOPAN Kingdom Team</h4>
+              <p class="text-[10px] text-pink-400 uppercase tracking-wider font-semibold">Core Team</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="glass-card rounded-2xl p-6 border border-indigo-500/30 relative flex flex-col justify-between">
+          <div>
+            <i class="fa-solid fa-quote-left text-2xl text-indigo-400 mb-4 block"></i>
+            <p class="text-gray-200 text-sm leading-relaxed italic mb-6">
+              “I’m satisfied with your services. You’ve done well in Collab management and in moderation. TideWalkerz is pleased to have you with us.”
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-indigo-600/30 flex items-center justify-center text-indigo-300 font-bold text-sm">
+              TF
+            </div>
+            <div>
+              <h4 class="font-heading text-sm font-bold text-white">TideWalkerz Founder</h4>
+              <p class="text-[10px] text-indigo-400 uppercase tracking-wider font-semibold">Founder</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WHAT I BRING SUMMARY -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <div class="glass-card rounded-3xl p-8 border border-white/10 text-center">
+        <h3 class="font-heading text-2xl font-bold text-white mb-4">What I Bring</h3>
+        <p class="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+          I bring structure, communication, creativity, and consistency to community management.
+          Good community management is more than keeping a chat active. It’s about creating an environment where members can connect, participate, stay informed, and feel involved in what the project is building.
+        </p>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer Banner -->
-  <footer class="footer-banner">
-    <div class="footer-overlay"></div>
-    <div class="footer-content">
-      <img src="IMG-20260929-WA0046.jpg" alt="Lizzy Avatar" class="footer-avatar">
-      <p class="footer-quote">
-        "If you need a community that actually drives users, traction, and revenue, <br>
-        <span>I'm the one who builds it.</span>"
-      </p>
-      <div class="footer-meta">© 2026 • LIZZY • COMMUNITY LEAD &amp; MANAGER</div>
-      <div class="footer-credit">BUILT BY HEISSAMUEEL</div>
+  <!-- FOOTER & CONTACT SECTION WITH BLUR BACKGROUND TRANSITION -->
+  <footer id="contact" class="relative pt-20 pb-16 px-4 overflow-hidden mt-20">
+    
+    <!-- Background Image Banner Overlay for Footer -->
+    <div class="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
+    <div id="footerBlurOverlay" class="absolute inset-0 z-0 bg-[#0B0A10]/80 footer-bg-blur"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+      
+      <!-- Contact Heading -->
+      <div class="text-center mb-12">
+        <span class="px-3 py-1 rounded-md bg-purple-500/20 text-purple-300 text-xs font-bold uppercase tracking-widest">Let's Connect</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white mt-3">Ready to Work Together?</h2>
+        <p class="text-gray-300 mt-2 text-sm sm:text-base max-w-xl mx-auto">
+          Building a Web3 project and need someone to manage your community, create engaging experiences, and keep things moving? Let's talk.
+        </p>
+      </div>
+
+      <!-- DIRECT EMAIL CONTACT FORM -->
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 mb-12">
+        <form action="mailto:lizzyfrank022@gmail.com" method="post" enctype="text/plain" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Your Name</label>
+              <input type="text" name="name" required placeholder="What should I call you?" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Your Email</label>
+              <input type="email" name="email" required placeholder="your@email.com" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors text-sm" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Project / Platform</label>
+            <input type="text" name="project" placeholder="Tell me about your project" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors text-sm" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Message</label>
+            <textarea name="message" rows="4" required placeholder="What do you need help with?" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors text-sm resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-sm uppercase tracking-wider shadow-lg shadow-purple-600/30 hover:scale-[1.01] active:scale-[0.99] transition-all">
+            Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- SOCIAL MEDIA CARDS GRID WITH DIRECT LINKS -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
+        
+        <!-- X / Twitter -->
+        <a href="https://x.com/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="glass-card p-4 rounded-2xl border border-white/10 hover:border-purple-500 flex flex-col items-center justify-center text-center group transition-all">
+          <i class="fa-brands fa-x-twitter text-2xl text-white group-hover:scale-110 transition-transform mb-2"></i>
+          <span class="text-xs font-bold text-white">X / Twitter</span>
+          <span class="text-[10px] text-purple-400 mt-0.5">@Lizzy_onchain</span>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="glass-card p-4 rounded-2xl border border-white/10 hover:border-sky-500 flex flex-col items-center justify-center text-center group transition-all">
+          <i class="fa-brands fa-telegram text-2xl text-sky-400 group-hover:scale-110 transition-transform mb-2"></i>
+          <span class="text-xs font-bold text-white">Telegram</span>
+          <span class="text-[10px] text-sky-400 mt-0.5">@Lizzy_onchain</span>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:lizzyfrank022@gmail.com" class="glass-card p-4 rounded-2xl border border-white/10 hover:border-pink-500 flex flex-col items-center justify-center text-center group transition-all">
+          <i class="fa-solid fa-envelope text-2xl text-pink-400 group-hover:scale-110 transition-transform mb-2"></i>
+          <span class="text-xs font-bold text-white">Email</span>
+          <span class="text-[10px] text-pink-400 mt-0.5 truncate max-w-full">lizzyfrank022@...</span>
+        </a>
+
+        <!-- Discord -->
+        <a href="https://discord.com/users/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="glass-card p-4 rounded-2xl border border-white/10 hover:border-indigo-500 flex flex-col items-center justify-center text-center group transition-all">
+          <i class="fa-brands fa-discord text-2xl text-indigo-400 group-hover:scale-110 transition-transform mb-2"></i>
+          <span class="text-xs font-bold text-white">Discord</span>
+          <span class="text-[10px] text-indigo-400 mt-0.5">@Lizzy_onchain</span>
+        </a>
+
+      </div>
+
+      <!-- FOOTER BOTTOM -->
+      <div class="text-center pt-8 border-t border-white/10 text-xs text-gray-500">
+        <p>© 2026 Lizzy • Web3 Community Lead & Operations Specialist</p>
+      </div>
+
     </div>
   </footer>
 
+  <!-- JAVASCRIPT LOGIC -->
   <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const menuItems = document.querySelectorAll('.menu-item, .btn-nav-cta');
+    // 1. Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const darkIcon = themeToggleBtn.querySelector('.dark-icon');
+    const lightIcon = themeToggleBtn.querySelector('.light-icon');
 
-    // Menu Toggle
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('is-active');
-      mobileMenu.classList.toggle('is-active');
+    themeToggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
     });
 
-    // Close Menu on Link Click
-    menuItems.forEach(item => {
-      item.addEventListener('click', () => {
-        menuToggle.classList.remove('is-active');
-        mobileMenu.classList.remove('is-active');
+    // 2. Interactive Experience Carousel Logic
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const carouselTitle = document.getElementById('carouselTitle');
+    const carouselCounter = document.getElementById('carouselCounter');
+
+    const projectTitles = [
+      "CAOPAN KINGDOM",
+      "TIDEWALKERZ",
+      "BOUNDLESS8DESIGNS",
+      "300+ WEB3 COLLABORATIONS"
+    ];
+
+    let currentSlide = 0;
+
+    function updateCarousel(index) {
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.remove('hidden');
+        } else {
+          slide.classList.add('hidden');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.className = 'dot w-3 h-3 rounded-full bg-purple-500 transition-all';
+        } else {
+          dot.className = 'dot w-3 h-3 rounded-full bg-white/20 transition-all';
+        }
+      });
+
+      carouselTitle.textContent = projectTitles[index];
+      carouselCounter.textContent = `0${index + 1} / 04`;
+      currentSlide = index;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      const newIndex = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel(newIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const newIndex = (currentSlide + 1) % slides.length;
+      updateCarousel(newIndex);
+    });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => updateCarousel(idx));
+    });
+
+    // 3. Proof of Work Filter Logic
+    const proofTabs = document.querySelectorAll('.proof-tab');
+    const proofCards = document.querySelectorAll('.proof-card');
+
+    proofTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        proofTabs.forEach(t => {
+          t.className = 'proof-tab px-4 py-2 rounded-full text-xs font-bold glass-card text-gray-300 hover:text-white transition-all';
+        });
+        tab.className = 'proof-tab px-4 py-2 rounded-full text-xs font-bold bg-purple-600 text-white transition-all';
+
+        const filter = tab.getAttribute('data-filter');
+
+        proofCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
       });
     });
 
-    // Dark/Light Theme Switcher
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      if (currentTheme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeIcon.textContent = '🌙';
+    // 4. Footer Blur Background Transition on Scroll to End
+    const footerBlurOverlay = document.getElementById('footerBlurOverlay');
+
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const threshold = document.body.offsetHeight - 150;
+
+      if (scrollPosition >= threshold) {
+        footerBlurOverlay.classList.add('revealed');
       } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        themeIcon.textContent = '☀️';
+        footerBlurOverlay.classList.remove('revealed');
       }
     });
   </script>
