@@ -4,229 +4,279 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lizzy | Web3 Community Manager</title>
-<meta name="description" content="Lizzy builds and manages Web3 communities. Community management, moderation, events, and 300+ collaborations across X, Telegram and Discord.">
+<meta name="description" content="Lizzy builds and manages Web3 communities. 30+ projects, 300+ collaborations, across X, Telegram and Discord.">
 <meta property="og:title" content="Lizzy | Web3 Community Manager">
-<meta property="og:description" content="Community management, moderation, events and 300+ Web3 collaborations.">
+<meta property="og:description" content="30+ projects, 300+ Web3 collaborations. Community management, moderation, events and strategy.">
 <meta property="og:image" content="https://lizzy-portfolio-five.vercel.app/IMG-20260929-WA0045.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
+<link rel="icon" href="IMG-20260929-WA0046.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0f0718;--text:#f6efff;--muted:#c3b3da;--ga:rgba(255,255,255,.17);--gb:rgba(255,255,255,.04);--gl:rgba(255,255,255,.26);--sh:rgba(0,0,0,.35);--acc:#c9a7ff;--hot:#ff4d94;--b1:#ff3d8b;--b2:#7c4dff;--b3:#b388ff;--ov:rgba(15,7,24,.38)}
-[data-theme=light]{--bg:#fdf3ff;--text:#2a1340;--muted:#62497c;--ga:rgba(255,255,255,.75);--gb:rgba(255,255,255,.35);--gl:rgba(255,255,255,.95);--sh:rgba(120,60,180,.22);--acc:#7a3fd1;--hot:#d81b73;--b1:#ff9ac8;--b2:#b9a0ff;--b3:#ffd1e8;--ov:rgba(253,243,255,.4)}
+:root{--bg:#06040a;--sf:#0e0a15;--line:rgba(255,255,255,.09);--text:#f2ecf8;--muted:#a99cbb;--acc:#c9a7ff;--hot:#ff4d94;--ga:rgba(255,255,255,.12);--gb:rgba(255,255,255,.03);--gl:rgba(255,255,255,.2);--sh:rgba(0,0,0,.5);--ov:rgba(6,4,10,.5);--b1:#ff3d8b;--b2:#6d3df0;--bo:.16}
+[data-theme=light]{--bg:#fbf5ff;--sf:#fff;--line:rgba(60,20,100,.12);--text:#26133b;--muted:#64497d;--acc:#7a3fd1;--hot:#d81b73;--ga:rgba(255,255,255,.8);--gb:rgba(255,255,255,.4);--gl:#fff;--sh:rgba(120,60,180,.2);--ov:rgba(251,245,255,.5);--b1:#ffa3cf;--b2:#b9a0ff;--bo:.5}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{font-family:Figtree,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .5s,color .5s}
-body.lock{overflow:hidden}
-img{max-width:100%;display:block}a{color:inherit}
+body{font-family:Figtree,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;transition:background .5s,color .5s}
+body.lock{overflow:hidden}img{max-width:100%;display:block}a{color:inherit}
 :focus-visible{outline:2px solid var(--acc);outline-offset:3px}
-h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;line-height:1.1}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;line-height:1.12}
+em.a{font-style:italic;color:var(--hot)}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-section{padding:56px 0}
-h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:26px}
+section{padding:58px 0}
+.lab{display:flex;align-items:center;gap:14px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--hot);margin-bottom:14px}
+.lab::after{content:"";height:1px;width:90px;background:var(--hot);opacity:.5}
+h2{font-size:clamp(1.9rem,5.5vw,3rem);margin-bottom:26px}
 .muted{color:var(--muted)}
-/* living background */
 .bg{position:fixed;inset:0;z-index:-2;overflow:hidden}
-.bg i{position:absolute;width:55vmax;height:55vmax;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
-.bg i:nth-child(1){background:var(--b1);top:-15%;left:-15%}
-.bg i:nth-child(2){background:var(--b2);bottom:-20%;right:-15%;animation-delay:-8s}
-.bg i:nth-child(3){background:var(--b3);top:35%;left:35%;width:35vmax;height:35vmax;animation-delay:-14s}
-@keyframes drift{to{transform:translate(12vw,9vh) scale(1.15)}}
-#glow{position:fixed;left:0;top:0;width:340px;height:340px;margin:-170px 0 0 -170px;border-radius:50%;background:radial-gradient(circle,rgba(255,110,190,.22),transparent 65%);pointer-events:none;z-index:-1;opacity:0;transition:opacity .3s}
-/* liquid glass */
-.glass{background:linear-gradient(135deg,var(--ga),var(--gb));-webkit-backdrop-filter:blur(20px) saturate(1.7);backdrop-filter:blur(20px) saturate(1.7);border:1px solid var(--gl);box-shadow:inset 0 1.5px 0 var(--gl),inset 0 -1px 0 rgba(255,255,255,.08),0 14px 40px var(--sh);position:relative;overflow:hidden}
-.glass::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,20%) var(--my,0%),rgba(255,255,255,.28),transparent 60%);opacity:.6;pointer-events:none;transition:opacity .3s}
-.glass>*{position:relative}
-/* bar */
+.bg i{position:absolute;width:55vmax;height:55vmax;border-radius:50%;filter:blur(90px);opacity:var(--bo);animation:drift 24s ease-in-out infinite alternate}
+.bg i:nth-child(1){background:var(--b1);top:-20%;left:-20%}.bg i:nth-child(2){background:var(--b2);bottom:-25%;right:-20%;animation-delay:-9s}
+@keyframes drift{to{transform:translate(10vw,8vh) scale(1.12)}}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--hot),var(--acc));z-index:60}
+.glass{background:linear-gradient(135deg,var(--ga),var(--gb));-webkit-backdrop-filter:blur(20px) saturate(1.7);backdrop-filter:blur(20px) saturate(1.7);border:1px solid var(--gl);box-shadow:inset 0 1.5px 0 var(--gl),0 14px 40px var(--sh)}
+.card{position:relative;overflow:hidden;background:var(--sf);border:1px solid var(--line);border-radius:26px;padding:26px;transition:border-color .3s,transform .3s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),rgba(255,77,148,.13),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{border-color:rgba(255,77,148,.4);transform:translateY(-4px)}.card:hover::before{opacity:1}
+.card>*{position:relative}
+.num{font-family:Fraunces,serif;font-weight:700;font-size:3.4rem;line-height:1;color:var(--hot);opacity:.22;margin-bottom:10px}
+.card h3{font-size:1.35rem;margin-bottom:8px}.card p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px}
+/* bar + menu */
 .bar{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(calc(100% - 28px),680px);z-index:30;border-radius:999px;display:flex;align-items:center;gap:10px;padding:8px 10px 8px 8px}
-.orb{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.25rem;text-decoration:none;animation:morph 6s ease-in-out infinite}
+.orb{width:44px;height:44px;border-radius:50%;overflow:hidden;padding:2px;animation:morph 6s ease-in-out infinite;display:block}
+.orb img{width:100%;height:100%;border-radius:50%;object-fit:cover}
 @keyframes morph{50%{border-radius:58% 42% 52% 48%/46% 58% 42% 54%}}
 .name{font-weight:700;margin-right:auto;text-decoration:none}
-.ib{width:42px;height:42px;border-radius:50%;border:0;color:var(--text);cursor:pointer;display:grid;place-items:center;font:inherit}
+.ib{width:42px;height:42px;border-radius:50%;border:0;color:var(--text);cursor:pointer;display:grid;place-items:center}
 .ib:active{transform:scale(.9)}
-.sm{width:24px;height:24px;transition:transform .7s cubic-bezier(.5,1.6,.4,1)}
-.sm .cut{transition:transform .6s cubic-bezier(.5,1.4,.4,1)}
-.sm .rays{transform-origin:12px 12px;transition:transform .6s,opacity .4s}
-[data-theme=dark] .sm{transform:rotate(-40deg)}
-[data-theme=dark] .sm .cut{transform:translate(-8px,7px)}
-[data-theme=dark] .sm .rays{transform:scale(.2);opacity:0}
+.sm{width:24px;height:24px;transition:transform .7s cubic-bezier(.5,1.6,.4,1)}.sm .cut{transition:transform .6s cubic-bezier(.5,1.4,.4,1)}.sm .rays{transform-origin:12px 12px;transition:transform .6s,opacity .4s}
+[data-theme=dark] .sm{transform:rotate(-40deg)}[data-theme=dark] .sm .cut{transform:translate(-8px,7px)}[data-theme=dark] .sm .rays{transform:scale(.2);opacity:0}
 .burger{width:20px;height:14px;position:relative}
-.burger::before,.burger::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;border-radius:2px;transition:transform .4s,top .4s}
-.burger::before{top:2px}.burger::after{top:10px}
+.burger::before,.burger::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;border-radius:2px;transition:transform .4s,top .4s}.burger::before{top:2px}.burger::after{top:10px}
 .open .burger::before{top:6px;transform:rotate(45deg)}.open .burger::after{top:6px;transform:rotate(-45deg)}
-/* menu overlay: page stays visible, blurred */
-#menu{position:fixed;inset:0;z-index:20;background:var(--ov);-webkit-backdrop-filter:blur(26px) saturate(1.5);backdrop-filter:blur(26px) saturate(1.5);display:grid;place-content:center;gap:6px;text-align:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+#menu{position:fixed;inset:0;z-index:20;background:var(--ov);-webkit-backdrop-filter:blur(26px) saturate(1.5);backdrop-filter:blur(26px) saturate(1.5);display:grid;place-content:center;text-align:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
 .open #menu{opacity:1;visibility:visible}
-#menu a{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(2rem,8vw,3.2rem);text-decoration:none;padding:4px 0;transform:translateY(24px);opacity:0;transition:transform .5s,opacity .5s,color .2s}
-#menu a:hover{color:var(--hot)}
-.open #menu a{transform:none;opacity:1}
-.open #menu a:nth-child(2){transition-delay:.05s}.open #menu a:nth-child(3){transition-delay:.1s}.open #menu a:nth-child(4){transition-delay:.15s}.open #menu a:nth-child(5){transition-delay:.2s}.open #menu a:nth-child(6){transition-delay:.25s}
+#menu a{font-family:Fraunces,serif;font-weight:700;font-size:clamp(2rem,8vw,3.2rem);text-decoration:none;padding:3px 0;transform:translateY(24px);opacity:0;transition:transform .5s,opacity .5s,color .2s}
+#menu a:hover{color:var(--hot);font-style:italic}.open #menu a{transform:none;opacity:1}
+.open #menu a:nth-child(2){transition-delay:.05s}.open #menu a:nth-child(3){transition-delay:.1s}.open #menu a:nth-child(4){transition-delay:.15s}.open #menu a:nth-child(5){transition-delay:.2s}.open #menu a:nth-child(6){transition-delay:.25s}.open #menu a:nth-child(7){transition-delay:.3s}
 /* hero */
-.hero{padding-top:100px}
-.banner{border-radius:28px;padding:8px}
-.banner img{border-radius:21px;width:100%;aspect-ratio:3/1;object-fit:cover}
-.badge{position:absolute;left:22px;bottom:22px;display:flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border-radius:999px;font-size:.9rem;font-weight:600}
-.badge img{width:40px;height:40px;border-radius:50%;object-fit:cover;aspect-ratio:1}
-.badge i{width:9px;height:9px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:ping 2s infinite}
-@keyframes ping{to{box-shadow:0 0 0 9px rgba(74,222,128,0)}}
-h1{font-size:clamp(2.3rem,7vw,4.6rem);margin:34px 0 14px;letter-spacing:-.02em}
-#rot{display:inline-block;color:var(--hot);transition:opacity .3s,transform .3s}
-#rot.out{opacity:0;transform:translateY(-14px)}
-.lede{font-size:1.15rem;max-width:56ch;color:var(--muted);margin-bottom:26px}
-.cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--hot),#8b5cf6);border:0;cursor:pointer;font:inherit;font-weight:600;box-shadow:0 10px 30px rgba(255,61,139,.35);transition:transform .25s}
-.btn:hover{transform:translateY(-3px) scale(1.03)}
-.btn.g{color:var(--text);background:none;box-shadow:none}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
-.stat{border-radius:22px;padding:20px 16px;text-align:center}
-.stat b{display:block;font-family:'Bricolage Grotesque';font-size:clamp(2rem,6vw,3.4rem);line-height:1}
-.stat span{font-size:.9rem;color:var(--muted)}
-/* ticker */
-.tick{overflow:hidden;padding:14px 0;border-block:1px solid var(--gl);margin:10px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-.tick div{display:flex;width:max-content;animation:run 32s linear infinite}
-.tick span{padding:0 18px;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.3rem;white-space:nowrap}
-.tick span::after{content:"✦";margin-left:36px;color:var(--hot)}
+.hero{padding-top:110px;text-align:center}
+.port{width:176px;height:176px;border-radius:50%;margin:0 auto 22px;padding:6px;position:relative;animation:float 6s ease-in-out infinite}
+.port::after{content:"";position:absolute;inset:-7px;border-radius:50%;background:conic-gradient(from 0deg,var(--hot),var(--acc),var(--b2),var(--hot));-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));animation:spin 10s linear infinite}
+.port img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+@keyframes float{50%{transform:translateY(-8px)}}@keyframes spin{to{transform:rotate(360deg)}}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;font-size:.88rem;font-weight:600}
+.pill i{width:9px;height:9px;border-radius:50%;background:#4ade80;animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}100%{box-shadow:0 0 0 9px rgba(74,222,128,0)}}
+h1{font-size:clamp(2.4rem,8vw,5rem);margin:22px auto 14px;max-width:16ch;letter-spacing:-.02em}
+#rot{display:inline-block;transition:opacity .3s,transform .3s}#rot.out{opacity:0;transform:translateY(-14px)}
+.lede{font-size:1.15rem;max-width:58ch;margin:0 auto 26px;color:var(--muted)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-block;padding:14px 26px;border-radius:999px;font:inherit;font-weight:600;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--hot),#8b5cf6);border:0;cursor:pointer;box-shadow:0 10px 30px rgba(255,61,139,.3);transition:transform .25s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}.btn.g{color:var(--text);background:none;box-shadow:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px}
+.stat{padding:20px 12px;border-radius:22px}.stat b{display:block;font-family:Fraunces,serif;font-size:clamp(2rem,6vw,3.4rem);line-height:1}.stat span{font-size:.88rem;color:var(--muted)}
+.tick{overflow:hidden;padding:14px 0;border-block:1px solid var(--line);-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.tick div{display:flex;width:max-content;animation:run 34s linear infinite}
+.tick span{padding:0 18px;font-family:Fraunces,serif;font-weight:700;font-size:1.25rem;white-space:nowrap}.tick span::after{content:"✦";margin-left:36px;color:var(--hot)}
 @keyframes run{to{transform:translateX(-50%)}}
-/* cards */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px}
-.card{border-radius:26px;padding:26px;transition:transform .2s ease-out;transform-style:preserve-3d}
-.card .ico{font-size:1.9rem;display:block;margin-bottom:10px}
-.card h3{font-size:1.4rem;margin-bottom:4px}
-.card .role{color:var(--acc);font-weight:600;font-size:.95rem;margin-bottom:12px}
-.card p{color:var(--muted)}
-.card ul{margin:12px 0 0 18px;color:var(--muted)}.card li{margin:3px 0}.card li::marker{color:var(--hot)}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.tags em{font-style:normal;font-size:.8rem;padding:3px 11px;border-radius:999px;border:1px solid var(--gl);color:var(--text)}
-.big{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:10px 34px;align-items:center}
-.big b{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(3.6rem,13vw,7rem);line-height:1;background:linear-gradient(135deg,var(--hot),var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent}
-@media(max-width:640px){.big{grid-template-columns:1fr}}
-/* proof */
-.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;margin-top:8px}
-.shot{border-radius:22px;padding:8px;cursor:zoom-in;border:1px solid var(--gl);background:none;color:inherit;text-align:left;font:inherit}
-.shot img{border-radius:15px;width:100%;height:auto}.shot span{display:block;padding:10px 8px 4px;font-size:.9rem;color:var(--muted)}
-#lb{position:fixed;inset:0;z-index:50;background:rgba(10,4,18,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:none;place-items:center;padding:20px;cursor:zoom-out}
-#lb.on{display:grid}#lb img{max-height:90vh;border-radius:16px}
-/* quotes */
-.qs{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px}
-.q{flex:0 0 min(84%,380px);scroll-snap-align:start;border-radius:24px;padding:24px}
-.q p{font-size:1.08rem}.q cite{display:block;margin-top:12px;font-style:normal;color:var(--acc);font-weight:600}
+/* about */
+.about p{max-width:70ch;margin-bottom:14px;color:var(--muted);font-size:1.05rem}.about p:first-of-type{color:var(--text);font-size:1.25rem}
+.ico{font-size:1.7rem;display:block;margin-bottom:8px}
+/* work */
+details.card{padding:0}details.card>summary{list-style:none;cursor:pointer;padding:26px;display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:start}
+summary::-webkit-details-marker{display:none}
+summary .plus{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:1.4rem;transition:transform .3s;grid-row:1/3;grid-column:2}
+details[open] .plus{transform:rotate(45deg)}
+.role{color:var(--acc);font-weight:600;font-size:.95rem}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.tags i{font-style:normal;font-size:.78rem;padding:2px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.body{padding:0 26px 26px;display:grid;gap:18px}
+.body h4{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--hot);margin-bottom:8px}
+.body ul{margin-left:18px;color:var(--muted)}.body li{margin:3px 0}.body li::marker{color:var(--hot)}
+.body dl{display:grid;gap:10px}.body dt{font-weight:600}.body dd{color:var(--muted);font-size:.96rem}
+.intro30{max-width:62ch;margin:-10px 0 24px;color:var(--muted)}
+/* proof + quotes */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
+.shot{border-radius:22px;padding:8px;cursor:zoom-in;background:var(--sf);border:1px solid var(--line);color:inherit;text-align:left;font:inherit}
+.shot img{border-radius:15px;width:100%;height:260px;object-fit:cover;object-position:top}
+.shot span{display:block;padding:10px 6px 4px;font-size:.88rem;color:var(--muted)}
+h3.sub{font-size:1.4rem;margin:38px 0 14px}
+.qs{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.q p{font-size:1.05rem;color:var(--text)}.q cite{display:block;margin-top:12px;font-style:normal;color:var(--acc);font-weight:600}
+.q .mk{font-family:Fraunces,serif;font-size:3rem;line-height:.6;color:var(--hot);opacity:.5}
+#lb{position:fixed;inset:0;z-index:50;background:rgba(6,3,12,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:none;place-items:center;padding:20px;cursor:zoom-out}#lb.on{display:grid}#lb img{max-height:90vh;border-radius:16px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.chips i{font-style:normal;padding:5px 14px;border-radius:999px;border:1px solid var(--line);font-size:.9rem}
 /* contact */
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-@media(max-width:800px){.contact{grid-template-columns:1fr}}
-.panel{border-radius:28px;padding:28px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}@media(max-width:800px){.contact{grid-template-columns:1fr}}
+.panel{border-radius:28px;padding:28px}.panel h2{font-size:clamp(1.7rem,4vw,2.4rem)}
 form{display:grid;gap:14px}label{display:grid;gap:6px;font-weight:500;font-size:.95rem}
-input,textarea{font:inherit;color:var(--text);background:var(--gb);border:1px solid var(--gl);border-radius:14px;padding:12px 14px;width:100%}
-textarea{min-height:110px;resize:vertical}
+input,textarea{font:inherit;color:var(--text);background:var(--gb);border:1px solid var(--line);border-radius:14px;padding:12px 14px;width:100%}textarea{min-height:110px;resize:vertical}
 .links{list-style:none;padding:0;display:grid;gap:10px;margin:18px 0 22px}.links a{font-weight:600;color:var(--acc);text-decoration:none}.links a:hover{text-decoration:underline}
-footer{padding:30px 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
-.rv{opacity:0;transform:translateY(30px) scale(.97);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+/* closing */
+.close{text-align:center;padding-bottom:30px}
+.close blockquote{font-family:Fraunces,serif;font-weight:600;font-size:clamp(1.5rem,4.5vw,2.4rem);line-height:1.25;max-width:24ch;margin:0 auto 28px}
+.close img{border-radius:24px;border:1px solid var(--line);width:100%;height:auto}
+footer{padding:26px 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
+#top2{position:fixed;right:16px;bottom:16px;z-index:25;width:46px;height:46px;border-radius:50%;opacity:0;pointer-events:none;transition:opacity .3s;border:0;color:var(--text);cursor:pointer;font-size:1.2rem}#top2.on{opacity:1;pointer-events:auto}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
-<div id="glow" aria-hidden="true"></div>
+<div id="prog"></div>
+<div class="bg" aria-hidden="true"><i></i><i></i></div>
 
 <header class="bar glass">
-  <a class="orb glass" href="#top" aria-label="Lizzy, back to top">L</a>
+  <a class="orb glass" href="#top" aria-label="Lizzy, back to top"><img src="IMG-20260929-WA0046.jpg" alt="" width="44" height="44"></a>
   <a class="name" href="#top">Lizzy</a>
-  <button class="ib glass" id="theme" type="button" aria-label="Toggle light and dark mode">
-    <svg class="sm" viewBox="0 0 24 24" fill="none"><mask id="mk"><rect width="24" height="24" fill="#fff"/><circle class="cut" cx="24" cy="0" r="7" fill="#000"/></mask><circle cx="12" cy="12" r="6" fill="currentColor" mask="url(#mk)"/><g class="rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></g></svg>
-  </button>
+  <button class="ib glass" id="theme" type="button" aria-label="Toggle light and dark mode"><svg class="sm" viewBox="0 0 24 24" fill="none"><mask id="mk"><rect width="24" height="24" fill="#fff"/><circle class="cut" cx="24" cy="0" r="7" fill="#000"/></mask><circle cx="12" cy="12" r="6" fill="currentColor" mask="url(#mk)"/><g class="rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></g></svg></button>
   <button class="ib glass" id="mb" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span class="burger"></span></button>
 </header>
-
-<nav id="menu" aria-label="Main">
-  <a href="#top">Home</a><a href="#services">Services</a><a href="#work">Work</a><a href="#proof">Proof</a><a href="#feedback">Feedback</a><a href="#contact">Contact</a>
-</nav>
+<nav id="menu" aria-label="Main"><a href="#top">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#proof">Proof</a><a href="#why">Why me</a><a href="#contact">Contact</a></nav>
 
 <main id="top"><div class="wrap">
 
 <section class="hero">
-  <div class="banner glass card" data-tilt>
-    <img src="IMG-20260929-WA0045.jpg" alt="Lizzy: I build, grow and manage Web3 communities" width="1280" height="427">
-    <div class="badge glass"><img src="IMG-20260929-WA0046.jpg" alt="Illustrated portrait of Lizzy" width="40" height="40"><i></i>Available for new projects</div>
-  </div>
-  <h1>I build <span id="rot">engaged</span> Web3 communities.</h1>
-  <p class="lede">Community management, moderation, events and strategy for Web3 projects that want an active community, and partners who follow through.</p>
-  <div class="cta"><a class="btn" href="#contact">Work with me</a><a class="btn g glass" href="#work">See my work</a></div>
+  <div class="port glass"><img src="IMG-20260929-WA0046.jpg" alt="Illustrated portrait of Lizzy" width="164" height="164"></div>
+  <span class="pill glass"><i></i>Available for new projects</span>
+  <h1>I build <em class="a" id="rot">engaged</em> Web3 communities.</h1>
+  <p class="lede">Community management, engagement, content, moderation, events and strategy for Web3 projects that want organized, engaging community experiences.</p>
+  <div class="cta"><a class="btn" href="#contact">Let's work together</a><a class="btn g glass" href="#work">View my work</a></div>
   <div class="stats">
-    <div class="stat glass"><b data-n="300" data-s="+">0</b><span>collaborations coordinated</span></div>
-    <div class="stat glass"><b data-n="3">0</b><span>communities managed</span></div>
+    <div class="stat glass"><b data-n="30" data-s="+">0</b><span>projects</span></div>
+    <div class="stat glass"><b data-n="300" data-s="+">0</b><span>collaborations</span></div>
     <div class="stat glass"><b data-n="3">0</b><span>platforms: X, Telegram, Discord</span></div>
   </div>
 </section>
 
-<div class="tick" aria-hidden="true"><div>
-  <span>Community management</span><span>Moderation</span><span>Events and contests</span><span>Collab management</span><span>Content</span><span>Community strategy</span>
-  <span>Community management</span><span>Moderation</span><span>Events and contests</span><span>Collab management</span><span>Content</span><span>Community strategy</span>
-</div></div>
+<div class="tick" aria-hidden="true"><div><span>Community management</span><span>Moderation</span><span>Events and contests</span><span>Collab management</span><span>Content</span><span>Community strategy</span><span>Community management</span><span>Moderation</span><span>Events and contests</span><span>Collab management</span><span>Content</span><span>Community strategy</span></div></div>
+
+<section id="about" class="about">
+  <div class="lab">About me</div>
+  <h2>Communities where people don't just join, <em class="a">they participate.</em></h2>
+  <p>I'm Lizzy, a Web3 Community Manager focused on creating communities where people don't just join, they participate.</p>
+  <p>I manage community conversations, create engaging activities, coordinate events, develop community content, and help projects maintain a strong connection with their members.</p>
+  <p>I've worked across meme coin and NFT communities, gaining experience with different community environments and engagement styles.</p>
+  <p>Alongside community management, I've also worked as a Collab Manager, coordinating 300+ collaborations across Web3 projects and communities. Working across both roles has strengthened my communication, coordination, relationship-building, and community engagement skills.</p>
+</section>
 
 <section id="services">
-  <h2>What I do for a project</h2>
+  <div class="lab">What I do</div>
+  <h2>Services for <em class="a">every stage</em></h2>
   <div class="grid">
-    <div class="card glass rv" data-tilt><span class="ico">💬</span><h3>Community and moderation</h3><p>Day-to-day replies, organized conversations, and issues handled before they grow.</p></div>
-    <div class="card glass rv" data-tilt><span class="ico">🎮</span><h3>Engagement and events</h3><p>Story nights, meme battles, games and contests that give members a reason to join in.</p></div>
-    <div class="card glass rv" data-tilt><span class="ico">🤝</span><h3>Collab management</h3><p>Finding partners, opening the conversation, agreeing terms and following up until it's done.</p></div>
-    <div class="card glass rv" data-tilt><span class="ico">📣</span><h3>Content and strategy</h3><p>Announcements, event posts and plans built around your goals, culture and stage.</p></div>
+    <div class="card rv"><span class="ico">💬</span><h3>Community Management</h3><p>I manage the day-to-day community experience, keeping communication organized while staying actively involved with members.</p></div>
+    <div class="card rv"><span class="ico">🎮</span><h3>Community Engagement</h3><p>I create conversations, activities, and interactive experiences that encourage members to participate and connect.</p></div>
+    <div class="card rv"><span class="ico">🧭</span><h3>Community Strategy</h3><p>I develop practical community initiatives based on the project's goals, community culture, and stage.</p></div>
+    <div class="card rv"><span class="ico">📣</span><h3>Content</h3><p>I create community-focused posts, announcements, discussions, contests, and interactive content.</p></div>
+    <div class="card rv"><span class="ico">🎉</span><h3>Events and Activities</h3><p>I plan and coordinate community events, games, contests, discussions, and other interactive experiences.</p></div>
+    <div class="card rv"><span class="ico">🛡️</span><h3>Moderation</h3><p>I help maintain an organized community environment by managing conversations, responding to members, and addressing issues when they arise.</p></div>
+    <div class="card rv"><span class="ico">🌐</span><h3>Platform Management</h3><p>I work across X, Telegram, Discord, and other community platforms to manage communication, activities, and engagement.</p></div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="lab">My approach</div>
+  <h2>Five steps, <em class="a">every project</em></h2>
+  <div class="grid">
+    <div class="card rv"><div class="num">01</div><h3>Understand</h3><p>I learn the project, its goals, community environment, and members.</p></div>
+    <div class="card rv"><div class="num">02</div><h3>Listen</h3><p>I pay attention to conversations, feedback, and what members respond to.</p></div>
+    <div class="card rv"><div class="num">03</div><h3>Create</h3><p>I turn those insights into relevant content, activities, and community experiences.</p></div>
+    <div class="card rv"><div class="num">04</div><h3>Engage</h3><p>I actively participate in conversations and create opportunities for members to interact.</p></div>
+    <div class="card rv"><div class="num">05</div><h3>Build</h3><p>I focus on consistent community experiences that encourage participation and connection.</p></div>
   </div>
 </section>
 
 <section id="work">
-  <h2>Communities I've worked with</h2>
-  <div class="grid">
-    <article class="card glass rv" data-tilt><span class="ico">🏰</span><h3>Caopan Kingdom</h3><p class="role">Community Manager</p>
-      <div class="tags"><em>Telegram</em><em>X</em><em>Events</em></div>
-      <p>Ran engagement, events and communication for a story-driven community, and passed member feedback to the team.</p>
-      <ul><li>Story Night: recurring chapter discussions</li><li>Meme Battle: multi-round game</li><li>Contests from rules to winner reveal</li></ul>
-      <!-- TODO RESULTS: real numbers (members before/after, turnout, contest entries) -->
-    </article>
-    <article class="card glass rv" data-tilt><span class="ico">🌊</span><h3>Tidewalkerz</h3><p class="role">Community and Collab Manager</p>
-      <div class="tags"><em>Discord</em><em>Moderation</em><em>Collabs</em></div>
-      <p>Handled moderation and engagement while running the project's partnerships with other Web3 communities.</p>
-      <ul><li>Day-to-day member support</li><li>Collab outreach and follow-ups</li><li>Kept both teams aligned</li></ul>
-      <!-- TODO RESULTS: collabs completed, server growth -->
-    </article>
-    <article class="card glass rv" data-tilt><span class="ico">🎨</span><h3>Boundless8Designs</h3><p class="role">Community Manager</p>
-      <div class="tags"><em>Games</em><em>Activities</em></div>
-      <p>Built participation through games and activities, with clear instructions so members knew how to join in.</p>
-      <ul><li>Planned and ran community games</li><li>Announced and explained each activity</li><li>Kept engagement steady between events</li></ul>
-      <!-- TODO RESULTS: game turnout, member growth -->
-    </article>
-    <article class="card glass big rv" data-tilt><b data-n="300" data-s="+">0</b>
-      <div><h3>Web3 collaborations</h3><p class="role">Collab Manager, meme coin and NFT communities</p>
-      <p>Finding relevant projects, opening conversations, negotiating terms, coordinating promotions between teams, and following up until every task is done.</p></div>
-    </article>
+  <div class="lab">Experience</div>
+  <h2>Communities I've <em class="a">worked with</em></h2>
+  <p class="intro30">I've worked with 30+ Web3 projects. These are selected examples. Tap a card for the full breakdown.</p>
+  <div class="grid" style="grid-template-columns:1fr">
+
+    <details class="card rv"><summary><div><h3>Caopan Kingdom</h3><p class="role">Community Manager</p><div class="tags"><i>Telegram</i><i>X</i><i>Events</i></div></div><span class="plus">+</span></summary>
+      <div class="body">
+        <p>Managed the community across Telegram and X, focusing on engagement, events, activities, communication, and the overall community experience.</p>
+        <div><h4>Key contributions</h4><ul><li>Managed day-to-day community engagement</li><li>Planned and coordinated community events and activities</li><li>Developed community engagement initiatives</li><li>Created community content and event communications</li><li>Managed contests and interactive activities</li><li>Coordinated Story Night discussions</li><li>Created community discussions around project developments and lore</li><li>Communicated community feedback and insights to the team</li><li>Helped shape and coordinate ongoing engagement activities</li></ul></div>
+        <div><h4>Selected community work</h4><dl>
+          <dt>Story Night</dt><dd>Planned and coordinated recurring community discussions around new story chapters. Prepared the discussion structure, guided conversations, encouraged theories and opinions, and kept members involved throughout the event.</dd>
+          <dt>Meme Battle</dt><dd>Planned and coordinated a multi-round meme game with different meme challenges. Managed the structure, rules, rounds, and community participation.</dd>
+          <dt>Community Contests</dt><dd>Coordinated contests from setting up participation rules and announcements to managing participation and announcing winners.</dd>
+          <dt>Community Discussions</dt><dd>Facilitated conversations around the Kingdom, characters, project developments, and topics that encouraged members to share their thoughts and theories.</dd>
+          <dt>Community Activities</dt><dd>Developed interactive activities that gave members more ways to participate beyond regular conversations.</dd></dl></div>
+        <!-- TODO RESULTS + dates: add real numbers and "2025 to Present" style dates here -->
+      </div></details>
+
+    <details class="card rv"><summary><div><h3>Tidewalkerz</h3><p class="role">Community Manager and Collab Manager</p><div class="tags"><i>Discord</i><i>Moderation</i><i>Collabs</i></div></div><span class="plus">+</span></summary>
+      <div class="body">
+        <p>Worked across community management, moderation, engagement, and collaboration management while supporting communication between the project and other Web3 projects and communities.</p>
+        <div><h4>Key contributions</h4><ul><li>Managed community interactions and moderation</li><li>Engaged with members and supported community activities</li><li>Handled collaboration outreach and communication</li><li>Coordinated with other Web3 projects and communities</li><li>Managed collaboration details and follow-ups</li><li>Supported promotional collaboration activities</li><li>Maintained communication between teams</li><li>Helped ensure collaboration tasks were properly coordinated</li></ul></div>
+        <div><h4>Selected community work</h4><dl>
+          <dt>Community Management</dt><dd>Supported the day-to-day community through member interaction, moderation, communication, and engagement.</dd>
+          <dt>Community Engagement</dt><dd>Participated in conversations and supported activities that encouraged members to interact with the project and each other.</dd>
+          <dt>Collaboration Management</dt><dd>Handled outreach and communication with other Web3 projects and communities, from initiating conversations to coordinating collaboration details.</dd>
+          <dt>Partnership Coordination</dt><dd>Managed communication and follow-ups between teams to ensure collaboration activities were properly coordinated.</dd></dl></div>
+        <!-- TODO RESULTS + dates -->
+      </div></details>
+
+    <details class="card rv"><summary><div><h3>Boundless8Designs</h3><p class="role">Community Manager</p><div class="tags"><i>Games</i><i>Activities</i></div></div><span class="plus">+</span></summary>
+      <div class="body">
+        <p>Managed community engagement with a focus on interactive activities, games, and creating opportunities for members to participate.</p>
+        <div><h4>Key contributions</h4><ul><li>Managed community interactions</li><li>Organized community games and activities</li><li>Planned interactive community experiences</li><li>Encouraged member participation</li><li>Coordinated activities within the community</li><li>Helped maintain consistent community engagement</li></ul></div>
+        <div><h4>Selected community work</h4><dl>
+          <dt>Community Games</dt><dd>Planned and organized interactive games that gave members opportunities to participate, compete, and interact with each other.</dd>
+          <dt>Community Activities</dt><dd>Planned and coordinated activities designed to encourage participation and interaction within the community.</dd>
+          <dt>Community Engagement</dt><dd>Used games, activities, and direct interaction to encourage members to participate and stay involved.</dd>
+          <dt>Event Coordination</dt><dd>Organized and communicated community activities, helping members understand how to participate and keeping activities organized.</dd></dl></div>
+        <!-- TODO RESULTS + dates -->
+      </div></details>
+
+    <details class="card rv"><summary><div><h3>300+ Web3 Collaborations</h3><p class="role">Collab Manager</p><div class="tags"><i>Outreach</i><i>Negotiation</i><i>Partnerships</i></div></div><span class="plus">+</span></summary>
+      <div class="body">
+        <p>Alongside my Community Manager experience, I've coordinated 300+ collaborations across Web3 projects and communities.</p>
+        <div><h4>What I handled</h4><ul><li>Collaboration outreach</li><li>Finding relevant projects and communities</li><li>Initiating conversations</li><li>Negotiating collaboration terms</li><li>Coordinating between teams</li><li>Managing collaboration details</li><li>Following up with partners</li><li>Coordinating promotional activities</li><li>Maintaining professional relationships</li><li>Ensuring collaboration tasks were completed</li></ul></div>
+        <p>Working across 300+ collaborations strengthened my outreach, communication, negotiation, and coordination skills while giving me a broad understanding of how different Web3 projects and communities operate.</p>
+      </div></details>
   </div>
 </section>
 
 <section id="proof">
-  <h2>Proof of work</h2>
-  <p class="muted">Real conversations, private details hidden. Tap to zoom.</p>
+  <div class="lab">Proof of work</div>
+  <h2>Real work speaks louder than <em class="a">a list of responsibilities</em></h2>
+  <h3 class="sub" style="margin-top:0">Community management</h3>
+  <p class="muted" style="margin-bottom:14px">Roles held and real community conversations. Tap to zoom.</p>
   <div class="shots">
-    <button class="shot glass rv" type="button"><img loading="lazy" src="IMG-20260929-WA0048.jpg" alt="Discord moderation and member conversation"><span>Moderation in Discord</span></button>
-    <button class="shot glass rv" type="button"><img loading="lazy" src="IMG-20260929-WA0047.jpg" alt="Discord community management example"><span>Community communication in Discord</span></button>
-    <!-- TODO PROOF: add Story Night / Meme Battle posts, a contest winner reveal, content posts, blurred collab chats -->
+    <button class="shot rv" type="button"><img loading="lazy" src="1790771707379.jpg" alt="Discord profile showing Realm Guardian, Realm Connector and TideWalker roles"><span>Roles held: Tidewalkerz server</span></button>
+    <button class="shot rv" type="button"><img loading="lazy" src="1790771676493.jpg" alt="Discord profile showing Collab manager role"><span>Role held: Collab manager</span></button>
+  </div>
+  <!-- TODO PROOF (add as <button class="shot"> items): Events and Engagement (Story Night, Meme Battle, contests, games), Content (posts, announcements), Collaboration Management (outreach, partner chats, completed collabs), Community Strategy (event concepts, content plans) -->
+  <h3 class="sub" id="feedback">What people say about Lizzy</h3>
+  <div class="qs">
+    <div class="card q rv"><div class="mk">"</div><p>Lizzy, you are doing great for our project.</p><cite>Team Lead</cite></div>
+    <div class="card q rv"><div class="mk">"</div><p>As for the community management, I think you've been handling it well. I haven't had any particular issues with the way you've been managing things, so from my side, I'm happy with how it's being run.</p><cite>Caopan Kingdom team</cite></div>
+    <div class="card q rv"><div class="mk">"</div><p>I'm satisfied with your services. You've done well in collab management and in moderation. TideWalkerz is pleased to have you with us.</p><cite>TideWalkerz founder</cite></div>
+  </div>
+  <div class="shots" style="margin-top:16px">
+    <button class="shot rv" type="button"><img loading="lazy" src="IMG-20260930-WA0000.jpg" alt="Client message: you doing great for our project"><span>Client feedback, Telegram</span></button>
+    <button class="shot rv" type="button"><img loading="lazy" src="IMG-20260930-WA0001.jpg" alt="Client message: good work today"><span>Client feedback, Telegram</span></button>
+    <button class="shot rv" type="button"><img loading="lazy" src="IMG-20260930-WA0008%281%29.jpg" alt="TideWalkerz message: satisfied with your services"><span>Client feedback, Discord</span></button>
   </div>
 </section>
 
-<section id="feedback">
-  <h2>What people say</h2>
-  <div class="qs">
-    <div class="q glass"><p>Lizzy, you are doing great for our project.</p><cite>Team Lead</cite></div>
-    <div class="q glass"><p>I haven't had any particular issues with the way you've been managing things. I'm happy with how it's being run.</p><cite>Caopan Kingdom team</cite></div>
-    <div class="q glass"><p>You've done well in collab management and in moderation. TideWalkerz is pleased to have you with us.</p><cite>Tidewalkerz founder</cite></div>
-    <button class="shot glass q" type="button" style="padding:8px"><img loading="lazy" src="IMG-20260930-WA0000.jpg" alt="Client message: you doing great for our project"></button>
-    <button class="shot glass q" type="button" style="padding:8px"><img loading="lazy" src="IMG-20260930-WA0001.jpg" alt="Client message: good work today"></button>
+<section id="why">
+  <div class="lab">What I bring</div>
+  <h2>Structure, communication, creativity, <em class="a">consistency</em></h2>
+  <div class="grid">
+    <div class="card rv"><div class="num">01</div><h3>More than a busy chat</h3><p>Good community management is more than keeping a chat active. It's about creating an environment where members can connect, participate, stay informed, and feel involved in what the project is building.</p></div>
+    <div class="card rv"><div class="num">02</div><h3>Community and collabs, together</h3><p>My experience in both community and collaboration management lets me engage communities while also communicating and coordinating effectively with teams, partners, and other Web3 projects and communities.</p></div>
+    <div class="card rv"><div class="num">03</div><h3>Details</h3><p>Time zone GMT+1. English (fluent), Japanese (basic).</p><div class="chips"><i>X</i><i>Telegram</i><i>Discord</i><i>Other platforms</i></div></div>
   </div>
 </section>
 
 <section id="contact">
+  <div class="lab">Let's work together</div>
   <div class="contact">
     <div class="panel glass">
-      <h2>Let's build yours</h2>
-      <p class="muted">Tell me about your project and what you need. I'll reply within a day.</p>
+      <h2>Building a Web3 project? <em class="a">Let's talk.</em></h2>
+      <p class="muted">Need someone to manage your community, create engaging experiences, coordinate communication, and keep things moving? I look forward to working with you.</p>
       <ul class="links">
         <li><a href="mailto:lizzyfrank022@gmail.com">lizzyfrank022@gmail.com</a></li>
         <li><a href="https://x.com/Lizzy_onchain" target="_blank" rel="noopener noreferrer">X: @Lizzy_onchain</a></li>
@@ -248,156 +298,41 @@ footer{padding:30px 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
   </div>
 </section>
 
+<section class="close">
+  <blockquote>"Need a community people actually want to stay in? <em class="a">Let's build it.</em>"</blockquote>
+  <img loading="lazy" src="IMG-20260929-WA0045.jpg" alt="Lizzy: I build, grow and manage Web3 communities" width="1280" height="427">
+</section>
+
 </div></main>
-<footer>Lizzy, Web3 Community Manager. GMT+1. English (fluent), Japanese (basic).</footer>
+<footer>Lizzy, Web3 Community Manager. GMT+1.</footer>
+<button id="top2" class="glass" type="button" aria-label="Back to top">↑</button>
 <div id="lb" role="dialog" aria-label="Enlarged screenshot"><img alt=""></div>
 
 <script>
 (function(){
 var d=document,R=d.documentElement,B=d.body,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-// theme
 var tb=d.getElementById('theme');
 function setT(t){R.setAttribute('data-theme',t);tb.setAttribute('aria-pressed',t==='dark')}
 var sv=null;try{sv=localStorage.getItem('theme')}catch(e){}setT(sv||'dark');
 tb.onclick=function(){var t=R.getAttribute('data-theme')==='dark'?'light':'dark';setT(t);try{localStorage.setItem('theme',t)}catch(e){}};
-// menu
-var mb=d.getElementById('mb');
+var mb=d.getElementById('mb'),lb=d.getElementById('lb');
 function menu(o){B.classList.toggle('open',o);B.classList.toggle('lock',o);mb.setAttribute('aria-expanded',o)}
 mb.onclick=function(){menu(!B.classList.contains('open'))};
 d.querySelectorAll('#menu a').forEach(function(a){a.onclick=function(){menu(false)}});
 d.addEventListener('keydown',function(e){if(e.key==='Escape'){menu(false);lb.classList.remove('on')}});
-// rotating word
 var rot=d.getElementById('rot'),w=['engaged','active','organized','loyal','thriving'],i=0;
 if(!rm)setInterval(function(){rot.classList.add('out');setTimeout(function(){i=(i+1)%w.length;rot.textContent=w[i];rot.classList.remove('out')},300)},2400);
-// reveal + count up
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('in');
  if(t.dataset.n){var n=+t.dataset.n,s=t.dataset.s||'',st=performance.now();(function f(now){var p=Math.min((now-st)/1400,1);t.textContent=Math.round(n*(1-Math.pow(1-p,3)))+(p===1?s:'');if(p<1)requestAnimationFrame(f)})(st)}
- io.unobserve(t)})},{threshold:.25});
+ io.unobserve(t)})},{threshold:.2});
 d.querySelectorAll('.rv,[data-n]').forEach(function(el){io.observe(el)});
-// glass spotlight + tilt + cursor glow
-var glow=d.getElementById('glow'),fine=matchMedia('(hover:hover)').matches;
-d.querySelectorAll('.glass').forEach(function(el){el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;el.style.setProperty('--mx',x+'px');el.style.setProperty('--my',y+'px');
- if(fine&&!rm&&el.hasAttribute('data-tilt'))el.style.transform='perspective(800px) rotateX('+((y/r.height-.5)*-7)+'deg) rotateY('+((x/r.width-.5)*7)+'deg)'});
- el.addEventListener('pointerleave',function(){if(el.hasAttribute('data-tilt'))el.style.transform=''})});
-if(fine)addEventListener('pointermove',function(e){glow.style.opacity=1;glow.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)'});
-// lightbox
-var lb=d.getElementById('lb'),li=lb.querySelector('img');
+d.querySelectorAll('.card').forEach(function(el){el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+var pg=d.getElementById('prog'),tp=d.getElementById('top2');
+addEventListener('scroll',function(){var h=R.scrollHeight-innerHeight;pg.style.width=(h>0?scrollY/h*100:0)+'%';tp.classList.toggle('on',scrollY>700)},{passive:true});
+tp.onclick=function(){scrollTo({top:0,behavior:rm?'auto':'smooth'})};
+var li=lb.querySelector('img');
 d.querySelectorAll('.shot').forEach(function(b){b.onclick=function(){var im=b.querySelector('img');li.src=im.src;li.alt=im.alt;lb.classList.add('on')}});
 lb.onclick=function(){lb.classList.remove('on')};
-// form
-var f=d.getElementById('form'),st=d.getElementById('st');
-f.addEventListener('submit',function(e){e.preventDefault();st.textContent='Sending...';
- fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}}).then(function(r){if(!r.ok)throw 0;f.reset();st.textContent='Message sent. Lizzy will reply soon.'}).catch(function(){st.textContent='Could not send. Email lizzyfrank022@gmail.com instead.'})});
-})();
-</script>
-</body>
-</html>
-i>Available for new projects</div>
-  </div>
-  <h1>I build <span id="rot">engaged</span> Web3 communities.</h1>
-  <p class="lede">Community management, moderation, events and strategy for Web3 projects that want an active community, and partners who follow through.</p>
-  <div class="cta"><a class="btn" href="#contact">Work with me</a><a class="btn g glass" href="#work">See my work</a></div>
-  <div class="stats">
-    <div class="stat glass"><b data-n="300" data-s="+">0</b><span>collaborations coordinated</span></div>
-    <div class="stat glass"><b data-n="3">0</b><span>communities managed</span></div>
-    <div class="stat glass"><b data-n="3">0</b><span>platforms: X, Telegram, Discord</span></div>
-  </div>
-</section>
-
-<div class="tick" aria-hidden="true"><div>
-  <span>Community management</span><span>Moderation</span><span>Events and contests</span><span>Collab management</span><span>Content</span><span>Community strategy</span>
-  <span>Community management</span><span>Moderation</span><span>Events and contests</span><span>Collab management</span><span>Content</span><span>Community strategy</span>
-</div></div>
-
-<section id="services">
-  <h2>What I do for a project</h2>
-  <div class="grid">
-      <div class="tags"><em>Games</em><em>Activities</em></div>
-      <p>Built participation through games and activities, with clear instructions so members knew how to join in.</p>
-      <ul><li>Planned and ran community games</li><li>Announced and explained each activity</li><li>Kept engagement steady between events</li></ul>
-      <!-- TODO RESULTS: game turnout, member growth -->
-    </article>
-    <article class="card glass big rv" data-tilt><b data-n="300" data-s="+">0</b>
-      <div><h3>Web3 collaborations</h3><p class="role">Collab Manager, meme coin and NFT communities</p>
-      <p>Finding relevant projects, opening conversations, negotiating terms, coordinating promotions between teams, and following up until every task is done.</p></div>
-    </article>
-  </div>
-</section>
-
-<section id="proof">
-  <h2>Proof of work</h2>
-  <p class="muted">Real conversations, private details hidden. Tap to zoom.</p>
-  <div class="shots">
-    <button class="shot glass rv" type="button"><img loading="lazy" src="IMG-20260929-WA0048.jpg" alt="Discord moderation and member conversation"><span>Moderation in Discord</span></button>
-    <button class="shot glass rv" type="button"><img loading="lazy" src="IMG-20260929-WA0047.jpg" alt="Discord community management example"><span>Community communication in Discord</span></button>
-    <!-- TODO PROOF: add Story Night / Meme Battle posts, a contest winner reveal, content posts, blurred collab chats -->
-  </div>
-</section>
-
-<section id="feedback">
-  <h2>What people say</h2>
-  <div class="qs">
-    <div class="q glass"><p>Lizzy, you are doing great for our project.</p><cite>Team Lead</cite></div>
-    <div class="q glass"><p>I haven't had any particular issues with the way you've been managing things. I'm happy with how it's being run.</p><cite>Caopan Kingdom team</cite></div>
-    <div class="q glass"><p>You've done well in collab management and in moderation. TideWalkerz is pleased to have you with us.</p><cite>Tidewalkerz founder</cite></div>
-    <button class="shot glass q" type="button" style="padding:8px"><img loading="lazy" src="IMG-20260930-WA0000.jpg" alt="Client message: you doing great for our project"></button>
-    <button class="shot glass q" type="button" style="padding:8px"><img loading="lazy" src="IMG-20260930-WA0001.jpg" alt="Client message: good work today"></button>
-  </div>
-</section>
-
-<section id="contact">
-      <!-- TODO: real Cal.com / Calendly link -->
-      <a class="btn g glass" href="https://cal.com/YOUR-LINK" target="_blank" rel="noopener noreferrer">Book a 30 minute call</a>
-    </div>
-    <!-- TODO: replace YOUR_FORM_ID with the Formspree form ID -->
-    <form class="panel glass" id="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <label>Your name<input name="name" required autocomplete="name"></label>
-      <label>Your email<input name="email" type="email" required autocomplete="email"></label>
-      <label>Project or platform<input name="project" placeholder="Project name, X or Telegram link"></label>
-      <label>What do you need?<textarea name="message" required></textarea></label>
-      <button class="btn" type="submit">Send message</button>
-      <p id="st" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
-
-</div></main>
-<footer>Lizzy, Web3 Community Manager. GMT+1. English (fluent), Japanese (basic).</footer>
-<div id="lb" role="dialog" aria-label="Enlarged screenshot"><img alt=""></div>
-
-<script>
-(function(){
-var d=document,R=d.documentElement,B=d.body,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-// theme
-var tb=d.getElementById('theme');
-function setT(t){R.setAttribute('data-theme',t);tb.setAttribute('aria-pressed',t==='dark')}
-var sv=null;try{sv=localStorage.getItem('theme')}catch(e){}setT(sv||'dark');
-tb.onclick=function(){var t=R.getAttribute('data-theme')==='dark'?'light':'dark';setT(t);try{localStorage.setItem('theme',t)}catch(e){}};
-// menu
-var mb=d.getElementById('mb');
-function menu(o){B.classList.toggle('open',o);B.classList.toggle('lock',o);mb.setAttribute('aria-expanded',o)}
-mb.onclick=function(){menu(!B.classList.contains('open'))};
-d.querySelectorAll('#menu a').forEach(function(a){a.onclick=function(){menu(false)}});
-d.addEventListener('keydown',function(e){if(e.key==='Escape'){menu(false);lb.classList.remove('on')}});
-// rotating word
-var rot=d.getElementById('rot'),w=['engaged','active','organized','loyal','thriving'],i=0;
-if(!rm)setInterval(function(){rot.classList.add('out');setTimeout(function(){i=(i+1)%w.length;rot.textContent=w[i];rot.classList.remove('out')},300)},2400);
-// reveal + count up
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('in');
- if(t.dataset.n){var n=+t.dataset.n,s=t.dataset.s||'',st=performance.now();(function f(now){var p=Math.min((now-st)/1400,1);t.textContent=Math.round(n*(1-Math.pow(1-p,3)))+(p===1?s:'');if(p<1)requestAnimationFrame(f)})(st)}
- io.unobserve(t)})},{threshold:.25});
-d.querySelectorAll('.rv,[data-n]').forEach(function(el){io.observe(el)});
-// glass spotlight + tilt + cursor glow
-var glow=d.getElementById('glow'),fine=matchMedia('(hover:hover)').matches;
-d.querySelectorAll('.glass').forEach(function(el){el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;el.style.setProperty('--mx',x+'px');el.style.setProperty('--my',y+'px');
- if(fine&&!rm&&el.hasAttribute('data-tilt'))el.style.transform='perspective(800px) rotateX('+((y/r.height-.5)*-7)+'deg) rotateY('+((x/r.width-.5)*7)+'deg)'});
- el.addEventListener('pointerleave',function(){if(el.hasAttribute('data-tilt'))el.style.transform=''})});
-if(fine)addEventListener('pointermove',function(e){glow.style.opacity=1;glow.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)'});
-// lightbox
-var lb=d.getElementById('lb'),li=lb.querySelector('img');
-d.querySelectorAll('.shot').forEach(function(b){b.onclick=function(){var im=b.querySelector('img');li.src=im.src;li.alt=im.alt;lb.classList.add('on')}});
-lb.onclick=function(){lb.classList.remove('on')};
-// form
 var f=d.getElementById('form'),st=d.getElementById('st');
 f.addEventListener('submit',function(e){e.preventDefault();st.textContent='Sending...';
  fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}}).then(function(r){if(!r.ok)throw 0;f.reset();st.textContent='Message sent. Lizzy will reply soon.'}).catch(function(){st.textContent='Could not send. Email lizzyfrank022@gmail.com instead.'})});
