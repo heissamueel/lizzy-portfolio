@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lizzy | Web3 Community Manager</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Glassmorphism Styles -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            glass: {
+              card: 'rgba(255, 255, 255, 0.03)',
+              border: 'rgba(236, 72, 153, 0.2)',
+              glow: 'rgba(168, 85, 247, 0.15)',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0c0712;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(236, 72, 153, 0.3);
+      box-shadow: 0 0 25px rgba(236, 72, 153, 0.15);
+    }
+    .glass-pill {
+      background: rgba(236, 72, 153, 0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(236, 72, 153, 0.25);
+    }
+  </style>
+</head>
+<body class="text-slate-100 font-sans relative overflow-x-hidden selection:bg-pink-500 selection:text-white">
+
+  <!-- Liquid Glass Background Ambient Glows -->
+  <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-700/25 rounded-full blur-[140px] pointer-events-none"></div>
+  <div class="fixed top-[35%] right-[-10%] w-[600px] h-[600px] bg-pink-600/20 rounded-full blur-[160px] pointer-events-none"></div>
+  <div class="fixed bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-indigo-700/20 rounded-full blur-[150px] pointer-events-none"></div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0c0712]/70 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="text-2xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-300">
+        LIZZY<span class="text-pink-500">.</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-pink-400 transition-colors">About</a>
+        <a href="#services" class="hover:text-pink-400 transition-colors">What I Do</a>
+        <a href="#experience" class="hover:text-pink-400 transition-colors">Experience</a>
+        <a href="#proof" class="hover:text-pink-400 transition-colors">Proof of Work</a>
+        <a href="#testimonials" class="hover:text-pink-400 transition-colors">Testimonials</a>
+      </nav>
+      <a href="#contact" class="px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white shadow-lg shadow-pink-500/25 transition-all transform hover:-translate-y-0.5">
+        Let’s Work Together
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-20 px-6 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Hero Text -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill">
+          <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span>
+          <span class="text-xs font-bold tracking-widest uppercase text-pink-300">Web3 Community Manager</span>
+        </div>
+
+        <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white">
+          Building Web3 <br>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-400">
+            Communities
+          </span> <br>
+          That Stay.
+        </h1>
+
+        <p className="text-lg text-slate-300 max-w-xl leading-relaxed">
+          I build and manage Web3 communities where people connect, participate, and have a reason to stay involved.
+        </p>
+
+        <p class="text-sm text-slate-400 max-w-lg leading-relaxed">
+          I work across community management, engagement, content, moderation, events, and community strategy, helping Web3 projects create organized and engaging community experiences.
+        </p>
+
+        <div class="pt-4 flex flex-wrap items-center gap-4">
+          <a href="#proof" class="px-8 py-3.5 rounded-full font-bold text-sm bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-xl shadow-pink-500/20 hover:shadow-pink-500/35 transition-all transform hover:-translate-y-0.5">
+            View My Work
+          </a>
+          <a href="#contact" class="px-8 py-3.5 rounded-full font-bold text-sm glass-card hover:bg-white/10 text-purple-200 transition-all">
+            Let’s Work Together
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Avatar / Banner Container -->
+      <div class="lg:col-span-5 relative flex justify-center">
+        <div class="relative w-full max-w-md aspect-square rounded-3xl p-1 bg-gradient-to-b from-pink-500/40 via-purple-500/20 to-transparent backdrop-blur-2xl shadow-2xl">
+          <div class="w-full h-full rounded-[22px] overflow-hidden bg-[#150a21]/80 relative group">
+            <!-- Uses avatar picture -->
+            <img src="./public/avatar.jpg" alt="Lizzy Avatar" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0712] via-transparent to-transparent opacity-80"></div>
+            
+            <!-- Floating Badge -->
+            <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-card flex items-center justify-between border border-white/20">
+              <div>
+                <div class="text-2xl font-black text-pink-300">300+</div>
+                <div class="text-xs text-slate-300 font-medium">Web3 Collabs</div>
+              </div>
+              <div class="h-8 w-[1px] bg-white/20"></div>
+              <div>
+                <div class="text-2xl font-black text-purple-300">GMT+1</div>
+                <div class="text-xs text-slate-300 font-medium">Time Zone</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Banner Showcase -->
+  <section class="py-6 px-6 max-w-6xl mx-auto">
+    <div class="rounded-3xl overflow-hidden glass-card p-2 border border-pink-500/20 shadow-2xl">
+      <img src="./public/banner.jpg" alt="Lizzy Web3 Banner" class="w-full h-auto rounded-2xl object-cover">
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section id="about" class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="p-8 sm:p-12 rounded-3xl glass-card relative overflow-hidden">
+      <div class="max-w-3xl space-y-6">
+        <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase">About Me</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold text-white leading-tight">
+          I’m Lizzy, a Web3 Community Manager focused on creating communities where people don’t just join, they participate.
+        </h3>
+        <p class="text-slate-300 leading-relaxed">
+          I manage community conversations, create engaging activities, coordinate events, develop community content, and help projects maintain a strong connection with their members.
+        </p>
+        <p class="text-slate-300 leading-relaxed">
+          I’ve worked across meme coin and NFT communities, gaining experience with different community environments and engagement styles.
+        </p>
+        <p class="text-slate-300 leading-relaxed">
+          Alongside community management, I’ve also worked as a Collab Manager, coordinating 300+ collaborations across Web3 projects and communities. Working across both roles has strengthened my communication, coordination, relationship-building, and community engagement skills.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What I Do -->
+  <section id="services" class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase">What I Do</h2>
+      <h3 class="text-4xl font-extrabold text-white">Full-Spectrum Community Growth</h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
+        <h4 class="text-xl font-bold text-pink-300 mb-3">Community Management</h4>
+        <p class="text-slate-300 text-sm leading-relaxed">I manage the day-to-day community experience, keeping communication organized while staying actively involved with members.</p>
+      </div>
+      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
+        <h4 class="text-xl font-bold text-pink-300 mb-3">Community Engagement</h4>
+        <p class="text-slate-300 text-sm leading-relaxed">I create conversations, activities, and interactive experiences that encourage members to participate and connect.</p>
+      </div>
+      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
+        <h4 class="text-xl font-bold text-pink-300 mb-3">Community Strategy</h4>
+        <p class="text-slate-300 text-sm leading-relaxed">I develop practical community initiatives based on the project’s goals, community culture, and stage.</p>
+      </div>
+      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
+        <h4 class="text-xl font-bold text-pink-300 mb-3">Content</h4>
+        <p class="text-slate-300 text-sm leading-relaxed">I create community-focused posts, announcements, discussions, contests, and interactive content.</p>
+      </div>
+      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
+        <h4 class="text-xl font-bold text-pink-300 mb-3">Events & Activities</h4>
+        <p class="text-slate-300 text-sm leading-relaxed">I plan and coordinate community events, games, contests, discussions, and other interactive experiences.</p>
+      </div>
+      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
+        <h4 class="text-xl font-bold text-pink-300 mb-3">Moderation</h4>
+        <p class="text-slate-300 text-sm leading-relaxed">I help maintain an organized community environment by managing conversations, responding to members, and addressing issues when they arise.</p>
+      </div>
+      <div class="p-8 rounded-2xl glass-card lg:col-span-3 transition-all duration-300 hover:-translate-y-1">
+        <h4 class="text-xl font-bold text-pink-300 mb-3">Platform Management</h4>
+        <p class="text-slate-300 text-sm leading-relaxed">I work across X, Telegram, Discord, and other community platforms to manage communication, activities, and engagement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Approach -->
+  <section class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="p-10 sm:p-14 rounded-3xl bg-gradient-to-b from-purple-900/30 via-pink-900/10 to-transparent border border-pink-500/20 backdrop-blur-2xl">
+      <div class="max-w-xl mb-12">
+        <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase mb-2">My Approach</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">How I Drive Results</h3>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div class="p-5 rounded-2xl glass-card space-y-2">
+          <span class="text-2xl font-black text-pink-400 font-mono">01.</span>
+          <h4 class="text-lg font-bold text-white">Understand</h4>
+          <p class="text-xs text-slate-300">I learn the project, its goals, community environment, and members.</p>
+        </div>
+        <div class="p-5 rounded-2xl glass-card space-y-2">
+          <span class="text-2xl font-black text-pink-400 font-mono">02.</span>
+          <h4 class="text-lg font-bold text-white">Listen</h4>
+          <p class="text-xs text-slate-300">I pay attention to conversations, feedback, and what members respond to.</p>
+        </div>
+        <div class="p-5 rounded-2xl glass-card space-y-2">
+          <span class="text-2xl font-black text-pink-400 font-mono">03.</span>
+          <h4 class="text-lg font-bold text-white">Create</h4>
+          <p class="text-xs text-slate-300">I turn those insights into relevant content, activities, and experiences.</p>
+        </div>
+        <div class="p-5 rounded-2xl glass-card space-y-2">
+          <span class="text-2xl font-black text-pink-400 font-mono">04.</span>
+          <h4 class="text-lg font-bold text-white">Engage</h4>
+          <p class="text-xs text-slate-300">I actively participate in conversations and create opportunities to interact.</p>
+        </div>
+        <div class="p-5 rounded-2xl glass-card space-y-2">
+          <span class="text-2xl font-black text-pink-400 font-mono">05.</span>
+          <h4 class="text-lg font-bold text-white">Build</h4>
+          <p class="text-xs text-slate-300">I focus on consistent experiences that encourage participation and connection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="py-20 px-6 max-w-6xl mx-auto space-y-12">
+    <div class="max-w-xl">
+      <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase mb-2">Experience</h2>
+      <h3 class="text-4xl font-extrabold text-white">Featured Work & Roles</h3>
+    </div>
+
+    <!-- CAOPAN KINGDOM -->
+    <div class="p-8 rounded-3xl glass-card space-y-6">
+      <div class="flex flex-wrap justify-between items-start gap-4">
+        <div>
+          <h4 class="text-2xl font-bold text-white">CAOPAN KINGDOM</h4>
+          <p class="text-pink-400 font-semibold text-sm">Community Manager</p>
+        </div>
+        <span class="px-3 py-1 rounded-full text-xs glass-pill text-pink-300">Telegram & X</span>
+      </div>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        Managed the community across Telegram and X, focusing on engagement, events, activities, communication, and the overall community experience.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/10">
+        <div>
+          <h5 class="text-xs font-bold text-slate-400 uppercase mb-3">Key Contributions</h5>
+          <ul class="space-y-1.5 text-xs text-slate-300 list-disc list-inside">
+            <li>Managed day-to-day community engagement</li>
+            <li>Planned and coordinated community events and activities</li>
+            <li>Developed community engagement initiatives</li>
+            <li>Created community content & event communications</li>
+            <li>Managed contests and interactive activities</li>
+            <li>Coordinated Story Night discussions</li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-slate-400 uppercase mb-3">Selected Highlights</h5>
+          <div class="space-y-2 text-xs text-slate-300">
+            <p><strong class="text-pink-300">Story Night:</strong> Planned and coordinated recurring community discussions around new story chapters.</p>
+            <p><strong class="text-pink-300">Meme Battle:</strong> Coordinated a multi-round meme game with community participation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIDEWALKERZ -->
+    <div class="p-8 rounded-3xl glass-card space-y-6">
+      <div class="flex flex-wrap justify-between items-start gap-4">
+        <div>
+          <h4 class="text-2xl font-bold text-white">TIDEWALKERZ</h4>
+          <p class="text-pink-400 font-semibold text-sm">Community Manager & Collab Manager</p>
+        </div>
+        <span class="px-3 py-1 rounded-full text-xs glass-pill text-pink-300">Community & Outreach</span>
+      </div>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        Worked across community management, moderation, engagement, and collaboration management while supporting communication between the project and other Web3 projects.
+      </p>
+    </div>
+
+    <!-- BOUNDLESS8DESIGNS -->
+    <div class="p-8 rounded-3xl glass-card space-y-4">
+      <h4 class="text-2xl font-bold text-white">BOUNDLESS8DESIGNS</h4>
+      <p class="text-pink-400 font-semibold text-sm">Community Manager</p>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        Managed community engagement with a focus on interactive activities, games, and creating opportunities for members to participate.
+      </p>
+    </div>
+
+    <!-- 300+ Web3 Collaborations -->
+    <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-purple-900/40 via-pink-900/30 to-purple-900/40 border border-pink-500/30 glass-card">
+      <h4 class="text-3xl font-extrabold text-white mb-3">300+ WEB3 COLLABORATIONS</h4>
+      <p class="text-slate-300 text-sm leading-relaxed mb-6">
+        Coordinated 300+ collaborations across Web3 projects and communities—handling outreach, partner finding, negotiations, team coordination, and promotional activities.
+      </p>
+    </div>
+  </section>
+
+  <!-- Proof of Work Section with Uploaded Screenshots -->
+  <section id="proof" class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase">Proof of Work</h2>
+      <h3 class="text-4xl font-extrabold text-white">Real Work & Verified Roles</h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Discord Profile 1 -->
+      <div class="p-4 rounded-3xl glass-card space-y-3">
+        <img src="./public/discord-profile-1.jpg" alt="Discord Role Proof 1" class="w-full h-auto rounded-2xl border border-white/10">
+        <div class="px-2">
+          <h4 class="font-bold text-white text-sm">Discord Community Roles</h4>
+          <p class="text-xs text-slate-400">Verified Realm Guardian & TideWalker roles on Discord.</p>
+        </div>
+      </div>
+
+      <!-- Discord Profile 2 -->
+      <div class="p-4 rounded-3xl glass-card space-y-3">
+        <img src="./public/discord-profile-2.jpg" alt="Discord Role Proof 2" class="w-full h-auto rounded-2xl border border-white/10">
+        <div class="px-2">
+          <h4 class="font-bold text-white text-sm">Collab Manager Badge</h4>
+          <p class="text-xs text-slate-400">Verified Collab Manager roles across Web3 communities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase">What People Say About Lizzy</h2>
+      <h3 class="text-4xl font-extrabold text-white">Client & Team Feedback</h3>
+    </div>
+
+    <!-- Chat Proof Images -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <div class="p-4 rounded-2xl glass-card">
+        <img src="./public/proof-chat-1.jpg" alt="Team Feedback Chat 1" class="w-full h-auto rounded-xl border border-white/10">
+      </div>
+      <div class="p-4 rounded-2xl glass-card">
+        <img src="./public/proof-chat-2.jpg" alt="Team Feedback Chat 2" class="w-full h-auto rounded-xl border border-white/10">
+      </div>
+    </div>
+
+    <!-- Quote Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-8 rounded-2xl glass-card flex flex-col justify-between space-y-4">
+        <p class="text-slate-300 italic text-sm">“Lizzy, you are doing great for our project.”</p>
+        <span class="font-bold text-pink-300 text-xs">— Team Lead</span>
+      </div>
+      <div class="p-8 rounded-2xl glass-card flex flex-col justify-between space-y-4">
+        <p class="text-slate-300 italic text-sm">“As for the community management, I think you’ve been handling it well. I haven’t had any particular issues... I’m happy with how it’s being run.”</p>
+        <span class="font-bold text-pink-300 text-xs">— CAOPAN Kingdom Team</span>
+      </div>
+      <div class="p-8 rounded-2xl glass-card flex flex-col justify-between space-y-4">
+        <p class="text-slate-300 italic text-sm">“I’m satisfied with your services. You’ve done well in Collab management and in moderation. TideWalkerz is pleased to have you with us.”</p>
+        <span class="font-bold text-pink-300 text-xs">— TideWalkerz Founder</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Details & Contact Section -->
+  <section id="contact" class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="p-10 sm:p-14 rounded-3xl bg-gradient-to-b from-purple-900/30 to-pink-900/20 border border-pink-500/30 glass-card">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Socials & Links -->
+        <div class="lg:col-span-6 space-y-6">
+          <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase">Let's Work Together</h2>
+          <h3 class="text-4xl font-extrabold text-white">Ready to grow your community?</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Building a Web3 project and need someone to manage your community, create engaging experiences, coordinate communication, and keep things moving? Let’s talk!
+          </p>
+
+          <!-- Social Buttons with Real Links -->
+          <div class="pt-4 space-y-3">
+            <a href="https://x.com/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-xl glass-card hover:border-pink-500/50 transition-all text-white text-sm">
+              <span>X (Twitter): <strong class="text-pink-300">@Lizzy_onchain</strong></span>
+              <span class="text-xs font-bold text-pink-400">Connect ↗</span>
+            </a>
+            <a href="https://t.me/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-xl glass-card hover:border-pink-500/50 transition-all text-white text-sm">
+              <span>Telegram: <strong class="text-purple-300">@Lizzy_onchain</strong></span>
+              <span class="text-xs font-bold text-purple-400">Message ↗</span>
+            </a>
+            <a href="https://discord.com/users/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-xl glass-card hover:border-pink-500/50 transition-all text-white text-sm">
+              <span>Discord: <strong class="text-indigo-300">@Lizzy_onchain</strong></span>
+              <span class="text-xs font-bold text-indigo-400">Add Friend ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Details Box -->
+        <div class="lg:col-span-6 p-8 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl space-y-6">
+          <h4 class="text-xl font-bold text-white">Details</h4>
+          
+          <div>
+            <span class="text-xs font-semibold text-slate-400 uppercase block">Time Zone</span>
+            <span class="text-sm font-bold text-pink-300">GMT+1</span>
+          </div>
+
+          <div>
+            <span class="text-xs font-semibold text-slate-400 uppercase block">Languages</span>
+            <span class="text-sm text-slate-200">English (Fluent) • Japanese (Basic)</span>
+          </div>
+
+          <div>
+            <span class="text-xs font-semibold text-slate-400 uppercase block">Platforms</span>
+            <span class="text-sm text-slate-200">X, Telegram, Discord, and other Web3 community platforms</span>
+          </div>
+
+          <a href="https://t.me/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-4 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold text-sm shadow-xl shadow-pink-500/20 transition-all">
+            Let’s Work Together 😊
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-8 px-6 text-center text-xs text-slate-500">
+    <p>© 2026 LIZZY • Web3 Community Manager</p>
+  </footer>
+
+</body>
+</html>
