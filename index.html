@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lizzy | Web3 Community Manager & Collab Lead</title>
   <style>
-    /* Base Color Variables */
     :root {
       --bg-color: #0d0a14;
       --text-color: #ffffff;
@@ -13,7 +12,8 @@
       --card-border: rgba(224, 82, 160, 0.2);
       --accent-color: #e052a0;
       --subtext-color: #a090b8;
-      --nav-bg: rgba(13, 10, 20, 0.85);
+      --nav-bg: rgba(13, 10, 20, 0.9);
+      --toggle-color: #ffd700;
     }
 
     [data-theme="light"] {
@@ -23,7 +23,8 @@
       --card-border: rgba(209, 46, 132, 0.15);
       --accent-color: #d12e84;
       --subtext-color: #635775;
-      --nav-bg: rgba(248, 246, 252, 0.85);
+      --nav-bg: rgba(248, 246, 252, 0.9);
+      --toggle-color: #ff9800;
     }
 
     * {
@@ -35,12 +36,12 @@
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      transition: background-color 0.4s ease, color 0.4s ease;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
       overflow-x: hidden;
     }
 
-    /* Top Navigation Header */
+    /* Navbar */
     .navbar {
       position: fixed;
       top: 0;
@@ -49,60 +50,38 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 24px;
+      padding: 16px 20px;
       background: var(--nav-bg);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 100;
+      z-index: 1000;
     }
 
     .nav-logo {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--text-color);
       text-decoration: none;
       font-style: italic;
     }
 
-    /* Sun/Moon Toggle Button (Top Left) */
     #theme-toggle {
       background: transparent;
       border: none;
       cursor: pointer;
-      font-size: 1.4rem;
-      width: 40px;
-      height: 40px;
+      font-size: 1.5rem;
+      color: var(--toggle-color);
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 5px;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
     }
 
-    .sun-moon-icon {
-      position: relative;
-      width: 30px;
-      height: 30px;
-      transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    #theme-toggle:hover {
+      transform: scale(1.15);
     }
 
-    .sun-moon-icon .sun, 
-    .sun-moon-icon .moon {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .sun-moon-icon .sun { opacity: 1; }
-    .sun-moon-icon .moon { opacity: 0; }
-
-    [data-theme="light"] .sun-moon-icon {
-      transform: rotate(360deg);
-    }
-
-    [data-theme="light"] .sun-moon-icon .sun { opacity: 0; }
-    [data-theme="light"] .sun-moon-icon .moon { opacity: 1; }
-
-    /* Hamburger Menu Button (Top Right) */
     #menu-toggle {
       background: none;
       border: none;
@@ -110,27 +89,29 @@
       display: flex;
       flex-direction: column;
       gap: 5px;
-      z-index: 101;
+      z-index: 1001;
+      padding: 5px;
     }
 
     .bar {
-      width: 26px;
-      height: 2px;
+      width: 25px;
+      height: 2.5px;
       background-color: var(--text-color);
       transition: all 0.3s ease;
+      border-radius: 2px;
     }
 
     #menu-toggle.is-active .bar:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
+      transform: translateY(7.5px) rotate(45deg);
     }
     #menu-toggle.is-active .bar:nth-child(2) {
       opacity: 0;
     }
     #menu-toggle.is-active .bar:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
+      transform: translateY(-7.5px) rotate(-45deg);
     }
 
-    /* Fullscreen Overlay Menu */
+    /* Mobile Overlay Menu */
     .overlay-menu {
       position: fixed;
       top: 0;
@@ -143,8 +124,8 @@
       align-items: center;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-      z-index: 99;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 999;
     }
 
     .overlay-menu.is-active {
@@ -156,73 +137,89 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 28px;
+      gap: 25px;
     }
 
     .menu-item {
       color: var(--text-color);
       text-decoration: none;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    .menu-item:hover {
-      color: var(--accent-color);
     }
 
     .btn-work {
-      margin-top: 15px;
+      margin-top: 10px;
       background-color: var(--accent-color);
       color: #ffffff;
-      padding: 14px 32px;
+      padding: 12px 28px;
       border-radius: 30px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 15px rgba(224, 82, 160, 0.4);
     }
 
-    /* Main Container & Grid */
+    /* Container & Hero Section */
     .container {
-      max-width: 1000px;
-      margin: 100px auto 40px;
+      max-width: 900px;
+      margin: 90px auto 40px;
       padding: 0 20px;
     }
 
-    .section-title {
+    .hero-section {
       text-align: center;
+      padding: 20px 0 40px;
+    }
+
+    .hero-avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-color);
+      box-shadow: 0 0 20px rgba(224, 82, 160, 0.3);
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    .hero-title {
       font-size: 2.2rem;
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      color: var(--subtext-color);
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+    }
+
+    /* Section Titles */
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 40px 0 10px;
     }
 
     .section-subtitle {
       text-align: center;
       color: var(--subtext-color);
-      margin-bottom: 40px;
-      font-size: 1rem;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
     }
 
-    /* Proof & Reviews Section */
+    /* Proof Cards Grid */
     .proof-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-bottom: 60px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
     }
 
     .proof-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
-
-    .proof-card:hover {
-      transform: translateY(-5px);
     }
 
     .proof-card img {
@@ -232,20 +229,18 @@
     }
 
     .card-caption {
-      padding: 15px;
-      font-size: 0.9rem;
+      padding: 12px;
+      font-size: 0.85rem;
       color: var(--subtext-color);
       text-align: center;
     }
 
-    /* Blurred Banner Footer */
+    /* Footer Banner */
     .footer-banner {
       position: relative;
       width: 100%;
-      padding: 90px 20px 40px;
+      padding: 60px 20px 30px;
       text-align: center;
-      overflow: hidden;
-      color: #ffffff;
       background-image: url('IMG-20260929-WA0045.jpg');
       background-size: cover;
       background-position: center;
@@ -257,57 +252,52 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(13, 10, 20, 0.8);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(13, 10, 20, 0.85);
+      backdrop-filter: blur(10px);
       z-index: 1;
     }
 
     .footer-content {
       position: relative;
       z-index: 2;
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
+      color: #ffffff;
     }
 
-    .footer-avatar img {
-      width: 110px;
-      height: 110px;
+    .footer-avatar {
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--accent-color);
-      box-shadow: 0 0 20px rgba(224, 82, 160, 0.4);
-      margin-bottom: 20px;
+      border: 2px solid var(--accent-color);
+      margin-bottom: 15px;
     }
 
     .footer-quote {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       font-style: italic;
-      line-height: 1.6;
-      margin-bottom: 25px;
-      color: #f0e6ff;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
     .footer-quote span {
       color: var(--accent-color);
       font-weight: bold;
-      font-style: normal;
     }
 
     .footer-meta {
-      font-size: 0.8rem;
-      letter-spacing: 2px;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
       color: var(--subtext-color);
-      margin-bottom: 15px;
-      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
     .footer-credit {
       font-size: 0.75rem;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       color: var(--accent-color);
       font-weight: bold;
-      text-transform: uppercase;
     }
   </style>
 </head>
@@ -315,104 +305,96 @@
 
   <!-- Top Navigation Header -->
   <header class="navbar">
-    <!-- Animated Theme Toggle (Top Left) -->
-    <button id="theme-toggle" aria-label="Toggle Light/Dark Theme">
-      <div class="sun-moon-icon">
-        <span class="sun">☀</span>
-        <span class="moon">🌙</span>
-      </div>
+    <button id="theme-toggle" aria-label="Toggle Theme">
+      <span id="theme-icon">🌙</span>
     </button>
 
     <a href="#" class="nav-logo">Lizzy.</a>
 
-    <!-- Hamburger Menu (Top Right) -->
-    <button id="menu-toggle" aria-label="Toggle Navigation Menu">
+    <button id="menu-toggle" aria-label="Toggle Menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
   </header>
 
-  <!-- Fullscreen Mobile Navigation Overlay -->
+  <!-- Navigation Overlay -->
   <div id="mobile-menu" class="overlay-menu">
     <nav class="menu-links">
       <a href="#services" class="menu-item">Services</a>
       <a href="#work" class="menu-item">Work</a>
       <a href="#why-me" class="menu-item">Why Me</a>
-      <a href="#proof" class="menu-item">Praise</a>
+      <a href="#proof" class="menu-item">Proof</a>
       <a href="#contact" class="btn-work">Work With Me</a>
     </nav>
   </div>
 
-  <!-- Proof & Reviews Section -->
-  <main class="container" id="proof">
-    <h2 class="section-title">Proof & Reviews</h2>
-    <p class="section-subtitle">Verified Discord Roles & Real Project Client Feedback</p>
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Hero / Profile Section -->
+    <section class="hero-section">
+      <img src="IMG-20260929-WA0046.jpg" alt="Lizzy Avatar" class="hero-avatar">
+      <h1 class="hero-title">Lizzy Frank</h1>
+      <p class="hero-subtitle">Web3 Community Manager &amp; Collab Lead</p>
+    </section>
 
-    <div class="proof-grid">
-      <!-- Image 1: Discord Tag Proof 1 -->
-      <div class="proof-card">
-        <img src="IMG-20260929-WA0048.jpg" alt="Lizzy Frank Discord Verification Profile 1">
-        <div class="card-caption">Verified Profile &amp; Role Proof (Collab Manager)</div>
-      </div>
+    <!-- Proof & Reviews Section -->
+    <section id="proof">
+      <h2 class="section-title">Proof &amp; Reviews</h2>
+      <p class="section-subtitle">Verified Discord Roles &amp; Client Feedback</p>
 
-      <!-- Image 2: Discord Tag Proof 2 -->
-      <div class="proof-card">
-        <img src="IMG-20260929-WA0047.jpg" alt="Lizzy Discord Verification Profile 2">
-        <div class="card-caption">Verified Profile &amp; Role Proof (Realm Guardian)</div>
-      </div>
+      <div class="proof-grid">
+        <div class="proof-card">
+          <img src="IMG-20260929-WA0048.jpg" alt="Discord Role Proof 1">
+          <div class="card-caption">Verified Profile &amp; Role Proof</div>
+        </div>
 
-      <!-- Image 3: Client Feedback Review 1 -->
-      <div class="proof-card">
-        <img src="IMG-20260930-WA0000.jpg" alt="Client Review Chat Feedback 1">
-        <div class="card-caption">Client Review: "Doing great for our project 🙏"</div>
-      </div>
+        <div class="proof-card">
+          <img src="IMG-20260929-WA0047.jpg" alt="Discord Role Proof 2">
+          <div class="card-caption">Verified Profile &amp; Role Proof</div>
+        </div>
 
-      <!-- Image 4: Client Feedback Review 2 -->
-      <div class="proof-card">
-        <img src="IMG-20260930-WA0001.jpg" alt="Client Review Chat Feedback 2">
-        <div class="card-caption">Client Review: "Good work today. Glad everything went well."</div>
+        <div class="proof-card">
+          <img src="IMG-20260930-WA0000.jpg" alt="Client Feedback 1">
+          <div class="card-caption">Client Review: "Doing great for our project"</div>
+        </div>
+
+        <div class="proof-card">
+          <img src="IMG-20260930-WA0001.jpg" alt="Client Feedback 2">
+          <div class="card-caption">Client Review: "Good work today"</div>
+        </div>
       </div>
-    </div>
+    </section>
+
   </main>
 
-  <!-- Blurred Background Footer -->
+  <!-- Footer Banner -->
   <footer class="footer-banner">
     <div class="footer-overlay"></div>
     <div class="footer-content">
-      <div class="footer-avatar">
-        <img src="IMG-20260929-WA0046.jpg" alt="Lizzy Avatar">
-      </div>
-      
+      <img src="IMG-20260929-WA0046.jpg" alt="Lizzy Avatar" class="footer-avatar">
       <p class="footer-quote">
         "If you need a community that actually drives users, traction, and revenue, <br>
         <span>I'm the one who builds it.</span>"
       </p>
-
-      <div class="footer-meta">
-        © 2026 • LIZZY • COMMUNITY LEAD &amp; MANAGER
-      </div>
-      
-      <div class="footer-credit">
-        BUILT BY HEISSAMUEEL
-      </div>
+      <div class="footer-meta">© 2026 • LIZZY • COMMUNITY LEAD &amp; MANAGER</div>
+      <div class="footer-credit">BUILT BY HEISSAMUEEL</div>
     </div>
   </footer>
 
-  <!-- Interactivity Script -->
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
     const menuItems = document.querySelectorAll('.menu-item, .btn-work');
 
-    // Menu Toggle Logic
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('is-active');
       mobileMenu.classList.toggle('is-active');
     });
 
-    // Close Menu on Link Click
     menuItems.forEach(item => {
       item.addEventListener('click', () => {
         menuToggle.classList.remove('is-active');
@@ -420,305 +402,16 @@
       });
     });
 
-    // Light/Dark Theme Switcher Logic
     themeToggle.addEventListener('click', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       if (currentTheme === 'light') {
         document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '🌙';
       } else {
         document.documentElement.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '☀️';
       }
     });
   </script>
-</body>
-</html>
-ter-credit">
-        BUILT BY HEISSAMUEEL
-      </div>
-    </div>
-  </footer>
-
-  <!-- Interactivity Script -->
-  <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const themeToggle = document.getElementById('theme-toggle');
-    const menuItems = document.querySelectorAll('.menu-item, .btn-work');
-
-    // Menu Toggle Action
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('is-active');
-      mobileMenu.classList.toggle('is-active');
-    });
-
-    // Close Menu on Link Click
-    menuItems.forEach(item => {
-      item.addEventListener('click', () => {
-        menuToggle.classList.remove('is-active');
-        mobileMenu.classList.remove('is-active');
-      });
-    });
-
-    // Dark/Light Mode Switcher Action
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      if (currentTheme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-      }
-    });
-  </script>
-</body>
-</html>
-class="text-xl font-bold text-pink-300 mb-3">Events & Activities</h4>
-        <p class="text-slate-300 text-sm leading-relaxed">I plan and coordinate community events, games, contests, discussions, and other interactive experiences.</p>
-      </div>
-      <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1">
-        <h4 class="text-xl font-bold text-pink-300 mb-3">Moderation</h4>
-        <p class="text-slate-300 text-sm leading-relaxed">I help maintain an organized community environment by managing conversations, responding to members, and addressing issues when they arise.</p>
-      </div>
-      <div class="p-8 rounded-2xl glass-card lg:col-span-3 transition-all duration-300 hover:-translate-y-1">
-        <h4 class="text-xl font-bold text-pink-300 mb-3">Platform Management</h4>
-        <p class="text-slate-300 text-sm leading-relaxed">I work across X, Telegram, Discord, and other community platforms to manage communication, activities, and engagement.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- My Approach -->
-  <section class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="p-10 sm:p-14 rounded-3xl bg-gradient-to-b from-purple-900/30 via-pink-900/10 to-transparent border border-pink-500/20 backdrop-blur-2xl">
-      <div class="max-w-xl mb-12">
-        <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase mb-2">My Approach</h2>
-        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">How I Drive Results</h3>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-        <div class="p-5 rounded-2xl glass-card space-y-2">
-          <span class="text-2xl font-black text-pink-400 font-mono">01.</span>
-          <h4 class="text-lg font-bold text-white">Understand</h4>
-          <p class="text-xs text-slate-300">I learn the project, its goals, community environment, and members.</p>
-        </div>
-        <div class="p-5 rounded-2xl glass-card space-y-2">
-          <span class="text-2xl font-black text-pink-400 font-mono">02.</span>
-          <h4 class="text-lg font-bold text-white">Listen</h4>
-          <p class="text-xs text-slate-300">I pay attention to conversations, feedback, and what members respond to.</p>
-        </div>
-        <div class="p-5 rounded-2xl glass-card space-y-2">
-          <span class="text-2xl font-black text-pink-400 font-mono">03.</span>
-          <h4 class="text-lg font-bold text-white">Create</h4>
-          <p class="text-xs text-slate-300">I turn those insights into relevant content, activities, and experiences.</p>
-        </div>
-        <div class="p-5 rounded-2xl glass-card space-y-2">
-          <span class="text-2xl font-black text-pink-400 font-mono">04.</span>
-          <h4 class="text-lg font-bold text-white">Engage</h4>
-          <p class="text-xs text-slate-300">I actively participate in conversations and create opportunities to interact.</p>
-        </div>
-        <div class="p-5 rounded-2xl glass-card space-y-2">
-          <span class="text-2xl font-black text-pink-400 font-mono">05.</span>
-          <h4 class="text-lg font-bold text-white">Build</h4>
-          <p class="text-xs text-slate-300">I focus on consistent experiences that encourage participation and connection.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience" class="py-20 px-6 max-w-6xl mx-auto space-y-12">
-    <div class="max-w-xl">
-      <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase mb-2">Experience</h2>
-      <h3 class="text-4xl font-extrabold text-white">Featured Work & Roles</h3>
-    </div>
-
-    <!-- CAOPAN KINGDOM -->
-    <div class="p-8 rounded-3xl glass-card space-y-6">
-      <div class="flex flex-wrap justify-between items-start gap-4">
-        <div>
-          <h4 class="text-2xl font-bold text-white">CAOPAN KINGDOM</h4>
-          <p class="text-pink-400 font-semibold text-sm">Community Manager</p>
-        </div>
-        <span class="px-3 py-1 rounded-full text-xs glass-pill text-pink-300">Telegram & X</span>
-      </div>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        Managed the community across Telegram and X, focusing on engagement, events, activities, communication, and the overall community experience.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/10">
-        <div>
-          <h5 class="text-xs font-bold text-slate-400 uppercase mb-3">Key Contributions</h5>
-          <ul class="space-y-1.5 text-xs text-slate-300 list-disc list-inside">
-            <li>Managed day-to-day community engagement</li>
-            <li>Planned and coordinated community events and activities</li>
-            <li>Developed community engagement initiatives</li>
-            <li>Created community content & event communications</li>
-            <li>Managed contests and interactive activities</li>
-            <li>Coordinated Story Night discussions</li>
-          </ul>
-        </div>
-        <div>
-          <h5 class="text-xs font-bold text-slate-400 uppercase mb-3">Selected Highlights</h5>
-          <div class="space-y-2 text-xs text-slate-300">
-            <p><strong class="text-pink-300">Story Night:</strong> Planned and coordinated recurring community discussions around new story chapters.</p>
-            <p><strong class="text-pink-300">Meme Battle:</strong> Coordinated a multi-round meme game with community participation.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TIDEWALKERZ -->
-    <div class="p-8 rounded-3xl glass-card space-y-6">
-      <div class="flex flex-wrap justify-between items-start gap-4">
-        <div>
-          <h4 class="text-2xl font-bold text-white">TIDEWALKERZ</h4>
-          <p class="text-pink-400 font-semibold text-sm">Community Manager & Collab Manager</p>
-        </div>
-        <span class="px-3 py-1 rounded-full text-xs glass-pill text-pink-300">Community & Outreach</span>
-      </div>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        Worked across community management, moderation, engagement, and collaboration management while supporting communication between the project and other Web3 projects.
-      </p>
-    </div>
-
-    <!-- BOUNDLESS8DESIGNS -->
-    <div class="p-8 rounded-3xl glass-card space-y-4">
-      <h4 class="text-2xl font-bold text-white">BOUNDLESS8DESIGNS</h4>
-      <p class="text-pink-400 font-semibold text-sm">Community Manager</p>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        Managed community engagement with a focus on interactive activities, games, and creating opportunities for members to participate.
-      </p>
-    </div>
-
-    <!-- 300+ Web3 Collaborations -->
-    <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-purple-900/40 via-pink-900/30 to-purple-900/40 border border-pink-500/30 glass-card">
-      <h4 class="text-3xl font-extrabold text-white mb-3">300+ WEB3 COLLABORATIONS</h4>
-      <p class="text-slate-300 text-sm leading-relaxed mb-6">
-        Coordinated 300+ collaborations across Web3 projects and communities—handling outreach, partner finding, negotiations, team coordination, and promotional activities.
-      </p>
-    </div>
-  </section>
-
-  <!-- Proof of Work Section with Uploaded Screenshots -->
-  <section id="proof" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-      <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase">Proof of Work</h2>
-      <h3 class="text-4xl font-extrabold text-white">Real Work & Verified Roles</h3>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Discord Profile 1 -->
-      <div class="p-4 rounded-3xl glass-card space-y-3">
-        <img src="./public/discord-profile-1.jpg" alt="Discord Role Proof 1" class="w-full h-auto rounded-2xl border border-white/10">
-        <div class="px-2">
-          <h4 class="font-bold text-white text-sm">Discord Community Roles</h4>
-          <p class="text-xs text-slate-400">Verified Realm Guardian & TideWalker roles on Discord.</p>
-        </div>
-      </div>
-
-      <!-- Discord Profile 2 -->
-      <div class="p-4 rounded-3xl glass-card space-y-3">
-        <img src="./public/discord-profile-2.jpg" alt="Discord Role Proof 2" class="w-full h-auto rounded-2xl border border-white/10">
-        <div class="px-2">
-          <h4 class="font-bold text-white text-sm">Collab Manager Badge</h4>
-          <p class="text-xs text-slate-400">Verified Collab Manager roles across Web3 communities.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-      <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase">What People Say About Lizzy</h2>
-      <h3 class="text-4xl font-extrabold text-white">Client & Team Feedback</h3>
-    </div>
-
-    <!-- Chat Proof Images -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-      <div class="p-4 rounded-2xl glass-card">
-        <img src="./public/proof-chat-1.jpg" alt="Team Feedback Chat 1" class="w-full h-auto rounded-xl border border-white/10">
-      </div>
-      <div class="p-4 rounded-2xl glass-card">
-        <img src="./public/proof-chat-2.jpg" alt="Team Feedback Chat 2" class="w-full h-auto rounded-xl border border-white/10">
-      </div>
-    </div>
-
-    <!-- Quote Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-8 rounded-2xl glass-card flex flex-col justify-between space-y-4">
-        <p class="text-slate-300 italic text-sm">“Lizzy, you are doing great for our project.”</p>
-        <span class="font-bold text-pink-300 text-xs">— Team Lead</span>
-      </div>
-      <div class="p-8 rounded-2xl glass-card flex flex-col justify-between space-y-4">
-        <p class="text-slate-300 italic text-sm">“As for the community management, I think you’ve been handling it well. I haven’t had any particular issues... I’m happy with how it’s being run.”</p>
-        <span class="font-bold text-pink-300 text-xs">— CAOPAN Kingdom Team</span>
-      </div>
-      <div class="p-8 rounded-2xl glass-card flex flex-col justify-between space-y-4">
-        <p class="text-slate-300 italic text-sm">“I’m satisfied with your services. You’ve done well in Collab management and in moderation. TideWalkerz is pleased to have you with us.”</p>
-        <span class="font-bold text-pink-300 text-xs">— TideWalkerz Founder</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Details & Contact Section -->
-  <section id="contact" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="p-10 sm:p-14 rounded-3xl bg-gradient-to-b from-purple-900/30 to-pink-900/20 border border-pink-500/30 glass-card">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
-        <!-- Socials & Links -->
-        <div class="lg:col-span-6 space-y-6">
-          <h2 class="text-xs font-bold tracking-widest text-pink-400 uppercase">Let's Work Together</h2>
-          <h3 class="text-4xl font-extrabold text-white">Ready to grow your community?</h3>
-          <p class="text-slate-300 text-sm leading-relaxed">
-            Building a Web3 project and need someone to manage your community, create engaging experiences, coordinate communication, and keep things moving? Let’s talk!
-          </p>
-
-          <!-- Social Buttons with Real Links -->
-          <div class="pt-4 space-y-3">
-            <a href="https://x.com/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-xl glass-card hover:border-pink-500/50 transition-all text-white text-sm">
-              <span>X (Twitter): <strong class="text-pink-300">@Lizzy_onchain</strong></span>
-              <span class="text-xs font-bold text-pink-400">Connect ↗</span>
-            </a>
-            <a href="https://t.me/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-xl glass-card hover:border-pink-500/50 transition-all text-white text-sm">
-              <span>Telegram: <strong class="text-purple-300">@Lizzy_onchain</strong></span>
-              <span class="text-xs font-bold text-purple-400">Message ↗</span>
-            </a>
-            <a href="https://discord.com/users/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-4 rounded-xl glass-card hover:border-pink-500/50 transition-all text-white text-sm">
-              <span>Discord: <strong class="text-indigo-300">@Lizzy_onchain</strong></span>
-              <span class="text-xs font-bold text-indigo-400">Add Friend ↗</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Details Box -->
-        <div class="lg:col-span-6 p-8 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl space-y-6">
-          <h4 class="text-xl font-bold text-white">Details</h4>
-          
-          <div>
-            <span class="text-xs font-semibold text-slate-400 uppercase block">Time Zone</span>
-            <span class="text-sm font-bold text-pink-300">GMT+1</span>
-          </div>
-
-          <div>
-            <span class="text-xs font-semibold text-slate-400 uppercase block">Languages</span>
-            <span class="text-sm text-slate-200">English (Fluent) • Japanese (Basic)</span>
-          </div>
-
-          <div>
-            <span class="text-xs font-semibold text-slate-400 uppercase block">Platforms</span>
-            <span class="text-sm text-slate-200">X, Telegram, Discord, and other Web3 community platforms</span>
-          </div>
-
-          <a href="https://t.me/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-4 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold text-sm shadow-xl shadow-pink-500/20 transition-all">
-            Let’s Work Together 😊
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-white/10 py-8 px-6 text-center text-xs text-slate-500">
-    <p>© 2026 LIZZY • Web3 Community Manager</p>
-  </footer>
-
 </body>
 </html>
