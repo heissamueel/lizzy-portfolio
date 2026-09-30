@@ -1,578 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lizzy | Web3 Community Manager</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        
-        .dark {
-            background-color: #0b0712;
-            color: #f3f4f6;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lizzy | Web3 Community Manager</title>
+<meta name="description" content="Lizzy builds and manages Web3 communities. Community management, moderation, events, and 300+ collaborations across X, Telegram and Discord.">
+<meta property="og:title" content="Lizzy | Web3 Community Manager">
+<meta property="og:description" content="Community management, moderation, events and 300+ Web3 collaborations.">
+<meta property="og:image" content="https://lizzy-portfolio-five.vercel.app/IMG-20260929-WA0045.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f0718;--text:#f6efff;--muted:#c3b3da;--ga:rgba(255,255,255,.17);--gb:rgba(255,255,255,.04);--gl:rgba(255,255,255,.26);--sh:rgba(0,0,0,.35);--acc:#c9a7ff;--hot:#ff4d94;--b1:#ff3d8b;--b2:#7c4dff;--b3:#b388ff;--ov:rgba(15,7,24,.38)}
+[data-theme=light]{--bg:#fdf3ff;--text:#2a1340;--muted:#62497c;--ga:rgba(255,255,255,.75);--gb:rgba(255,255,255,.35);--gl:rgba(255,255,255,.95);--sh:rgba(120,60,180,.22);--acc:#7a3fd1;--hot:#d81b73;--b1:#ff9ac8;--b2:#b9a0ff;--b3:#ffd1e8;--ov:rgba(253,243,255,.4)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Figtree,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .5s,color .5s}
+body.lock{overflow:hidden}
+img{max-width:100%;display:block}a{color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;line-height:1.1}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:26px}
+.muted{color:var(--muted)}
+/* living background */
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden}
+.bg i{position:absolute;width:55vmax;height:55vmax;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
+.bg i:nth-child(1){background:var(--b1);top:-15%;left:-15%}
+.bg i:nth-child(2){background:var(--b2);bottom:-20%;right:-15%;animation-delay:-8s}
+.bg i:nth-child(3){background:var(--b3);top:35%;left:35%;width:35vmax;height:35vmax;animation-delay:-14s}
+@keyframes drift{to{transform:translate(12vw,9vh) scale(1.15)}}
+.ib{width:42px;height:42px;border-radius:50%;border:0;color:var(--text);cursor:pointer;display:grid;place-items:center;font:inherit}
+.ib:active{transform:scale(.9)}
+.sm{width:24px;height:24px;transition:transform .7s cubic-bezier(.5,1.6,.4,1)}
+.sm .cut{transition:transform .6s cubic-bezier(.5,1.4,.4,1)}
+.sm .rays{transform-origin:12px 12px;transition:transform .6s,opacity .4s}
+[data-theme=dark] .sm{transform:rotate(-40deg)}
+[data-theme=dark] .sm .cut{transform:translate(-8px,7px)}
+[data-theme=dark] .sm .rays{transform:scale(.2);opacity:0}
+.burger{width:20px;height:14px;position:relative}
+.burger::before,.burger::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;border-radius:2px;transition:transform .4s,top .4s}
+.burger::before{top:2px}.burger::after{top:10px}
+.open .burger::before{top:6px;transform:rotate(45deg)}.open .burger::after{top:6px;transform:rotate(-45deg)}
+/* menu overlay: page stays visible, blurred */
+#menu{position:fixed;inset:0;z-index:20;background:var(--ov);-webkit-backdrop-filter:blur(26px) saturate(1.5);backdrop-filter:blur(26px) saturate(1.5);display:grid;place-content:center;gap:6px;text-align:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.open #menu{opacity:1;visibility:visible}
+#menu a{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(2rem,8vw,3.2rem);text-decoration:none;padding:4px 0;transform:translateY(24px);opacity:0;transition:transform .5s,opacity .5s,color .2s}
+#menu a:hover{color:var(--hot)}
+.open #menu a{transform:none;opacity:1}
+.open #menu a:nth-child(2){transition-delay:.05s}.open #menu a:nth-child(3){transition-delay:.1s}.open #menu a:nth-child(4){transition-delay:.15s}.open #menu a:nth-child(5){transition-delay:.2s}.open #menu a:nth-child(6){transition-delay:.25s}
+/* hero */
+.hero{padding-top:100px}
+.banner{border-radius:28px;padding:8px}
+.banner img{border-radius:21px;width:100%;aspect-ratio:3/1;object-fit:cover}
+.badge{position:absolute;left:22px;bottom:22px;display:flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border-radius:999px;font-size:.9rem;font-weight:600}
+.badge img{width:40px;height:40px;border-radius:50%;object-fit:cover;aspect-ratio:1}
+.badge i{width:9px;height:9px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:ping 2s infinite}
+@keyframes ping{to{box-shadow:0 0 0 9px rgba(74,222,128,0)}}
+h1{font-size:clamp(2.3rem,7vw,4.6rem);margin:34px 0 14px;letter-spacing:-.02em}
+#rot{display:inline-block;color:var(--hot);transition:opacity .3s,transform .3s}
+#rot.out{opacity:0;transform:translateY(-14px)}
+.lede{font-size:1.15rem;max-width:56ch;color:var(--muted);margin-bottom:26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--hot),#8b5cf6);border:0;cursor:pointer;font:inherit;font-weight:600;box-shadow:0 10px 30px rgba(255,61,139,.35);transition:transform .25s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+/* ticker */
+.tick{overflow:hidden;padding:14px 0;border-block:1px solid var(--gl);margin:10px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.tick div{display:flex;width:max-content;animation:run 32s linear infinite}
+.tick span{padding:0 18px;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.3rem;white-space:nowrap}
+.tick span::after{content:"✦";margin-left:36px;color:var(--hot)}
+@keyframes run{to{transform:translateX(-50%)}}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px}
+.card{border-radius:26px;padding:26px;transition:transform .2s ease-out;transform-style:preserve-3d}
+.card .ico{font-size:1.9rem;display:block;margin-bottom:10px}
+.card h3{font-size:1.4rem;margin-bottom:4px}
+.card .role{color:var(--acc);font-weight:600;font-size:.95rem;margin-bottom:12px}
+.card p{color:var(--muted)}
+.card ul{margin:12px 0 0 18px;color:var(--muted)}.card li{margin:3px 0}.card li::marker{color:var(--hot)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tags em{font-style:normal;font-size:.8rem;padding:3px 11px;border-radius:999px;border:1px solid var(--gl);color:var(--text)}
+.big{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:10px 34px;align-items:center}
+.big b{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(3.6rem,13vw,7rem);line-height:1;background:linear-gradient(135deg,var(--hot),var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(max-width:640px){.big{grid-template-columns:1fr}}
+/* proof */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;margin-top:8px}
+.shot{border-radius:22px;padding:8px;cursor:zoom-in;border:1px solid var(--gl);background:none;color:inherit;text-align:left;font:inherit}
+.shot img{border-radius:15px;width:100%;height:auto}.shot span{display:block;padding:10px 8px 4px;font-size:.9rem;color:var(--muted)}
+#lb{position:fixed;inset:0;z-index:50;background:rgba(10,4,18,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:none;place-items:center;padding:20px;cursor:zoom-out}
+#lb.on{display:grid}#lb img{max-height:90vh;border-radius:16px}
+/* quotes */
+.qs{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px}
+.q{flex:0 0 min(84%,380px);scroll-snap-align:start;border-radius:24px;padding:24px}
+.q p{font-size:1.08rem}.q cite{display:block;margin-top:12px;font-style:normal;color:var(--acc);font-weight:600}
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media(max-width:800px){.contact{grid-template-columns:1fr}}
+.panel{border-radius:28px;padding:28px}
+form{display:grid;gap:14px}label{display:grid;gap:6px;font-weight:500;font-size:.95rem}
+    <svg class="sm" viewBox="0 0 24 24" fill="none"><mask id="mk"><rect width="24" height="24" fill="#fff"/><circle class="cut" cx="24" cy="0" r="7" fill="#000"/></mask><circle cx="12" cy="12" r="6" fill="currentColor" mask="url(#mk)"/><g class="rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></g></svg>
+  </button>
+  <button class="ib glass" id="mb" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span class="burger"></span></button>
+</header>
 
-        .light {
-            background-color: #f8fafc;
-            color: #0f172a;
-        }
+<nav id="menu" aria-label="Main">
+  <a href="#top">Home</a><a href="#services">Services</a><a href="#work">Work</a><a href="#proof">Proof</a><a href="#feedback">Feedback</a><a href="#contact">Contact</a>
+</nav>
 
-        .glass-card-dark {
-            background: rgba(18, 12, 28, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
+<main id="top"><div class="wrap">
 
-        .glass-card-light {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-        }
+<section class="hero">
+  <div class="banner glass card" data-tilt>
+    <img src="IMG-20260929-WA0045.jpg" alt="Lizzy: I build, grow and manage Web3 communities" width="1280" height="427">
+    <div class="badge glass"><img src="IMG-20260929-WA0046.jpg" alt="Illustrated portrait of Lizzy" width="40" height="40"><i></i>Available for new projects</div>
+  </div>
+  <h1>I build <span id="rot">engaged</span> Web3 communities.</h1>
+  <p class="lede">Community management, moderation, events and strategy for Web3 projects that want an active community, and partners who follow through.</p>
+  <div class="cta"><a class="btn" href="#contact">Work with me</a><a class="btn g glass" href="#work">See my work</a></div>
+  <div class="stats">
+    <div class="stat glass"><b data-n="300" data-s="+">0</b><span>collaborations coordinated</span></div>
+    <div class="stat glass"><b data-n="3">0</b><span>communities managed</span></div>
+    <div class="stat glass"><b data-n="3">0</b><span>platforms: X, Telegram, Discord</span></div>
+  </div>
+</section>
 
-        .accent-gradient {
-            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-        }
+<div class="tick" aria-hidden="true"><div>
+  <span>Community management</span><span>Moderation</span><span>Events and contests</span><span>Collab management</span><span>Content</span><span>Community strategy</span>
+  <span>Community management</span><span>Moderation</span><span>Events and contests</span><span>Collab management</span><span>Content</span><span>Community strategy</span>
+</div></div>
 
-        .text-gradient {
-            background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+<section id="services">
+  <h2>What I do for a project</h2>
+  <div class="grid">
+      <div class="tags"><em>Games</em><em>Activities</em></div>
+      <p>Built participation through games and activities, with clear instructions so members knew how to join in.</p>
+      <ul><li>Planned and ran community games</li><li>Announced and explained each activity</li><li>Kept engagement steady between events</li></ul>
+      <!-- TODO RESULTS: game turnout, member growth -->
+    </article>
+    <article class="card glass big rv" data-tilt><b data-n="300" data-s="+">0</b>
+      <div><h3>Web3 collaborations</h3><p class="role">Collab Manager, meme coin and NFT communities</p>
+      <p>Finding relevant projects, opening conversations, negotiating terms, coordinating promotions between teams, and following up until every task is done.</p></div>
+    </article>
+  </div>
+</section>
 
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.1);
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #a855f7;
-            border-radius: 3px;
-        }
-    </style>
-</head>
-<body class="dark min-h-screen relative custom-scrollbar overflow-x-hidden">
+<section id="proof">
+  <h2>Proof of work</h2>
+  <p class="muted">Real conversations, private details hidden. Tap to zoom.</p>
+  <div class="shots">
+    <button class="shot glass rv" type="button"><img loading="lazy" src="IMG-20260929-WA0048.jpg" alt="Discord moderation and member conversation"><span>Moderation in Discord</span></button>
+    <button class="shot glass rv" type="button"><img loading="lazy" src="IMG-20260929-WA0047.jpg" alt="Discord community management example"><span>Community communication in Discord</span></button>
+    <!-- TODO PROOF: add Story Night / Meme Battle posts, a contest winner reveal, content posts, blurred collab chats -->
+  </div>
+</section>
 
-    <!-- Header Navigation -->
-    <header class="sticky top-0 z-50 w-full backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between">
-        <div class="flex items-center space-x-2">
-            <span class="text-xl font-bold tracking-tight">Lizzy</span>
-            <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-        </div>
+<section id="feedback">
+  <h2>What people say</h2>
+  <div class="qs">
+    <div class="q glass"><p>Lizzy, you are doing great for our project.</p><cite>Team Lead</cite></div>
+    <div class="q glass"><p>I haven't had any particular issues with the way you've been managing things. I'm happy with how it's being run.</p><cite>Caopan Kingdom team</cite></div>
+    <div class="q glass"><p>You've done well in collab management and in moderation. TideWalkerz is pleased to have you with us.</p><cite>Tidewalkerz founder</cite></div>
+    <button class="shot glass q" type="button" style="padding:8px"><img loading="lazy" src="IMG-20260930-WA0000.jpg" alt="Client message: you doing great for our project"></button>
+    <button class="shot glass q" type="button" style="padding:8px"><img loading="lazy" src="IMG-20260930-WA0001.jpg" alt="Client message: good work today"></button>
+  </div>
+</section>
 
-        <button id="menu-toggle" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
-            <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
-    </header>
-
-    <!-- Navigation Menu Dropdown -->
-    <div id="nav-menu" class="hidden fixed inset-x-0 top-[57px] z-40 p-4 transition-all duration-300">
-        <div id="menu-container" class="glass-card-dark rounded-2xl p-6 space-y-6 max-w-lg mx-auto shadow-2xl">
-            <nav class="flex flex-col space-y-4">
-                <a href="#about" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
-                    <i data-lucide="user" class="w-5 h-5 text-purple-400"></i>
-                    <span>About Me</span>
-                </a>
-                <a href="#what-i-do" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
-                    <i data-lucide="sparkles" class="w-5 h-5 text-purple-400"></i>
-                    <span>What I Do</span>
-                </a>
-                <a href="#approach" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
-                    <i data-lucide="compass" class="w-5 h-5 text-purple-400"></i>
-                    <span>My Approach</span>
-                </a>
-                <a href="#experience" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
-                    <i data-lucide="briefcase" class="w-5 h-5 text-purple-400"></i>
-                    <span>Experience</span>
-                </a>
-                <a href="#proof-of-work" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
-                    <i data-lucide="layers" class="w-5 h-5 text-purple-400"></i>
-                    <span>Proof of Work</span>
-                </a>
-                <a href="#testimonials" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
-                    <i data-lucide="message-square" class="w-5 h-5 text-purple-400"></i>
-                    <span>Testimonials</span>
-                </a>
-                <a href="#contact" class="text-lg font-medium hover:text-purple-400 transition-colors flex items-center space-x-3">
-                    <i data-lucide="mail" class="w-5 h-5 text-purple-400"></i>
-                    <span>Contact</span>
-                </a>
-            </nav>
-
-            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-                <span class="text-sm font-medium opacity-70">Appearance</span>
-                <button id="theme-toggle" class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-purple-600/20 text-purple-300 border border-purple-500/30 hover:bg-purple-600/30 transition-all">
-                    <i data-lucide="sun" class="w-4 h-4"></i>
-                    <span class="text-sm font-semibold">MODE</span>
-                </button>
-            </div>
-        </div>
+<section id="contact">
+      <!-- TODO: real Cal.com / Calendly link -->
+      <a class="btn g glass" href="https://cal.com/YOUR-LINK" target="_blank" rel="noopener noreferrer">Book a 30 minute call</a>
     </div>
+    <!-- TODO: replace YOUR_FORM_ID with the Formspree form ID -->
+    <form class="panel glass" id="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <label>Your name<input name="name" required autocomplete="name"></label>
+      <label>Your email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Project or platform<input name="project" placeholder="Project name, X or Telegram link"></label>
+      <label>What do you need?<textarea name="message" required></textarea></label>
+      <button class="btn" type="submit">Send message</button>
+      <p id="st" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
 
-    <!-- Main Content -->
-    <main class="max-w-xl mx-auto px-4 py-8 space-y-12">
+</div></main>
+<footer>Lizzy, Web3 Community Manager. GMT+1. English (fluent), Japanese (basic).</footer>
+<div id="lb" role="dialog" aria-label="Enlarged screenshot"><img alt=""></div>
 
-        <!-- Hero Section -->
-        <section class="text-center space-y-6">
-            <!-- Hero Banner & Avatar Block -->
-            <div class="relative w-full mb-6">
-                <!-- Banner Image -->
-                <div class="w-full h-36 md:h-48 rounded-2xl overflow-hidden border border-white/10 shadow-lg">
-                    <img src="IMG-20260929-WA0045.jpg" alt="Lizzy Banner" class="w-full h-full object-cover">
-                </div>
-                
-                <!-- Avatar (Positioned Overlapping Banner) -->
-                <div class="relative -mt-16 text-center">
-                    <div class="w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-[#0b0712] p-0.5 bg-gradient-to-tr from-purple-500 to-pink-500 shadow-xl">
-                        <img src="IMG-20260929-WA0046.jpg" alt="Lizzy Avatar" class="w-full h-full object-cover rounded-full">
-                    </div>
-                    <div class="inline-block mt-2 px-3 py-1 bg-purple-900/90 border border-purple-400/30 text-purple-200 text-xs font-semibold rounded-full shadow-lg">
-                        Available for New Projects
-                    </div>
-                </div>
-            </div>
-
-            <div class="space-y-2">
-                <h1 class="text-3xl font-extrabold tracking-tight">Lizzy</h1>
-                <p class="text-lg font-semibold text-gradient">Web3 Community Manager</p>
-            </div>
-
-            <p class="text-base text-gray-300 leading-relaxed max-w-md mx-auto">
-                I build and manage Web3 communities where people connect, participate, and have a reason to stay involved.
-            </p>
-
-            <p class="text-sm text-gray-400 leading-relaxed max-w-md mx-auto">
-                I work across community management, engagement, content, moderation, events, and community strategy, helping Web3 projects create organized and engaging community experiences.
-            </p>
-
-            <div class="flex items-center justify-center gap-4 pt-2">
-                <a href="#experience" class="px-6 py-3 rounded-xl accent-gradient font-bold text-white shadow-lg shadow-purple-500/25 hover:opacity-95 transition-all text-sm">
-                    View My Work
-                </a>
-                <a href="#contact" class="px-6 py-3 rounded-xl bg-white/10 border border-white/15 font-bold hover:bg-white/20 transition-all text-sm">
-                    Let's Work Together
-                </a>
-            </div>
-        </section>
-
-        <!-- About Me Section -->
-        <section id="about" class="space-y-4 p-6 rounded-2xl glass-card-dark border border-white/10">
-            <span class="text-xs font-bold uppercase tracking-widest text-purple-400">BACKGROUND</span>
-            <h2 class="text-2xl font-bold">About Me</h2>
-            <div class="space-y-3 text-sm text-gray-300 leading-relaxed">
-                <p>I’m Lizzy, a Web3 Community Manager focused on creating communities where people don’t just join, they participate.</p>
-                <p>I manage community conversations, create engaging activities, coordinate events, develop community content, and help projects maintain a strong connection with their members.</p>
-                <p>I’ve worked across meme coin and NFT communities, gaining experience with different community environments and engagement styles.</p>
-                <p>Alongside community management, I’ve also worked as a Collab Manager, coordinating 300+ collaborations across Web3 projects and communities.</p>
-                <p>Working across both roles has strengthened my communication, coordination, relationship-building, and community engagement skills.</p>
-            </div>
-        </section>
-
-        <!-- What I Do Section -->
-        <section id="what-i-do" class="space-y-6">
-            <div class="space-y-1 text-center">
-                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">CAPABILITIES</span>
-                <h2 class="text-2xl font-bold">What I Do</h2>
-            </div>
-
-            <div class="grid gap-4">
-                <div class="p-5 rounded-2xl glass-card-dark space-y-2">
-                    <h3 class="font-bold text-lg text-purple-300">Community Management</h3>
-                    <p class="text-sm text-gray-400">I manage the day-to-day community experience, keeping communication organized while staying actively involved with members.</p>
-                </div>
-                <div class="p-5 rounded-2xl glass-card-dark space-y-2">
-                    <h3 class="font-bold text-lg text-purple-300">Community Engagement</h3>
-                    <p class="text-sm text-gray-400">I create conversations, activities, and interactive experiences that encourage members to participate and connect.</p>
-                </div>
-                <div class="p-5 rounded-2xl glass-card-dark space-y-2">
-                    <h3 class="font-bold text-lg text-purple-300">Community Strategy</h3>
-                    <p class="text-sm text-gray-400">I develop practical community initiatives based on the project’s goals, community culture, and stage.</p>
-                </div>
-                <div class="p-5 rounded-2xl glass-card-dark space-y-2">
-                    <h3 class="font-bold text-lg text-purple-300">Content</h3>
-                    <p class="text-sm text-gray-400">I create community-focused posts, announcements, discussions, contests, and interactive content.</p>
-                </div>
-                <div class="p-5 rounded-2xl glass-card-dark space-y-2">
-                    <h3 class="font-bold text-lg text-purple-300">Events & Activities</h3>
-                    <p class="text-sm text-gray-400">I plan and coordinate community events, games, contests, discussions, and other interactive experiences.</p>
-                </div>
-                <div class="p-5 rounded-2xl glass-card-dark space-y-2">
-                    <h3 class="font-bold text-lg text-purple-300">Moderation</h3>
-                    <p class="text-sm text-gray-400">I help maintain an organized community environment by managing conversations, responding to members, and addressing issues when they arise.</p>
-                </div>
-                <div class="p-5 rounded-2xl glass-card-dark space-y-2">
-                    <h3 class="font-bold text-lg text-purple-300">Platform Management</h3>
-                    <p class="text-sm text-gray-400">I work across X, Telegram, Discord, and other community platforms to manage communication, activities, and engagement.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- My Approach Section -->
-        <section id="approach" class="space-y-6">
-            <div class="space-y-1 text-center">
-                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">METHODOLOGY</span>
-                <h2 class="text-2xl font-bold">My Approach</h2>
-            </div>
-
-            <div class="space-y-3">
-                <div class="p-4 rounded-xl glass-card-dark flex items-start space-x-4">
-                    <span class="text-xl font-bold text-purple-400 font-mono">01</span>
-                    <div>
-                        <h3 class="font-bold text-base">Understand</h3>
-                        <p class="text-xs text-gray-400">I learn the project, its goals, community environment, and members.</p>
-                    </div>
-                </div>
-                <div class="p-4 rounded-xl glass-card-dark flex items-start space-x-4">
-                    <span class="text-xl font-bold text-purple-400 font-mono">02</span>
-                    <div>
-                        <h3 class="font-bold text-base">Listen</h3>
-                        <p class="text-xs text-gray-400">I pay attention to conversations, feedback, and what members respond to.</p>
-                    </div>
-                </div>
-                <div class="p-4 rounded-xl glass-card-dark flex items-start space-x-4">
-                    <span class="text-xl font-bold text-purple-400 font-mono">03</span>
-                    <div>
-                        <h3 class="font-bold text-base">Create</h3>
-                        <p class="text-xs text-gray-400">I turn those insights into relevant content, activities, and community experiences.</p>
-                    </div>
-                </div>
-                <div class="p-4 rounded-xl glass-card-dark flex items-start space-x-4">
-                    <span class="text-xl font-bold text-purple-400 font-mono">04</span>
-                    <div>
-                        <h3 class="font-bold text-base">Engage</h3>
-                        <p class="text-xs text-gray-400">I actively participate in conversations and create opportunities for members to interact.</p>
-                    </div>
-                </div>
-                <div class="p-4 rounded-xl glass-card-dark flex items-start space-x-4">
-                    <span class="text-xl font-bold text-purple-400 font-mono">05</span>
-                    <div>
-                        <h3 class="font-bold text-base">Build</h3>
-                        <p class="text-xs text-gray-400">I focus on consistent community experiences that encourage participation and connection.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="space-y-6">
-            <div class="space-y-1 text-center">
-                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">TRACK RECORD</span>
-                <h2 class="text-2xl font-bold">Experience</h2>
-            </div>
-
-            <div class="space-y-6">
-                <!-- CAOPAN KINGDOM -->
-                <div class="p-6 rounded-2xl glass-card-dark space-y-4 border border-white/10">
-                    <div>
-                        <h3 class="text-xl font-bold text-purple-300">CAOPAN KINGDOM</h3>
-                        <p class="text-xs font-semibold text-gray-400">Community Manager</p>
-                    </div>
-                    <p class="text-xs text-gray-300 leading-relaxed">Managed the community across Telegram and X, focusing on engagement, events, activities, communication, and the overall community experience.</p>
-                    
-                    <div class="space-y-2">
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block">Key Contributions</span>
-                        <ul class="list-disc list-inside text-xs text-gray-400 space-y-1">
-                            <li>Managed day-to-day community engagement</li>
-                            <li>Planned and coordinated community events and activities</li>
-                            <li>Developed community engagement initiatives</li>
-                            <li>Created community content and event communications</li>
-                            <li>Managed contests and interactive activities</li>
-                            <li>Coordinated Story Night discussions</li>
-                            <li>Created community discussions around project developments and lore</li>
-                            <li>Communicated community feedback and insights to the team</li>
-                            <li>Helped shape and coordinate ongoing engagement activities</li>
-                        </ul>
-                    </div>
-
-                    <div class="space-y-2 pt-2 border-t border-white/10">
-                        <span class="text-xs font-bold text-pink-400 uppercase tracking-wider block">Selected Community Work</span>
-                        <div class="space-y-2 text-xs text-gray-300">
-                            <p><strong>Story Night:</strong> Planned and coordinated recurring discussions around new story chapters. Prepared discussion structure, guided conversations, and encouraged theories.</p>
-                            <p><strong>Meme Battle:</strong> Planned and coordinated a multi-round meme game with different challenges and rules.</p>
-                            <p><strong>Community Contests:</strong> Coordinated rules, announcements, participation, and winner reveals.</p>
-                            <p><strong>Community Discussions & Activities:</strong> Facilitated conversations around the Kingdom, characters, lore, and developments.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TIDEWALKERZ -->
-                <div class="p-6 rounded-2xl glass-card-dark space-y-4 border border-white/10">
-                    <div>
-                        <h3 class="text-xl font-bold text-purple-300">TIDEWALKERZ</h3>
-                        <p class="text-xs font-semibold text-gray-400">Community Manager & Collab Manager</p>
-                    </div>
-                    <p class="text-xs text-gray-300 leading-relaxed">Worked across community management, moderation, engagement, and collaboration management while supporting communication between the project and other Web3 projects.</p>
-                    
-                    <div class="space-y-2">
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block">Key Contributions</span>
-                        <ul class="list-disc list-inside text-xs text-gray-400 space-y-1">
-                            <li>Managed community interactions and moderation</li>
-                            <li>Engaged with members and supported community activities</li>
-                            <li>Handled collaboration outreach and communication</li>
-                            <li>Coordinated with other Web3 projects and communities</li>
-                            <li>Managed collaboration details and follow-ups</li>
-                            <li>Supported promotional collaboration activities</li>
-                            <li>Maintained communication between teams</li>
-                            <li>Helped ensure collaboration tasks were properly coordinated</li>
-                        </ul>
-                    </div>
-
-                    <div class="space-y-2 pt-2 border-t border-white/10">
-                        <span class="text-xs font-bold text-pink-400 uppercase tracking-wider block">Selected Community Work</span>
-                        <div class="space-y-2 text-xs text-gray-300">
-                            <p><strong>Community Management:</strong> Supported the day-to-day community through member interaction, moderation, communication, and engagement.</p>
-                            <p><strong>Community Engagement:</strong> Participated in conversations and supported activities that encouraged members to interact with the project and each other.</p>
-                            <p><strong>Collaboration Management:</strong> Handled outreach and communication with other Web3 projects and communities, from initiating conversations to coordinating collaboration details.</p>
-                            <p><strong>Partnership Coordination:</strong> Managed communication and follow-ups between teams to ensure collaboration activities were properly coordinated.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- BOUNDLESS8DESIGNS -->
-                <div class="p-6 rounded-2xl glass-card-dark space-y-4 border border-white/10">
-                    <div>
-                        <h3 class="text-xl font-bold text-purple-300">BOUNDLESS8DESIGNS</h3>
-                        <p class="text-xs font-semibold text-gray-400">Community Manager</p>
-                    </div>
-                    <p class="text-xs text-gray-300 leading-relaxed">Managed community engagement with a focus on interactive activities, games, and creating opportunities for members to participate.</p>
-                    
-                    <div class="space-y-2">
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block">Key Contributions</span>
-                        <ul class="list-disc list-inside text-xs text-gray-400 space-y-1">
-                            <li>Managed community interactions</li>
-                            <li>Organized community games and activities</li>
-                            <li>Planned interactive community experiences</li>
-                            <li>Encouraged member participation</li>
-                            <li>Coordinated activities within the community</li>
-                            <li>Helped maintain consistent community engagement</li>
-                        </ul>
-                    </div>
-
-                    <div class="space-y-2 pt-2 border-t border-white/10">
-                        <span class="text-xs font-bold text-pink-400 uppercase tracking-wider block">Selected Community Work</span>
-                        <div class="space-y-2 text-xs text-gray-300">
-                            <p><strong>Community Games:</strong> Planned and organized interactive games that gave members opportunities to participate, compete, and interact with each other.</p>
-                            <p><strong>Community Activities:</strong> Planned and coordinated activities designed to encourage participation and interaction within the community.</p>
-                            <p><strong>Community Engagement:</strong> Used games, activities, and direct interaction to encourage members to participate and stay involved.</p>
-                            <p><strong>Event Coordination:</strong> Organized and communicated community activities, helping members understand how to participate and keeping activities organized.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 300+ WEB3 COLLABORATIONS -->
-                <div class="p-6 rounded-2xl glass-card-dark space-y-4 border border-purple-500/30">
-                    <div>
-                        <h3 class="text-xl font-bold text-gradient">300+ WEB3 COLLABORATIONS</h3>
-                        <p class="text-xs font-semibold text-gray-400">Collab Manager</p>
-                    </div>
-                    <p class="text-xs text-gray-300 leading-relaxed">Alongside my Community Manager experience, I’ve worked as a Collab Manager, coordinating 300+ collaborations across Web3 projects and communities.</p>
-                    
-                    <div class="space-y-2">
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block">What I Handled</span>
-                        <ul class="list-disc list-inside text-xs text-gray-400 space-y-1">
-                            <li>Collaboration outreach</li>
-                            <li>Finding relevant projects and communities</li>
-                            <li>Initiating conversations</li>
-                            <li>Negotiating collaboration terms</li>
-                            <li>Coordinating between teams</li>
-                            <li>Managing collaboration details</li>
-                            <li>Following up with partners</li>
-                            <li>Coordinating promotional activities</li>
-                            <li>Maintaining professional relationships</li>
-                            <li>Ensuring collaboration tasks were completed</li>
-                        </ul>
-                    </div>
-                    <p class="text-xs text-gray-400 pt-2 border-t border-white/10">Working across 300+ collaborations strengthened my outreach, communication, negotiation, and coordination skills while giving me a broad understanding of how different Web3 projects and communities operate.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Proof of Work Section -->
-        <section id="proof-of-work" class="space-y-6">
-            <div class="space-y-1 text-center">
-                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">PORTFOLIO</span>
-                <h2 class="text-2xl font-bold">Proof of Work</h2>
-                <p class="text-xs text-gray-400">Real work speaks louder than a list of responsibilities.</p>
-            </div>
-
-            <div class="grid gap-4">
-                <div class="p-4 rounded-xl glass-card-dark border border-white/5 space-y-3">
-                    <h3 class="font-bold text-sm text-purple-300">Community Management & Moderation</h3>
-                    <p class="text-xs text-gray-400">Screenshots of real community conversations, moderation, member interactions, announcements, and community communication.</p>
-                    
-                    <!-- Discord Proof Images -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                        <div class="rounded-lg overflow-hidden border border-white/10">
-                            <img src="IMG-20260929-WA0048.jpg" alt="Discord Moderation Proof 1" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <div class="rounded-lg overflow-hidden border border-white/10">
-                            <img src="IMG-20260929-WA0047.jpg" alt="Discord Moderation Proof 2" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-4 rounded-xl glass-card-dark border border-white/5 space-y-1">
-                    <h3 class="font-bold text-sm text-purple-300">Events & Engagement</h3>
-                    <p class="text-xs text-gray-400">Examples from Story Night, Meme Battles, contests, games, community discussions, and other activities I planned or coordinated.</p>
-                </div>
-
-                <div class="p-4 rounded-xl glass-card-dark border border-white/5 space-y-1">
-                    <h3 class="font-bold text-sm text-purple-300">Content</h3>
-                    <p class="text-xs text-gray-400">Community posts, announcements, discussion posts, event communications, engagement content, and other content created for projects.</p>
-                </div>
-
-                <div class="p-4 rounded-xl glass-card-dark border border-white/5 space-y-1">
-                    <h3 class="font-bold text-sm text-purple-300">Collaboration Management</h3>
-                    <p class="text-xs text-gray-400">Examples of outreach, partner communication, collaboration coordination, completed collaborations, and communication with other Web3 communities.</p>
-                </div>
-
-                <div class="p-4 rounded-xl glass-card-dark border border-white/5 space-y-1">
-                    <h3 class="font-bold text-sm text-purple-300">Community Strategy</h3>
-                    <p class="text-xs text-gray-400">Examples of engagement ideas, event concepts, community activities, content planning, and initiatives developed to encourage participation.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="space-y-6">
-            <div class="space-y-1 text-center">
-                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">FEEDBACK</span>
-                <h2 class="text-2xl font-bold">What People Say About Lizzy</h2>
-            </div>
-
-            <div class="space-y-4">
-                <div class="p-5 rounded-xl glass-card-dark space-y-2 border border-white/5">
-                    <p class="text-sm text-gray-300 italic">“Lizzy, you are doing great for our project.”</p>
-                    <span class="text-xs text-purple-400 font-semibold block text-right">— Team Lead</span>
-                </div>
-                <div class="p-5 rounded-xl glass-card-dark space-y-2 border border-white/5">
-                    <p class="text-sm text-gray-300 italic">“As for the community management, I think you’ve been handling it well. I haven’t had any particular issues with the way you’ve been managing things, so from my side, I’m happy with how it’s being run.”</p>
-                    <span class="text-xs text-purple-400 font-semibold block text-right">— CAOPAN Kingdom Team</span>
-                </div>
-                <div class="p-5 rounded-xl glass-card-dark space-y-2 border border-white/5">
-                    <p class="text-sm text-gray-300 italic">“I’m satisfied with your services. You’ve done well in Collab management and in moderation. TideWalkerz is pleased to have you with us.”</p>
-                    <span class="text-xs text-purple-400 font-semibold block text-right">— TideWalkerz Founder</span>
-                </div>
-
-                <!-- Client Review Screenshots -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                    <div class="p-2 rounded-xl glass-card-dark border border-white/5 space-y-2">
-                        <div class="rounded-lg overflow-hidden border border-white/10">
-                            <img src="IMG-20260930-WA0000.jpg" alt="Client Review Screenshot 1" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <span class="text-xs text-purple-400 font-semibold block text-center">Client Feedback</span>
-                    </div>
-
-                    <div class="p-2 rounded-xl glass-card-dark border border-white/5 space-y-2">
-                        <div class="rounded-lg overflow-hidden border border-white/10">
-                            <img src="IMG-20260930-WA0001.jpg" alt="Client Review Screenshot 2" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
-                        </div>
-                        <span class="text-xs text-purple-400 font-semibold block text-center">Client Feedback</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- What I Bring Section -->
-        <section id="what-i-bring" class="p-6 rounded-2xl glass-card-dark border border-purple-500/20 space-y-3">
-            <span class="text-xs font-bold uppercase tracking-widest text-purple-400">VALUE ADD</span>
-            <h2 class="text-2xl font-bold">What I Bring</h2>
-            <p class="text-sm text-gray-300 leading-relaxed">I bring structure, communication, creativity, and consistency to community management.</p>
-            <p class="text-sm text-gray-300 leading-relaxed">Good community management is more than keeping a chat active. It’s about creating an environment where members can connect, participate, stay informed, and feel involved in what the project is building.</p>
-            <p class="text-sm text-gray-300 leading-relaxed">My experience in both community and collaboration management allows me to understand how to engage communities while also communicating and coordinating effectively with teams, partners, and other Web3 projects and communities.</p>
-        </section>
-
-        <!-- Details Section -->
-        <section id="details" class="p-6 rounded-2xl glass-card-dark border border-white/10 space-y-4">
-            <span class="text-xs font-bold uppercase tracking-widest text-purple-400">SPECIFICATIONS</span>
-            <h2 class="text-2xl font-bold">Details</h2>
-            
-            <div class="grid grid-cols-2 gap-4 text-xs">
-                <div>
-                    <span class="text-gray-400 block font-semibold">Time Zone</span>
-                    <span class="text-gray-200 text-sm font-medium">GMT+1</span>
-                </div>
-                <div>
-                    <span class="text-gray-400 block font-semibold">Languages</span>
-                    <span class="text-gray-200 text-sm font-medium">English (Fluent)<br>Japanese (Basic)</span>
-                </div>
-                <div class="col-span-2">
-                    <span class="text-gray-400 block font-semibold">Platforms</span>
-                    <span class="text-gray-200 text-sm font-medium">X, Telegram, Discord, and other community platforms</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact & Work Together Section -->
-        <section id="contact" class="space-y-6">
-            <div class="space-y-2 text-center">
-                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">GET IN TOUCH</span>
-                <h2 class="text-2xl font-bold">Let's Work Together</h2>
-                <p class="text-xs text-gray-300 max-w-sm mx-auto leading-relaxed">
-                    Building a Web3 project and need someone to manage your community, create engaging experiences, coordinate communication, and keep things moving? Let’s talk! 😊
-                </p>
-            </div>
-
-            <div class="p-6 rounded-2xl glass-card-dark space-y-4 border border-white/10 text-center">
-                <a href="mailto:lizzyfrank022@gmail.com" class="block w-full py-3.5 rounded-xl accent-gradient font-bold text-white shadow-lg shadow-purple-500/25 hover:opacity-95 transition-all text-sm">
-                    Email Lizzy
-                </a>
-
-                <div class="pt-4 border-t border-white/10 flex flex-col space-y-3 text-sm font-medium">
-                    <a href="https://x.com/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="text-purple-300 hover:text-purple-200 transition-colors flex items-center justify-center space-x-2">
-                        <i data-lucide="twitter" class="w-4 h-4"></i>
-                        <span>X: @Lizzy_onchain</span>
-                    </a>
-                    <a href="https://t.me/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="text-purple-300 hover:text-purple-200 transition-colors flex items-center justify-center space-x-2">
-                        <i data-lucide="send" class="w-4 h-4"></i>
-                        <span>Telegram: @Lizzy_onchain</span>
-                    </a>
-                    <a href="https://discord.com/users/Lizzy_onchain" target="_blank" rel="noopener noreferrer" class="text-purple-300 hover:text-purple-200 transition-colors flex items-center justify-center space-x-2">
-                        <i data-lucide="message-square" class="w-4 h-4"></i>
-                        <span>Discord: @Lizzy_onchain</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('hidden');
-        });
-
-        // Theme Toggle (Light / Dark)
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const menuContainer = document.getElementById('menu-container');
-
-        themeToggle.addEventListener('click', () => {
-            if (body.classList.contains('dark')) {
-                body.classList.remove('dark');
-                body.classList.add('light');
-                menuContainer.classList.remove('glass-card-dark');
-                menuContainer.classList.add('glass-card-light');
-            } else {
-                body.classList.remove('light');
-                body.classList.add('dark');
-                menuContainer.classList.remove('glass-card-light');
-                menuContainer.classList.add('glass-card-dark');
-            }
-        });
-    </script>
+<script>
+(function(){
+var d=document,R=d.documentElement,B=d.body,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+// theme
+var tb=d.getElementById('theme');
+function setT(t){R.setAttribute('data-theme',t);tb.setAttribute('aria-pressed',t==='dark')}
+var sv=null;try{sv=localStorage.getItem('theme')}catch(e){}setT(sv||'dark');
+tb.onclick=function(){var t=R.getAttribute('data-theme')==='dark'?'light':'dark';setT(t);try{localStorage.setItem('theme',t)}catch(e){}};
+// menu
+var mb=d.getElementById('mb');
+function menu(o){B.classList.toggle('open',o);B.classList.toggle('lock',o);mb.setAttribute('aria-expanded',o)}
+mb.onclick=function(){menu(!B.classList.contains('open'))};
+d.querySelectorAll('#menu a').forEach(function(a){a.onclick=function(){menu(false)}});
+d.addEventListener('keydown',function(e){if(e.key==='Escape'){menu(false);lb.classList.remove('on')}});
+// rotating word
+var rot=d.getElementById('rot'),w=['engaged','active','organized','loyal','thriving'],i=0;
+if(!rm)setInterval(function(){rot.classList.add('out');setTimeout(function(){i=(i+1)%w.length;rot.textContent=w[i];rot.classList.remove('out')},300)},2400);
+// reveal + count up
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('in');
+ if(t.dataset.n){var n=+t.dataset.n,s=t.dataset.s||'',st=performance.now();(function f(now){var p=Math.min((now-st)/1400,1);t.textContent=Math.round(n*(1-Math.pow(1-p,3)))+(p===1?s:'');if(p<1)requestAnimationFrame(f)})(st)}
+ io.unobserve(t)})},{threshold:.25});
+d.querySelectorAll('.rv,[data-n]').forEach(function(el){io.observe(el)});
+// glass spotlight + tilt + cursor glow
+var glow=d.getElementById('glow'),fine=matchMedia('(hover:hover)').matches;
+d.querySelectorAll('.glass').forEach(function(el){el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;el.style.setProperty('--mx',x+'px');el.style.setProperty('--my',y+'px');
+ if(fine&&!rm&&el.hasAttribute('data-tilt'))el.style.transform='perspective(800px) rotateX('+((y/r.height-.5)*-7)+'deg) rotateY('+((x/r.width-.5)*7)+'deg)'});
+ el.addEventListener('pointerleave',function(){if(el.hasAttribute('data-tilt'))el.style.transform=''})});
+if(fine)addEventListener('pointermove',function(e){glow.style.opacity=1;glow.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)'});
+// lightbox
+var lb=d.getElementById('lb'),li=lb.querySelector('img');
+d.querySelectorAll('.shot').forEach(function(b){b.onclick=function(){var im=b.querySelector('img');li.src=im.src;li.alt=im.alt;lb.classList.add('on')}});
+lb.onclick=function(){lb.classList.remove('on')};
+// form
+var f=d.getElementById('form'),st=d.getElementById('st');
+f.addEventListener('submit',function(e){e.preventDefault();st.textContent='Sending...';
+ fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}}).then(function(r){if(!r.ok)throw 0;f.reset();st.textContent='Message sent. Lizzy will reply soon.'}).catch(function(){st.textContent='Could not send. Email lizzyfrank022@gmail.com instead.'})});
+})();
+</script>
 </body>
 </html>
