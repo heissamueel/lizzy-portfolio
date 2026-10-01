@@ -116,7 +116,24 @@ input,textarea{font:inherit;color:var(--text);background:var(--gb);border:1px so
 .close{text-align:center;padding-bottom:30px}
 .close blockquote{font-family:Fraunces,serif;font-weight:600;font-size:clamp(1.5rem,4.5vw,2.4rem);line-height:1.25;max-width:24ch;margin:0 auto 28px}
 .close img{border-radius:24px;border:1px solid var(--line);width:100%;height:auto}
-footer{padding:26px 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
+footer{padding:46px 0 110px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:.95rem}
+.fb{font-family:Fraunces,serif;font-weight:700;font-size:2rem;color:var(--text);margin-bottom:6px}
+.cp{margin-top:16px;font-size:.85rem;opacity:.75}
+.car{margin-top:8px}
+.trk{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:18px 0;margin:-18px 0}
+.trk::-webkit-scrollbar{display:none}
+.tile{flex:0 0 100%;scroll-snap-align:center;border-radius:28px;padding:34px 28px;min-height:290px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.tile .k{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--hot)}
+.tile .big{font-family:Fraunces,serif;font-weight:600;font-size:clamp(1.4rem,4.2vw,2.2rem);line-height:1.25;color:var(--text)}
+.tile .sm2{color:var(--muted)}
+.ctl{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
+.dots{display:flex;gap:8px;align-items:center}
+.dots button{width:10px;height:10px;padding:0;border:0;border-radius:99px;background:var(--line);cursor:pointer;transition:width .3s,background .3s}
+.dots button.on{width:28px;background:var(--hot)}
+.soc{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+.soc a{border-radius:20px;padding:20px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:transform .25s,color .25s}
+.soc a:hover{transform:translateY(-4px);color:var(--text)}
+.soc svg{width:30px;height:30px;fill:currentColor}
 #top2{position:fixed;right:16px;bottom:16px;z-index:25;width:46px;height:46px;border-radius:50%;opacity:0;pointer-events:none;transition:opacity .3s;border:0;color:var(--text);cursor:pointer;font-size:1.2rem}#top2.on{opacity:1;pointer-events:auto}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
@@ -151,13 +168,18 @@ footer{padding:26px 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
 
 <div class="tick" aria-hidden="true"><div><span>Community management</span><span>Moderation</span><span>Events and contests</span><span>Collab management</span><span>Content</span><span>Community strategy</span><span>Community management</span><span>Moderation</span><span>Events and contests</span><span>Collab management</span><span>Content</span><span>Community strategy</span></div></div>
 
-<section id="about" class="about">
+<section id="about">
   <div class="lab">About me</div>
   <h2>Communities where people don't just join, <em class="a">they participate.</em></h2>
-  <p>I'm Lizzy, a Web3 Community Manager focused on creating communities where people don't just join, they participate.</p>
-  <p>I manage community conversations, create engaging activities, coordinate events, develop community content, and help projects maintain a strong connection with their members.</p>
-  <p>I've worked across meme coin and NFT communities, gaining experience with different community environments and engagement styles.</p>
-  <p>Alongside community management, I've also worked as a Collab Manager, coordinating 300+ collaborations across Web3 projects and communities. Working across both roles has strengthened my communication, coordination, relationship-building, and community engagement skills.</p>
+  <div class="car" role="region" aria-roledescription="carousel" aria-label="About Lizzy">
+    <div class="trk" id="trk" tabindex="0">
+      <article class="tile glass" aria-label="1 of 4"><span class="k">Who I am</span><p class="big">I'm Lizzy. I help Web3 projects turn a busy chat into a community people actually take part in.</p><p class="sm2">Community Manager and Collab Manager across X, Telegram and Discord.</p></article>
+      <article class="tile glass" aria-label="2 of 4"><span class="k">What I do</span><p class="big">I run the conversations, games, events and content that give members a reason to show up.</p><p class="sm2">And I keep a strong line open between the project and its members.</p></article>
+      <article class="tile glass" aria-label="3 of 4"><span class="k">Where I've worked</span><p class="big">30+ projects across meme coin and NFT communities, each with its own culture and pace.</p><p class="sm2">Every environment taught me to adjust my engagement style to the room.</p></article>
+      <article class="tile glass" aria-label="4 of 4"><span class="k">Beyond the chat</span><p class="big">300+ collaborations coordinated, so I'm as comfortable with partners as I am with members.</p><p class="sm2">That mix sharpened my communication, coordination and relationship-building.</p></article>
+    </div>
+    <div class="ctl"><button class="ib glass" id="prev" type="button" aria-label="Previous card">&larr;</button><div class="dots" id="dots"></div><button class="ib glass" id="next" type="button" aria-label="Next card">&rarr;</button></div>
+  </div>
 </section>
 
 <section id="services">
@@ -277,14 +299,12 @@ footer{padding:26px 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
     <div class="panel glass">
       <h2>Building a Web3 project? <em class="a">Let's talk.</em></h2>
       <p class="muted">Need someone to manage your community, create engaging experiences, coordinate communication, and keep things moving? I look forward to working with you.</p>
-      <ul class="links">
-        <li><a href="mailto:lizzyfrank022@gmail.com">lizzyfrank022@gmail.com</a></li>
-        <li><a href="https://x.com/Lizzy_onchain" target="_blank" rel="noopener noreferrer">X: @Lizzy_onchain</a></li>
-        <li><a href="https://t.me/Lizzy_onchain" target="_blank" rel="noopener noreferrer">Telegram: @Lizzy_onchain</a></li>
-        <li><a href="https://discord.com/users/1233179340913639585" target="_blank" rel="noopener noreferrer">Discord: @Lizzy_onchain</a></li>
-      </ul>
-      <!-- TODO: real Cal.com / Calendly link -->
-      <a class="btn g glass" href="https://cal.com/YOUR-LINK" target="_blank" rel="noopener noreferrer">Book a 30 minute call</a>
+      <div class="soc">
+        <a class="glass" href="https://x.com/Lizzy_onchain" target="_blank" rel="noopener noreferrer" aria-label="X: @Lizzy_onchain" title="@Lizzy_onchain"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93zm-1.29 19.5h2.04L6.49 3.24H4.3z"/></svg><span>X</span></a>
+        <a class="glass" href="https://t.me/Lizzy_onchain" target="_blank" rel="noopener noreferrer" aria-label="Telegram: @Lizzy_onchain" title="@Lizzy_onchain"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 7.2c.1 0 .3.03.47.14.1.08.16.2.17.33.02.1.04.3.02.47-.18 1.9-.96 6.5-1.36 8.63-.17.9-.5 1.2-.82 1.23-.7.06-1.23-.46-1.9-.9-1.06-.7-1.65-1.13-2.68-1.8-1.19-.78-.42-1.21.26-1.91.18-.18 3.25-2.98 3.31-3.23.01-.03.01-.15-.06-.21s-.17-.04-.25-.02c-.1.02-1.79 1.14-5.06 3.35-.48.33-.91.49-1.3.48-.43-.01-1.25-.24-1.87-.44-.75-.25-1.35-.37-1.3-.79.03-.22.33-.44.9-.66 3.5-1.52 5.83-2.53 7-3.01 3.33-1.39 4.03-1.63 4.48-1.64z"/></svg><span>Telegram</span></a>
+        <a class="glass" href="mailto:lizzyfrank022@gmail.com" aria-label="Email: lizzyfrank022@gmail.com" title="lizzyfrank022@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v.5l-10 6.5L2 6.5V6a1 1 0 0 1 1-1zm19 3.4V18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8.4l10 6.5z"/></svg><span>Email</span></a>
+        <a class="glass" href="https://discord.com/users/1233179340913639585" target="_blank" rel="noopener noreferrer" aria-label="Discord: @Lizzy_onchain" title="@Lizzy_onchain"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.49 0c-.16-.4-.4-.87-.62-1.25a.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.89 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-2a.08.08 0 0 0-.04-.1 13 13 0 0 1-1.87-.9.08.08 0 0 1-.01-.13c.13-.09.25-.19.37-.29a.07.07 0 0 1 .08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08.01c.12.1.25.2.37.29a.08.08 0 0 1-.01.13c-.6.35-1.22.65-1.87.9a.08.08 0 0 0-.04.1c.36.7.77 1.37 1.23 2a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 6-3.03.08.08 0 0 0 .03-.06c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42zm7.97 0c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42z"/></svg><span>Discord</span></a>
+      </div>
     </div>
     <!-- TODO: replace YOUR_FORM_ID with the Formspree form ID -->
     <form class="panel glass" id="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
@@ -304,7 +324,13 @@ footer{padding:26px 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
 </section>
 
 </div></main>
-<footer>Lizzy, Web3 Community Manager. GMT+1.</footer>
+<footer>
+  <div class="wrap">
+    <div class="fb">Lizzy<em class="a">.</em></div>
+    <p>Web3 Community Manager. Building communities people want to stay in.</p>
+    <p class="cp">&copy; 2026 Lizzy. All rights reserved.</p>
+  </div>
+</footer>
 <button id="top2" class="glass" type="button" aria-label="Back to top">↑</button>
 <div id="lb" role="dialog" aria-label="Enlarged screenshot"><img alt=""></div>
 
@@ -330,6 +356,17 @@ d.querySelectorAll('.card').forEach(function(el){el.addEventListener('pointermov
 var pg=d.getElementById('prog'),tp=d.getElementById('top2');
 addEventListener('scroll',function(){var h=R.scrollHeight-innerHeight;pg.style.width=(h>0?scrollY/h*100:0)+'%';tp.classList.toggle('on',scrollY>700)},{passive:true});
 tp.onclick=function(){scrollTo({top:0,behavior:rm?'auto':'smooth'})};
+var trk=d.getElementById('trk'),tiles=trk.children,n=tiles.length,dots=d.getElementById('dots'),cur=0,last=0;
+function stp(){return tiles[0].offsetWidth+16}
+function mark(){cur=Math.max(0,Math.min(n-1,Math.round(trk.scrollLeft/stp())));[].forEach.call(dots.children,function(b,k){b.classList.toggle('on',k===cur)})}
+function go(k,u){if(u)last=Date.now();k=(k+n)%n;trk.scrollTo({left:k*stp(),behavior:rm?'auto':'smooth'})}
+for(var k=0;k<n;k++){(function(k){var b=d.createElement('button');b.type='button';b.setAttribute('aria-label','Go to card '+(k+1));b.onclick=function(){go(k,1)};dots.appendChild(b)})(k)}
+trk.addEventListener('scroll',mark,{passive:true});
+d.getElementById('prev').onclick=function(){go(cur-1,1)};d.getElementById('next').onclick=function(){go(cur+1,1)};
+['pointerdown','pointermove','touchstart','wheel','focusin'].forEach(function(ev){trk.addEventListener(ev,function(){last=Date.now()},{passive:true})});
+if(!rm)setInterval(function(){if(Date.now()-last>8000&&!d.hidden)go(cur+1)},5500);
+mark();
+
 var li=lb.querySelector('img');
 d.querySelectorAll('.shot').forEach(function(b){b.onclick=function(){var im=b.querySelector('img');li.src=im.src;li.alt=im.alt;lb.classList.add('on')}});
 lb.onclick=function(){lb.classList.remove('on')};
